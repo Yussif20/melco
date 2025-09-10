@@ -61,13 +61,69 @@
   },
   "About": {
     "title": "About Us",
+    "subtitle": "Leading Safety Equipment Provider in Saudi Arabia",
+    "hero": {
+      "description": "Melco has been at the forefront of workplace safety for over 15 years, providing comprehensive safety solutions to protect workers across various industries in the Kingdom of Saudi Arabia."
+    },
     "vision": {
       "title": "Our Vision",
-      "text": "To be the first choice and trusted destination in the commercial sector by delivering innovative products and services"
+      "text": "To be the first choice and trusted destination in the commercial sector by delivering innovative products and services that ensure the highest levels of workplace safety."
     },
     "mission": {
       "title": "Our Mission",
-      "text": "We strive to meet our clients' needs by providing high-quality products and services driven by innovation and efficiency"
+      "text": "We strive to meet our clients' needs by providing high-quality safety products and services driven by innovation, efficiency, and an unwavering commitment to protecting lives."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "quality": {
+        "title": "Quality",
+        "description": "Commitment to the highest standards of quality in all our projects and operations"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Delivering innovative solutions that meet our clients' aspirations and achieve excellence"
+      },
+      "professionalism": {
+        "title": "Professionalism",
+        "description": "Upholding ethical standards and high practices to build trust and excellence"
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "Establishing long-term relationships with clients and partners to foster collaboration and mutual success"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Contributing to sustainable development that supports the economy and society"
+      }
+    },
+    "company": {
+      "title": "About Melco",
+      "founding": {
+        "title": "Company Foundation",
+        "description": "Established with a vision to transform workplace safety in Saudi Arabia, Melco has grown from a small safety equipment supplier to a leading provider of comprehensive safety solutions."
+      },
+      "expertise": {
+        "title": "Industry Expertise",
+        "description": "Our team brings decades of combined experience in safety engineering, risk assessment, and equipment selection across multiple industries including construction, manufacturing, oil & gas, and healthcare."
+      },
+      "certifications": {
+        "title": "Certifications & Standards",
+        "description": "All our products meet or exceed international safety standards including CE, ANSI, and EN certifications, ensuring maximum protection for workers."
+      }
+    },
+    "stats": {
+      "experience": "15+",
+      "experienceLabel": "Years of Experience",
+      "clients": "500+",
+      "clientsLabel": "Satisfied Clients",
+      "products": "1000+",
+      "productsLabel": "Safety Products",
+      "projects": "50+",
+      "projectsLabel": "Major Projects"
+    },
+    "team": {
+      "title": "Our Professional Team",
+      "description": "Our team consists of certified safety professionals, engineers, and consultants dedicated to providing expert guidance and support."
     }
   },
   "Products": {
