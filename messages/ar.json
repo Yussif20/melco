@@ -49,7 +49,7 @@
       "contact": {
         "title": "معلومات التواصل",
         "phone": "+966 XX XXX XXXX",
-        "email": "info@melco.sa"
+        "email": "Info@melco-ltd.com"
       },
       "hours": {
         "title": "ساعات العمل",
@@ -143,17 +143,17 @@
     "howToApply": {
       "title": "كيفية التقديم",
       "description": "أرسل سيرتك الذاتية إلى البريد الإلكتروني أدناه مع ذكر المسمى الوظيفي في موضوع الرسالة",
-      "email": "hr@melco.sa"
+      "email": "hr@melco-ltd.com"
     }
   },
   "Footer": {
     "rights": "جميع الحقوق محفوظة",
-    "companyDescription": "ميلكو للمعدات الأمنية - رائدة في توفير معدات السلامة في المملكة العربية السعودية",
+    "companyDescription": "شركة ماستر اكويبمنت",
     "quickLinks": "روابط سريعة",
-    "products": "منتجاتنا",
+    "products": "معدات السلامة الشخصية",
     "contact": "تواصل معنا",
     "address": "المملكة العربية السعودية",
-    "email": "info@melco.sa",
+    "email": "Info@melco-ltd.com",
     "phone": "+966 XX XXX XXXX",
     "privacyPolicy": "سياسة الخصوصية",
     "termsConditions": "الشروط والأحكام",
@@ -161,7 +161,11 @@
       "head": "حماية الرأس",
       "eyeFace": "حماية العين والوجه",
       "hearing": "حماية السمع",
-      "respiratory": "حماية التنفس"
+      "respiratory": "حماية التنفس",
+      "hand": "حماية اليدين",
+      "body": "حماية الجسم",
+      "foot": "حماية القدمين",
+      "gasDetectors": "أجهزة كشف الغازات"
     }
   },
   "ThemeSwitcher": {

@@ -49,7 +49,7 @@
       "contact": {
         "title": "Contact Information",
         "phone": "+966 XX XXX XXXX",
-        "email": "info@melco.sa"
+        "email": "Info@melco-ltd.com"
       },
       "hours": {
         "title": "Business Hours",
@@ -143,17 +143,17 @@
     "howToApply": {
       "title": "How to Apply",
       "description": "Send your resume to the email below with the job title in the subject line",
-      "email": "hr@melco.sa"
+      "email": "hr@melco-ltd.com"
     }
   },
   "Footer": {
     "rights": "All rights reserved",
-    "companyDescription": "Melco Safety Equipment - Leading provider of safety equipment in Saudi Arabia",
+    "companyDescription": "Master Equipment Company",
     "quickLinks": "Quick Links",
-    "products": "Our Products",
+    "products": "Personal Safety Equipment",
     "contact": "Contact Us",
     "address": "Saudi Arabia",
-    "email": "info@melco.sa",
+    "email": "Info@melco-ltd.com",
     "phone": "+966 XX XXX XXXX",
     "privacyPolicy": "Privacy Policy",
     "termsConditions": "Terms & Conditions",
@@ -161,7 +161,11 @@
       "head": "Head Protection",
       "eyeFace": "Eye and Face Protection",
       "hearing": "Hearing Protection",
-      "respiratory": "Respiratory Protection"
+      "respiratory": "Respiratory Protection",
+      "hand": "Hand Protection",
+      "body": "Body Protection",
+      "foot": "Foot Protection",
+      "gasDetectors": "Gas Detectors"
     }
   },
   "ThemeSwitcher": {

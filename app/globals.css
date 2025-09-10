@@ -9,6 +9,9 @@
     font-family: var(--font-tajawal, sans-serif);
   }
 }
+body {
+  overflow-x: hidden;
+}
 button,
 a,
 select {

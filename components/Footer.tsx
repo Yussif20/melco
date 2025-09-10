@@ -20,6 +20,10 @@ export default function Footer() {
     footer("categories.eyeFace"),
     footer("categories.hearing"),
     footer("categories.respiratory"),
+    footer("categories.hand"),
+    footer("categories.body"),
+    footer("categories.foot"),
+    footer("categories.gasDetectors"),
   ];
 
   return (
@@ -27,7 +31,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-start">
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col items-center md:items-start">
             <Image
               src="/logo-white.png"
               alt="Melco Logo"
@@ -40,7 +44,7 @@ export default function Footer() {
             <p className="text-gray-300 text-sm leading-relaxed">
               {footer("companyDescription")}
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-start">
               {/* Social Media Icons */}
               <a
                 href="#"
@@ -124,7 +128,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">{footer("contact")}</h3>
             <div className="space-y-3">
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3 justify-center md:justify-start">
                 <svg
                   className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0"
                   fill="none"
@@ -146,7 +150,7 @@ export default function Footer() {
                 </svg>
                 <p className="text-gray-300 text-sm">{footer("address")}</p>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3 justify-center md:justify-start">
                 <svg
                   className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0"
                   fill="none"
@@ -162,7 +166,7 @@ export default function Footer() {
                 </svg>
                 <p className="text-gray-300 text-sm">{footer("phone")}</p>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3 justify-center md:justify-start">
                 <svg
                   className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0"
                   fill="none"
