@@ -6,16 +6,57 @@
     "board": "Board",
     "governance": "Governance",
     "news": "News",
+    "careers": "Careers",
     "contact": "Contact"
   },
   "HomePage": {
-    "title": "MELCO Safety Equipment",
-    "subtitle": "Leading Provider of Safety Equipment in Saudi Arabia",
-    "vision": "Our Vision",
-    "visionText": "To be the first choice and trusted destination in the commercial sector",
-    "mission": "Our Mission",
-    "missionText": "We strive to meet our clients' needs by providing high-quality products and services",
-    "description": "This is a multilingual Next.js app.",
+    "hero": {
+      "heading": "Your Safety Partner at Work",
+      "subheading": "Trusted quality. Enduring partnership. Safety that grows with you.",
+      "cta": "Explore Our Products"
+    },
+    "partners": {
+      "title": "Our Trusted Partners",
+      "subtitle": "We work with the world's leading safety equipment manufacturers"
+    },
+    "profile": {
+      "title": "Download Our Company Profile",
+      "description": "Get detailed information about our company, services, and safety solutions in our comprehensive company profile.",
+      "downloadButton": "Download Profile"
+    },
+    "about": {
+      "title": "About Melco",
+      "description": "Leading provider of safety equipment in Saudi Arabia, committed to protecting workers and ensuring workplace safety.",
+      "stats": {
+        "experience": "15+",
+        "experienceLabel": "Years of Experience",
+        "clients": "500+",
+        "clientsLabel": "Satisfied Clients"
+      },
+      "content": {
+        "paragraph1": "Melco Safety Equipment has been at the forefront of workplace safety in Saudi Arabia for over 15 years. We specialize in providing high-quality personal protective equipment and safety solutions to industries across the Kingdom.",
+        "paragraph2": "Our commitment to excellence, combined with our partnerships with world-leading manufacturers, ensures that we deliver products that meet the highest international safety standards while serving the unique needs of the Saudi market."
+      },
+      "learnMore": "Learn More"
+    },
+    "location": {
+      "title": "Our Location",
+      "description": "Visit us at our headquarters in Saudi Arabia",
+      "address": {
+        "title": "Head Office",
+        "details": "Kingdom of Saudi Arabia"
+      },
+      "contact": {
+        "title": "Contact Information",
+        "phone": "+966 XX XXX XXXX",
+        "email": "info@melco.sa"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "weekdays": "Sunday - Thursday: 8:00 AM - 6:00 PM",
+        "weekend": "Friday - Saturday: Closed"
+      }
+    },
     "selectLanguage": "Select language"
   },
   "About": {
@@ -86,8 +127,42 @@
       "submit": "Send"
     }
   },
+  "Careers": {
+    "title": "Careers",
+    "subtitle": "Join Our Team",
+    "description": "We are looking for exceptional talents to join our safety equipment team",
+    "noOpenings": "No current job openings",
+    "checkLater": "Please check back later for new opportunities",
+    "benefits": {
+      "title": "Benefits & Perks",
+      "healthcare": "Comprehensive health insurance",
+      "training": "Training and development programs",
+      "growth": "Career growth opportunities",
+      "environment": "Motivating work environment"
+    },
+    "howToApply": {
+      "title": "How to Apply",
+      "description": "Send your resume to the email below with the job title in the subject line",
+      "email": "hr@melco.sa"
+    }
+  },
   "Footer": {
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "companyDescription": "Melco Safety Equipment - Leading provider of safety equipment in Saudi Arabia",
+    "quickLinks": "Quick Links",
+    "products": "Our Products",
+    "contact": "Contact Us",
+    "address": "Saudi Arabia",
+    "email": "info@melco.sa",
+    "phone": "+966 XX XXX XXXX",
+    "privacyPolicy": "Privacy Policy",
+    "termsConditions": "Terms & Conditions",
+    "categories": {
+      "head": "Head Protection",
+      "eyeFace": "Eye and Face Protection",
+      "hearing": "Hearing Protection",
+      "respiratory": "Respiratory Protection"
+    }
   },
   "ThemeSwitcher": {
     "lightMode": "Switch to light mode",

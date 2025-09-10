@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -11,6 +11,7 @@ interface ProductDetailPageProps {
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const t = useTranslations("Products");
+  const locale = useLocale();
 
   // Get the product category based on the ID
   const categories = [
@@ -35,15 +36,18 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8">
-          <ol className="flex items-center space-x-2 space-x-reverse text-sm text-gray-500">
+          <ol className="flex items-center gap-2 text-sm text-gray-500">
             <li>
-              <Link href="/" className="hover:text-blue-600">
+              <Link href={`/${locale}`} className="hover:text-blue-600">
                 الرئيسية
               </Link>
             </li>
             <li className="mx-2">/</li>
             <li>
-              <Link href="/products" className="hover:text-blue-600">
+              <Link
+                href={`/${locale}/products`}
+                className="hover:text-blue-600"
+              >
                 {t("title")}
               </Link>
             </li>
@@ -74,15 +78,15 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               </p>
 
               <div className="space-y-4">
-                <div className="flex items-center space-x-3 space-x-reverse">
+                <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                   <span>جودة عالية</span>
                 </div>
-                <div className="flex items-center space-x-3 space-x-reverse">
+                <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                   <span>معايير سلامة دولية</span>
                 </div>
-                <div className="flex items-center space-x-3 space-x-reverse">
+                <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                   <span>ضمان الجودة</span>
                 </div>

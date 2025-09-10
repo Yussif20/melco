@@ -4,7 +4,7 @@ export default function ContactPage() {
   const t = useTranslations("Contact");
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-8">{t("title")}</h1>
       </div>
@@ -91,7 +91,7 @@ export default function ContactPage() {
         <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold mb-6">معلومات التواصل</h2>
           <div className="space-y-6">
-            <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="flex items-start gap-3">
               <svg
                 className="w-6 h-6 text-blue-600 mt-1"
                 fill="none"
@@ -119,7 +119,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="flex items-start gap-3">
               <svg
                 className="w-6 h-6 text-blue-600 mt-1"
                 fill="none"
@@ -141,7 +141,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="flex items-start gap-3">
               <svg
                 className="w-6 h-6 text-blue-600 mt-1"
                 fill="none"
@@ -165,6 +165,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

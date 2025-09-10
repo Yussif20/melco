@@ -56,7 +56,7 @@ export default function ThemeSwitcher() {
             onClick={themeToggleHandler}
             className={`relative flex items-center justify-center w-10 h-8 rounded-lg transition-all duration-300 transform ${
               theme === "dark"
-                ? "bg-white dark:bg-gray-800 shadow-md scale-105 text-[#006C35]"
+                ? "bg-white dark:bg-gray-800 shadow-md scale-105 text-blue-800"
                 : "bg-transparent hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-500 dark:text-gray-500"
             } ${isAnimating ? "animate-pulse" : ""}`}
             aria-label="Switch to dark mode"
@@ -65,19 +65,19 @@ export default function ThemeSwitcher() {
             <Moon
               className={`w-4 h-4 transition-all duration-300 ${
                 theme === "dark"
-                  ? "text-[#006C35] drop-shadow-sm"
+                  ? "text-blue-800 drop-shadow-sm"
                   : "text-gray-500 dark:text-gray-500"
               }`}
             />
             {theme === "dark" && (
-              <div className="absolute inset-0 rounded-lg bg-[#006C35]/10 animate-ping"></div>
+              <div className="absolute inset-0 rounded-lg bg-blue-800/10 animate-ping"></div>
             )}
           </button>
         </div>
         {/* Subtle indicator dot */}
         <div
           className={`absolute -top-1 -right-1 w-2 h-2 rounded-full transition-all duration-300 ${
-            theme === "light" ? "bg-[#b8860b]" : "bg-[#006C35]"
+            theme === "light" ? "bg-[#b8860b]" : "bg-blue-800"
           } ${isAnimating ? "animate-bounce" : ""}`}
         ></div>
       </div>
@@ -98,7 +98,7 @@ export default function ThemeSwitcher() {
           {theme === "light" ? (
             <Sun className="w-6 h-6 text-[#b8860b] transition-all duration-300 drop-shadow-sm" />
           ) : (
-            <Moon className="w-6 h-6 text-[#006C35] transition-all duration-300 drop-shadow-sm" />
+            <Moon className="w-6 h-6 text-blue-800 transition-all duration-300 drop-shadow-sm" />
           )}
 
           {/* Subtle glow effect */}
@@ -115,7 +115,7 @@ export default function ThemeSwitcher() {
             className={`absolute -top-1 -right-1 w-3 h-3 rounded-full transition-all duration-300 ${
               theme === "light"
                 ? "bg-amber-600 shadow-amber-600/50"
-                : "bg-blue-400 shadow-blue-400/50"
+                : "bg-blue-800 shadow-blue-800/50"
             } ${isAnimating ? "animate-bounce" : ""} shadow-lg`}
           ></div>
         </button>

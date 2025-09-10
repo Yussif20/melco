@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
@@ -11,6 +11,7 @@ interface NewsDetailPageProps {
 
 export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   const t = useTranslations("News");
+  const locale = useLocale();
 
   // Simple validation - in a real app, you'd fetch from an API
   const newsId = parseInt(params.id);
@@ -19,11 +20,11 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8">
-          <ol className="flex items-center space-x-2 space-x-reverse text-sm text-gray-500">
+          <ol className="flex items-center gap-2 text-sm text-gray-500">
             <li>
               <Link href="/" className="hover:text-blue-600">
                 الرئيسية
@@ -125,6 +126,6 @@ export default function NewsDetailPage({ params }: NewsDetailPageProps) {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

@@ -136,11 +136,11 @@ A bilingual (Arabic/English) corporate website for Melco (ميلكو), a Saudi s
 
 - **Phase 1:** Setup and Structure
 
-  - Project initialization
-  - Environment setup
-  - Routing structure
-  - Multilingual setup
-  - Theme implementation
+- Project initialization
+- Environment setup
+- Routing structure
+- Multilingual setup
+- Theme implementation
 
 - **Phase 2:** Core Components
 

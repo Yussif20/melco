@@ -4,7 +4,7 @@ export default function AboutPage() {
   const t = useTranslations("About");
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-8">{t("title")}</h1>
       </div>
@@ -32,6 +32,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }
