@@ -17,6 +17,7 @@ export default function Logo({
         height={40}
         className="block dark:hidden"
         priority
+        suppressHydrationWarning
       />
       {/* Dark mode logo */}
       <Image
@@ -26,6 +27,7 @@ export default function Logo({
         height={40}
         className="hidden dark:block"
         priority
+        suppressHydrationWarning
       />
     </div>
   );

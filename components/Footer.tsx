@@ -35,6 +35,7 @@ export default function Footer() {
               height={40}
               className="h-12 w-auto"
               priority
+              suppressHydrationWarning
             />
             <p className="text-gray-300 text-sm leading-relaxed">
               {footer("companyDescription")}

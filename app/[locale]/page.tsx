@@ -1,25 +1,40 @@
+"use client";
+
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
   const t = useTranslations("HomePage");
   const locale = useLocale();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div>
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/safe.mp4" type="video/mp4" />
-        </video>
+        {isClient && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          >
+            <source src="/safe.mp4" type="video/mp4" />
+          </video>
+        )}
+
+        {/* Fallback background for SSR */}
+        {!isClient && (
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-gray-800 z-0"></div>
+        )}
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50 z-10"></div>
@@ -75,6 +90,7 @@ export default function HomePage() {
                 width={160}
                 height={80}
                 className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                suppressHydrationWarning
               />
             </div>
 
@@ -86,6 +102,7 @@ export default function HomePage() {
                 width={160}
                 height={80}
                 className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                suppressHydrationWarning
               />
             </div>
 
@@ -97,6 +114,7 @@ export default function HomePage() {
                 width={160}
                 height={80}
                 className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                suppressHydrationWarning
               />
             </div>
 
@@ -108,6 +126,7 @@ export default function HomePage() {
                 width={160}
                 height={80}
                 className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                suppressHydrationWarning
               />
             </div>
 
@@ -119,6 +138,7 @@ export default function HomePage() {
                 width={160}
                 height={80}
                 className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                suppressHydrationWarning
               />
             </div>
           </div>
@@ -252,6 +272,7 @@ export default function HomePage() {
                     alt="Company Activity"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
+                    suppressHydrationWarning
                   />
                 </div>
                 <div className="relative h-32 rounded-lg overflow-hidden shadow-lg">
@@ -260,6 +281,7 @@ export default function HomePage() {
                     alt="Safety Equipment"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
@@ -270,6 +292,7 @@ export default function HomePage() {
                     alt="Head Protection"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
+                    suppressHydrationWarning
                   />
                 </div>
                 <div className="relative h-48 rounded-lg overflow-hidden shadow-lg">
@@ -278,6 +301,7 @@ export default function HomePage() {
                     alt="Safety Products"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-300"
+                    suppressHydrationWarning
                   />
                 </div>
               </div>
