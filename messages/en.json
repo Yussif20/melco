@@ -177,9 +177,10 @@
   "Contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch",
-    "description": "We're here to help you with all your safety equipment needs. Contact us today for expert consultation and support.",
+    "description": "Get in touch with our team of safety experts. We're here to help you find the perfect personal protective equipment solutions.",
     "form": {
       "title": "Send us a Message",
+      "description": "Fill out the form below and we'll get back to you within 24 hours.",
       "name": "Full Name",
       "email": "Email Address",
       "phone": "Phone Number",
@@ -188,27 +189,54 @@
       "message": "Message",
       "submit": "Send Message",
       "success": "Message sent successfully!",
-      "error": "Please fill in all required fields."
+      "error": "Please fill in all required fields.",
+      "placeholders": {
+        "name": "Your full name",
+        "email": "your.email@company.com",
+        "phone": "+966 XXX XXX XXX",
+        "subject": "What can we help you with?",
+        "message": "Tell us more about your safety equipment needs..."
+      }
     },
     "info": {
       "title": "Contact Information",
+      "description": "Reach out to us through any of these channels. We're always ready to help with your safety equipment needs.",
       "address": {
-        "title": "Head Office",
+        "title": "Our Location",
+        "description": "Visit our headquarters",
+        "location": "Aldammam, Saudi Arabia",
         "line1": "Kingdom of Saudi Arabia",
         "line2": "Riyadh"
       },
       "phone": {
-        "title": "Phone",
-        "number": "+966 XX XXX XXXX"
+        "title": "Phone Number",
+        "description": "Call us during business hours",
+        "number": "+966553653329"
       },
       "email": {
-        "title": "Email",
-        "address": "Info@melco-ltd.com"
+        "title": "Email Address",
+        "description": "Send us an email anytime",
+        "address": "Ahmed@melco-ltd.com"
+      },
+      "social": {
+        "title": "LinkedIn",
+        "description": "Connect with us professionally",
+        "link": "Connect with us"
       },
       "hours": {
         "title": "Business Hours",
-        "weekdays": "Sunday - Thursday: 8:00 AM - 6:00 PM",
-        "weekend": "Friday - Saturday: Closed"
+        "weekdays": {
+          "days": "Sunday - Thursday",
+          "time": "8:00 AM - 6:00 PM"
+        },
+        "friday": {
+          "day": "Friday",
+          "time": "Closed"
+        },
+        "saturday": {
+          "day": "Saturday",
+          "time": "9:00 AM - 2:00 PM"
+        }
       }
     },
     "office": {
