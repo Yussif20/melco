@@ -106,100 +106,106 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-200 dark:border-gray-700">
-                <Image
-                  src="/values/Professionalism.png"
-                  alt="Quality"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  suppressHydrationWarning
-                />
+          <div className="max-w-7xl mx-auto space-y-8">
+            {/* First Row - 3 Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/values/star.png"
+                    alt="Quality"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    suppressHydrationWarning
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t("values.quality.title")}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {t("values.quality.description")}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {t("values.quality.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {t("values.quality.description")}
-              </p>
+
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/values/innovation.png"
+                    alt="Innovation"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    suppressHydrationWarning
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t("values.innovation.title")}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {t("values.innovation.description")}
+                </p>
+              </div>
+
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/values/Professionalism.png"
+                    alt="Professionalism"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    suppressHydrationWarning
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t("values.professionalism.title")}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {t("values.professionalism.description")}
+                </p>
+              </div>
             </div>
 
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-200 dark:border-gray-700">
-                <Image
-                  src="/values/innovation.png"
-                  alt="Innovation"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  suppressHydrationWarning
-                />
+            {/* Second Row - 2 Cards Centered */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/values/partnership.png"
+                    alt="Partnership"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    suppressHydrationWarning
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t("values.partnership.title")}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {t("values.partnership.description")}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {t("values.innovation.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {t("values.innovation.description")}
-              </p>
-            </div>
 
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-200 dark:border-gray-700">
-                <Image
-                  src="/values/Professionalism.png"
-                  alt="Professionalism"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  suppressHydrationWarning
-                />
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
+                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/values/sustainability.png"
+                    alt="Sustainability"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    suppressHydrationWarning
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t("values.sustainability.title")}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {t("values.sustainability.description")}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {t("values.professionalism.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {t("values.professionalism.description")}
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-200 dark:border-gray-700">
-                <Image
-                  src="/values/partnership.png"
-                  alt="Partnership"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  suppressHydrationWarning
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {t("values.partnership.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {t("values.partnership.description")}
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg border border-gray-200 dark:border-gray-700">
-                <Image
-                  src="/values/sustainability.png"
-                  alt="Sustainability"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  suppressHydrationWarning
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {t("values.sustainability.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {t("values.sustainability.description")}
-              </p>
             </div>
           </div>
         </div>
