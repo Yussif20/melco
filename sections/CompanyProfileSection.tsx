@@ -4,12 +4,12 @@ export default function CompanyProfileSection() {
   const t = useTranslations("HomePage");
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
             <svg
-              className="w-16 h-16 mx-auto mb-6 text-blue-600 dark:text-blue-400"
+              className="w-16 h-16 mx-auto mb-6 text-[#1F2937] dark:text-gray-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ export default function CompanyProfileSection() {
           <a
             href="/melco-profile.pdf"
             download="Melco-Company-Profile.pdf"
-            className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-3 bg-[#1F2937] hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <svg
               className="w-5 h-5"

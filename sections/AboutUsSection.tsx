@@ -33,7 +33,7 @@ export default function AboutUsSection() {
             <div className="flex gap-4 justify-center lg:justify-start">
               <Link
                 href={`/${locale}/about`}
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                className="inline-flex items-center gap-2 bg-[#1F2937] hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
               >
                 {t("about.learnMore")}
                 <svg
@@ -56,13 +56,13 @@ export default function AboutUsSection() {
           {/* Professional Hand Protection Image */}
           <div className="relative">
             {/* Decorative background elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-100 dark:bg-blue-900/30 rounded-full blur-xl opacity-60"></div>
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-indigo-100 dark:bg-indigo-900/30 rounded-full blur-xl opacity-60"></div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gray-100 dark:bg-gray-700/30 rounded-full blur-xl opacity-60"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gray-200 dark:bg-gray-600/30 rounded-full blur-xl opacity-60"></div>
 
             {/* Main image container */}
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700">
               {/* Elegant border gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-indigo-600/10 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1F2937]/10 via-transparent to-gray-600/10 rounded-2xl"></div>
 
               <Image
                 src="/category-headers/hand.png"

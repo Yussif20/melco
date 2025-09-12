@@ -26,10 +26,10 @@ export default function AboutPage() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               {t("title")}
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8">
+            <p className="text-xl md:text-2xl text-gray-100 mb-8">
               {t("subtitle")}
             </p>
-            <p className="text-lg text-blue-200 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg text-gray-200 leading-relaxed max-w-3xl mx-auto">
               {t("hero.description")}
             </p>
           </div>
@@ -41,9 +41,9 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6">
                 <svg
-                  className="w-8 h-8 text-blue-600 dark:text-blue-400"
+                  className="w-8 h-8 text-[#1F2937] dark:text-gray-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -71,9 +71,9 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6">
                 <svg
-                  className="w-8 h-8 text-green-600 dark:text-green-400"
+                  className="w-8 h-8 text-[#1F2937] dark:text-gray-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

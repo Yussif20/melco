@@ -102,9 +102,9 @@ export default function Navigation() {
             >
               <Link
                 href={item.href}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-blue-800 dark:hover:text-blue-400 flex items-center gap-1 ${
+                className={`text-sm font-medium transition-colors duration-200 hover:text-[#1F2937] dark:hover:text-gray-300 flex items-center gap-1 ${
                   isActive(item.href)
-                    ? "text-blue-800 dark:text-blue-400 border-b-2 border-blue-800 dark:border-blue-400 pb-1"
+                    ? "text-[#1F2937] dark:text-gray-300 border-b-2 border-[#1F2937] dark:border-gray-300 pb-1"
                     : "text-gray-700 dark:text-gray-300"
                 }`}
               >
@@ -134,7 +134,7 @@ export default function Navigation() {
                       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                         {tProducts("title")}
                       </h3>
-                      <div className="w-16 h-1 bg-blue-600 rounded-full"></div>
+                      <div className="w-16 h-1 bg-[#1F2937] rounded-full"></div>
                     </div>
 
                     <div className="grid grid-cols-4 gap-4">
@@ -154,7 +154,7 @@ export default function Navigation() {
                               suppressHydrationWarning
                             />
                           </div>
-                          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 text-center group-hover:text-[#1F2937] dark:group-hover:text-gray-300 transition-colors">
                             {category.name}
                           </h4>
                           <p className="text-xs text-gray-500 dark:text-gray-400 text-center leading-tight">
@@ -167,7 +167,7 @@ export default function Navigation() {
                     <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                       <Link
                         href={`/${locale}/products`}
-                        className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors"
+                        className="inline-flex items-center gap-2 text-[#1F2937] dark:text-gray-300 hover:text-gray-800 dark:hover:text-white font-medium text-sm transition-colors"
                       >
                         <span>{tProducts("viewAll")}</span>
                         <svg
@@ -192,9 +192,9 @@ export default function Navigation() {
           ) : (
             <Link
               href={item.href}
-              className={`text-sm font-medium transition-colors duration-200 hover:text-blue-800 dark:hover:text-blue-400 ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-[#1F2937] dark:hover:text-gray-300 ${
                 isActive(item.href)
-                  ? "text-blue-800 dark:text-blue-400 border-b-2 border-blue-800 dark:border-blue-400 pb-1"
+                  ? "text-[#1F2937] dark:text-gray-300 border-b-2 border-[#1F2937] dark:border-gray-300 pb-1"
                   : "text-gray-700 dark:text-gray-300"
               }`}
             >

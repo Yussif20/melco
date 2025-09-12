@@ -30,7 +30,7 @@ export default function HeroSection() {
 
       {/* Fallback background for SSR */}
       {!isClient && (
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-gray-800 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1F2937] to-gray-800 z-0"></div>
       )}
 
       {/* Dark Overlay */}
@@ -46,7 +46,7 @@ export default function HeroSection() {
         </p>
         <Link
           href={`/${locale}/products`}
-          className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          className="inline-flex items-center gap-3 bg-[#1F2937] hover:bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
         >
           {t("hero.cta")}
           <svg
