@@ -5,8 +5,10 @@ import { Sun, Moon } from "lucide-react";
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState("light");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const savedTheme = localStorage.getItem("theme");
     const systemDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
@@ -24,6 +26,21 @@ export default function ThemeSwitcher() {
     localStorage.setItem("theme", newTheme);
     setTimeout(() => setIsAnimating(false), 300);
   };
+
+  // Prevent hydration mismatch by not rendering until client is ready
+  if (!isClient) {
+    return (
+      <div
+        className="hidden sm:flex relative w-[88px] h-10"
+        suppressHydrationWarning
+      >
+        <div className="flex items-center p-1 bg-white/40 dark:bg-gray-700 rounded-xl shadow-inner border border-gray-300 dark:border-gray-600 transition-all duration-300 backdrop-blur-sm opacity-50">
+          <div className="w-10 h-8 rounded-lg bg-gray-200 dark:bg-gray-600"></div>
+          <div className="w-10 h-8 rounded-lg bg-gray-200 dark:bg-gray-600 ml-1"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

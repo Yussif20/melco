@@ -1,4 +1,47 @@
 {
+  "HomePage": {
+    "hero": {
+      "heading": "Protecting Lives, Securing Futures",
+      "subheading": "Leading provider of premium safety equipment in Saudi Arabia since 2008",
+      "cta": "Explore Our Products"
+    },
+    "partners": {
+      "title": "Trusted by Industry Leaders",
+      "subtitle": "We proudly partner with world-renowned safety equipment manufacturers"
+    },
+    "profile": {
+      "title": "Learn More About MELCO",
+      "description": "Download our comprehensive company profile to discover our full range of safety solutions, certifications, and commitment to workplace safety excellence.",
+      "downloadButton": "Download Company Profile"
+    },
+    "about": {
+      "title": "About MELCO",
+      "description": "Your trusted partner in workplace safety since 2008",
+      "content": {
+        "paragraph1": "MELCO has been at the forefront of workplace safety in Saudi Arabia for over 15 years. We specialize in providing comprehensive safety solutions that protect workers across various industries.",
+        "paragraph2": "Our commitment to excellence, combined with our extensive product range and expert knowledge, makes us the preferred choice for companies serious about workplace safety."
+      },
+      "learnMore": "Learn More"
+    },
+    "location": {
+      "title": "Visit Our Location",
+      "description": "Find us in the Eastern Province, Saudi Arabia",
+      "address": {
+        "title": "Our Address",
+        "details": "Eastern Province, Saudi Arabia"
+      },
+      "contact": {
+        "title": "Contact Information",
+        "phone": "+966 XX XXX XXXX",
+        "email": "info@melco-ltd.com"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "weekdays": "Sunday - Thursday: 8:00 AM - 6:00 PM",
+        "weekend": "Saturday: 9:00 AM - 2:00 PM"
+      }
+    }
+  },
   "Navigation": {
     "home": "Home",
     "about": "About Us",
@@ -9,256 +52,206 @@
     "careers": "Careers",
     "contact": "Contact"
   },
-  "HomePage": {
-    "hero": {
-      "heading": "Your Safety Partner at Work",
-      "subheading": "Trusted quality. Enduring partnership. Safety that grows with you.",
-      "cta": "Explore Our Products"
-    },
-    "partners": {
-      "title": "Our Trusted Partners",
-      "subtitle": "We work with the world's leading safety equipment manufacturers"
-    },
-    "profile": {
-      "title": "Download Our Company Profile",
-      "description": "Get detailed information about our company, services, and safety solutions in our comprehensive company profile.",
-      "downloadButton": "Download Profile"
-    },
-    "about": {
-      "title": "About Melco",
-      "description": "Leading provider of safety equipment in Saudi Arabia, committed to protecting workers and ensuring workplace safety.",
-      "stats": {
-        "experience": "15+",
-        "experienceLabel": "Years of Experience",
-        "clients": "500+",
-        "clientsLabel": "Satisfied Clients"
-      },
-      "content": {
-        "paragraph1": "Melco Safety Equipment has been at the forefront of workplace safety in Saudi Arabia for over 15 years. We specialize in providing high-quality personal protective equipment and safety solutions to industries across the Kingdom.",
-        "paragraph2": "Our commitment to excellence, combined with our partnerships with world-leading manufacturers, ensures that we deliver products that meet the highest international safety standards while serving the unique needs of the Saudi market."
-      },
-      "learnMore": "Learn More"
-    },
-    "location": {
-      "title": "Our Location",
-      "description": "Visit us at our headquarters in Saudi Arabia",
-      "address": {
-        "title": "Head Office",
-        "details": "Kingdom of Saudi Arabia"
-      },
-      "contact": {
-        "title": "Contact Information",
-        "phone": "+966 XX XXX XXXX",
-        "email": "Info@melco-ltd.com"
-      },
-      "hours": {
-        "title": "Business Hours",
-        "weekdays": "Sunday - Thursday: 8:00 AM - 6:00 PM",
-        "weekend": "Friday - Saturday: Closed"
-      }
-    },
-    "selectLanguage": "Select language"
-  },
-  "About": {
-    "title": "About Us",
-    "subtitle": "Leading Safety Equipment Provider in Saudi Arabia",
-    "hero": {
-      "description": "Melco has been at the forefront of workplace safety for over 15 years, providing comprehensive safety solutions to protect workers across various industries in the Kingdom of Saudi Arabia."
-    },
-    "vision": {
-      "title": "Our Vision",
-      "text": "To be the first choice and trusted destination in the commercial sector by delivering innovative products and services that ensure the highest levels of workplace safety."
-    },
-    "mission": {
-      "title": "Our Mission",
-      "text": "We strive to meet our clients' needs by providing high-quality safety products and services driven by innovation, efficiency, and an unwavering commitment to protecting lives."
-    },
-    "values": {
-      "title": "Our Core Values",
-      "quality": {
-        "title": "Quality",
-        "description": "Commitment to the highest standards of quality in all our projects and operations"
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "Delivering innovative solutions that meet our clients' aspirations and achieve excellence"
-      },
-      "professionalism": {
-        "title": "Professionalism",
-        "description": "Upholding ethical standards and high practices to build trust and excellence"
-      },
-      "partnership": {
-        "title": "Partnership",
-        "description": "Establishing long-term relationships with clients and partners to foster collaboration and mutual success"
-      },
-      "sustainability": {
-        "title": "Sustainability",
-        "description": "Contributing to sustainable development that supports the economy and society"
-      }
-    },
-    "company": {
-      "title": "About Melco",
-      "founding": {
-        "title": "Company Foundation",
-        "description": "Established with a vision to transform workplace safety in Saudi Arabia, Melco has grown from a small safety equipment supplier to a leading provider of comprehensive safety solutions."
-      },
-      "expertise": {
-        "title": "Industry Expertise",
-        "description": "Our team brings decades of combined experience in safety engineering, risk assessment, and equipment selection across multiple industries including construction, manufacturing, oil & gas, and healthcare."
-      },
-      "certifications": {
-        "title": "Certifications & Standards",
-        "description": "All our products meet or exceed international safety standards including CE, ANSI, and EN certifications, ensuring maximum protection for workers."
-      }
-    },
-    "stats": {
-      "experience": "15+",
-      "experienceLabel": "Years of Experience",
-      "clients": "500+",
-      "clientsLabel": "Satisfied Clients",
-      "products": "1000+",
-      "productsLabel": "Safety Products",
-      "projects": "50+",
-      "projectsLabel": "Major Projects"
-    },
-    "team": {
-      "title": "Our Professional Team",
-      "description": "Our team consists of certified safety professionals, engineers, and consultants dedicated to providing expert guidance and support."
-    }
-  },
   "Products": {
     "title": "Safety Products",
-    "description": "Comprehensive range of safety equipment to protect workers in every industry. From head to toe protection, we have the solutions you need.",
+    "description": "Explore our comprehensive range of high-quality safety equipment",
     "viewAll": "View All Products",
     "viewDetails": "View Details",
     "viewProducts": "View Products",
     "productsCount": "Products",
     "viewAllProducts": "View All {count} Products",
     "backToProducts": "Back to All Products",
-    "needHelp": "Need Expert Advice?",
-    "needHelpDescription": "Our safety experts are here to help you choose the right protection equipment for your specific needs and industry requirements.",
-    "contactExperts": "Contact Our Experts",
     "breadcrumb": {
-      "home": "Home"
+      "home": "Home",
+      "products": "Products"
     },
     "categories": {
       "head": "Head Protection",
-      "headDescription": "Professional helmets, hard hats, and head protection equipment designed to protect against impact, electrical hazards, and falling objects.",
-      "headShort": "Professional head protection equipment",
+      "headShort": "Safety helmets and accessories",
       "eyeFace": "Eye & Face Protection",
-      "eyeFaceDescription": "Safety glasses, goggles, face shields, and protective eyewear for complete eye and face protection in industrial environments.",
-      "eyeFaceShort": "Eye and face safety solutions",
+      "eyeFaceShort": "Safety glasses, goggles, and face shields",
       "hearing": "Hearing Protection",
-      "hearingDescription": "Ear plugs, ear muffs, and advanced hearing protection solutions to prevent noise-induced hearing loss in the workplace.",
-      "hearingShort": "Noise protection equipment",
+      "hearingShort": "Earplugs and earmuffs",
       "respiratory": "Respiratory Protection",
-      "respiratoryDescription": "Respirators, face masks, breathing apparatus, and air filtration systems for protection against airborne hazards.",
-      "respiratoryShort": "Breathing protection systems",
+      "respiratoryShort": "Respirators and breathing apparatus",
       "hand": "Hand Protection",
-      "handDescription": "Cut-resistant gloves, chemical-resistant gloves, and specialized hand protection for various industrial applications.",
-      "handShort": "Hand and arm safety gear",
+      "handShort": "Safety gloves for various applications",
       "body": "Body Protection",
-      "bodyDescription": "High-visibility vests, coveralls, aprons, and protective clothing designed to shield workers from workplace hazards.",
-      "bodyShort": "Body protection clothing",
+      "bodyShort": "Protective clothing and workwear",
       "foot": "Foot Protection",
-      "footDescription": "Safety boots, steel-toe shoes, slip-resistant footwear, and specialized protective footwear for various work environments.",
-      "footShort": "Safety footwear solutions",
-      "gasDetectors": "Gas Detection",
-      "gasDetectorsDescription": "Advanced gas detection equipment, monitors, and sensors to identify and measure hazardous gases in the workplace.",
-      "gasDetectorsShort": "Gas detection devices"
-    }
+      "footShort": "Safety boots and shoes",
+      "gasDetectors": "Gas Detectors",
+      "gasDetectorsShort": "Gas monitoring and detection equipment"
+    },
+    "needHelp": "Need Help Finding the Right Product?",
+    "needHelpDescription": "Our safety experts are here to help you choose the perfect equipment for your specific needs. Contact us for personalized recommendations.",
+    "contactExperts": "Contact Our Experts"
   },
-  "Product": {
-    "features": "Key Features",
-    "feature1": "High-quality materials and construction",
-    "feature2": "Meets international safety standards",
-    "feature3": "Comfortable and ergonomic design",
-    "feature4": "Durable and long-lasting performance",
-    "requestQuote": "Request Quote",
-    "viewMore": "View More Products",
-    "inquireAbout": "Inquire About This Product",
-    "inquireDescription": "Get detailed information and pricing for this safety equipment. Our experts are ready to help you find the perfect solution."
+  "Governance": {
+    "title": "Corporate Governance",
+    "subtitle": "Commitment to Excellence, Transparency, and Ethical Business Practices",
+    "description": "At MELCO, we believe that strong corporate governance is fundamental to our long-term success and sustainability. Our governance framework ensures accountability, transparency, and ethical conduct in all business operations while protecting the interests of our stakeholders.",
+    "framework": {
+      "title": "Governance Framework",
+      "description": "Our comprehensive governance framework is built on five fundamental pillars that guide our decision-making and operations:",
+      "point1": "Board oversight and strategic direction with independent directors",
+      "point2": "Risk management and internal control systems",
+      "point3": "Transparency in financial reporting and disclosure",
+      "point4": "Stakeholder engagement and communication",
+      "point5": "Continuous improvement and best practice adoption"
+    },
+    "policies": {
+      "title": "Policies & Procedures",
+      "description": "We maintain comprehensive policies that govern every aspect of our business operations:",
+      "categories": {
+        "quality": {
+          "title": "Quality Management",
+          "description": "ISO 9001 certified quality management systems ensuring product excellence and customer satisfaction"
+        },
+        "ethics": {
+          "title": "Code of Ethics",
+          "description": "Clear ethical guidelines for all employees covering integrity, confidentiality, and professional conduct"
+        },
+        "risk": {
+          "title": "Risk Management",
+          "description": "Systematic identification, assessment, and mitigation of operational and strategic risks"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "Environmental and social responsibility commitments aligned with sustainable development goals"
+        }
+      }
+    },
+    "compliance": {
+      "title": "Regulatory Compliance",
+      "description": "We adhere to the highest international standards and regulatory requirements:",
+      "standards": {
+        "iso9001": "ISO 9001:2015 Quality Management Systems",
+        "iso45001": "ISO 45001:2018 Occupational Health and Safety",
+        "ce": "CE Marking Compliance for European Standards",
+        "saso": "SASO Saudi Standards, Metrology and Quality Organization",
+        "gso": "GSO Gulf Standardization Organization Requirements"
+      }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "description": "These fundamental values guide our governance approach and daily operations:",
+      "list": {
+        "integrity": {
+          "name": "Integrity",
+          "description": "Honest and transparent business practices in all our interactions"
+        },
+        "excellence": {
+          "name": "Excellence",
+          "description": "Commitment to delivering the highest quality products and services"
+        },
+        "accountability": {
+          "name": "Accountability",
+          "description": "Taking responsibility for our actions and their impact on stakeholders"
+        },
+        "innovation": {
+          "name": "Innovation",
+          "description": "Continuous improvement and adoption of cutting-edge safety technologies"
+        }
+      }
+    }
   },
   "Board": {
     "title": "Board of Directors",
-    "placeholder": {
-      "name": "Board Member Name",
-      "position": "Position"
-    }
-  },
-  "Governance": {
-    "title": "Governance",
-    "framework": {
-      "title": "Governance Framework",
-      "description": "Information about company governance framework"
+    "subtitle": "Meet our experienced leadership team driving MELCO's commitment to workplace safety excellence",
+    "committees": {
+      "title": "Board Committees",
+      "audit": {
+        "title": "Audit Committee",
+        "description": "Oversees financial reporting, internal controls, and compliance"
+      },
+      "compensation": {
+        "title": "Compensation Committee",
+        "description": "Reviews and determines executive compensation and benefits policies"
+      },
+      "governance": {
+        "title": "Governance Committee",
+        "description": "Ensures adherence to corporate governance standards and best practices"
+      }
     },
-    "policies": {
-      "title": "Policies and Procedures",
-      "description": "Information about policies and procedures"
-    }
-  },
-  "News": {
-    "title": "News",
-    "placeholder": {
-      "title": "News Title",
-      "description": "Brief description of the news...",
-      "date": "September 10, 2025"
+    "governance": {
+      "title": "Corporate Governance",
+      "description": "We are committed to maintaining the highest standards of corporate governance, ensuring transparency, accountability, and ethical business practices in all our operations."
+    },
+    "members": {
+      "ceo": {
+        "name": "Abdullah Al-Rashid",
+        "position": "Chairman & CEO",
+        "bio": "Leader with 25+ years of experience in the safety equipment industry. Led strategic growth initiatives and international market expansion.",
+        "expertise": "Strategic Leadership, Industry Expertise, International Business"
+      },
+      "coo": {
+        "name": "Sarah Al-Zahra",
+        "position": "Chief Operating Officer",
+        "bio": "Expert in operational excellence with 20 years in manufacturing and supply chain management. Previously led operations at leading safety equipment manufacturers.",
+        "expertise": "Operations Management, Supply Chain, Quality Assurance"
+      },
+      "cto": {
+        "name": "Mohammed Al-Rashid",
+        "position": "Chief Technology Officer",
+        "bio": "Technology innovator with extensive experience in safety equipment R&D. Holds PhD in Materials Science and has 15+ patents in protective equipment.",
+        "expertise": "Technology Innovation, R&D, Product Development"
+      },
+      "cfo": {
+        "name": "Fatima Al-Khatib",
+        "position": "Chief Financial Officer",
+        "bio": "Financial strategist with 18 years in corporate finance and investment management. CPA with expertise in industrial sector financial planning.",
+        "expertise": "Financial Strategy, Investment Planning, Risk Management"
+      },
+      "director1": {
+        "name": "Dr. Ahmad Al-Sayed",
+        "position": "Independent Director",
+        "bio": "Former industry regulator with expertise in safety standards and compliance. Advises on regulatory affairs and corporate governance.",
+        "expertise": "Regulatory Compliance, Corporate Governance, Safety Standards"
+      },
+      "director2": {
+        "name": "Noor Al-Hassan",
+        "position": "Independent Director",
+        "bio": "International business consultant with focus on Middle East markets. Brings valuable insights on regional expansion and market development.",
+        "expertise": "Market Strategy, Business Development, Regional Expertise"
+      }
     }
   },
   "Contact": {
     "title": "Contact Us",
     "subtitle": "Get in Touch",
-    "description": "Get in touch with our team of safety experts. We're here to help you find the perfect personal protective equipment solutions.",
+    "description": "Get in touch with us for any inquiries about our safety equipment or services. We're here to help protect your workforce.",
     "form": {
-      "title": "Send us a Message",
-      "description": "Fill out the form below and we'll get back to you within 24 hours.",
-      "name": "Full Name",
-      "email": "Email Address",
-      "phone": "Phone Number",
-      "product": "Product of Interest",
+      "title": "Send us a message",
+      "description": "Fill out the form below and we'll get back to you as soon as possible.",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
       "subject": "Subject",
       "message": "Message",
       "submit": "Send Message",
-      "send": "Send Message",
-      "sending": "Sending...",
-      "successMessage": "Message sent successfully!",
-      "error": "Please fill in all required fields.",
       "placeholders": {
         "name": "Your full name",
-        "email": "your.email@company.com",
-        "phone": "+966 XXX XXX XXX",
-        "subject": "How can we help you?",
-        "message": "Tell us more about your safety equipment needs..."
-      },
-      "namePlaceholder": "Your full name",
-      "emailPlaceholder": "your.email@company.com",
-      "phonePlaceholder": "+966 XXX XXX XXX",
-      "messagePlaceholder": "Tell us more about your safety equipment needs..."
+        "email": "your@email.com",
+        "phone": "+966 XX XXX XXXX",
+        "subject": "What is this regarding?",
+        "message": "Tell us how we can help..."
+      }
     },
     "info": {
       "title": "Contact Information",
-      "description": "Reach out to us through any of these channels. We're always ready to help with your safety equipment needs.",
-      "address": {
-        "title": "Our Location",
-        "description": "Visit our headquarters",
-        "location": "Aldammam, Saudi Arabia",
-        "line1": "Kingdom of Saudi Arabia",
-        "line2": "Riyadh"
+      "description": "Visit our office, give us a call, or send us an email. We're ready to assist you.",
+      "office": {
+        "title": "Office Location",
+        "value": "Eastern Province, Saudi Arabia"
       },
       "phone": {
         "title": "Phone Number",
-        "description": "Call us during business hours",
-        "number": "+966553653329"
+        "value": "+966 XX XXX XXXX"
       },
       "email": {
         "title": "Email Address",
-        "description": "Send us an email anytime",
-        "address": "Ahmed@melco-ltd.com"
-      },
-      "social": {
-        "title": "LinkedIn",
-        "description": "Connect with us professionally",
-        "link": "Connect with us"
+        "value": "info@melco-ltd.com"
       },
       "hours": {
         "title": "Business Hours",
@@ -274,54 +267,44 @@
           "day": "Saturday",
           "time": "9:00 AM - 2:00 PM"
         }
+      },
+      "social": {
+        "title": "LinkedIn",
+        "description": "Connect with us on LinkedIn",
+        "link": "Follow Us"
       }
-    },
-    "office": {
-      "title": "Visit Our Office",
-      "description": "Our experienced team is ready to assist you with product selection, technical support, and safety consultations."
-    },
-    "support": {
-      "title": "Customer Support",
-      "description": "Our dedicated support team is available to help you with inquiries, product information, and after-sales service.",
-      "feature1": "Expert product consultation",
-      "feature2": "Technical support",
-      "feature3": "Custom safety solutions",
-      "feature4": "Fast response time"
     }
   },
-  "Careers": {
-    "title": "Careers",
-    "subtitle": "Join Our Team",
-    "description": "We are looking for exceptional talents to join our safety equipment team",
-    "noOpenings": "No current job openings",
-    "checkLater": "Please check back later for new opportunities",
-    "benefits": {
-      "title": "Benefits & Perks",
-      "healthcare": "Comprehensive health insurance",
-      "training": "Training and development programs",
-      "growth": "Career growth opportunities",
-      "environment": "Motivating work environment"
-    },
-    "howToApply": {
-      "title": "How to Apply",
-      "description": "Send your resume to the email below with the job title in the subject line",
-      "email": "hr@melco-ltd.com"
+  "News": {
+    "title": "News & Updates",
+    "description": "Stay informed with the latest safety industry news, company updates, and insights from MELCO",
+    "readMore": "Read More"
+  },
+  "Common": {
+    "home": "Home",
+    "news": "News",
+    "backToNews": "Back to News",
+    "readMore": "Read More",
+    "selectLanguage": "Select language",
+    "languages": {
+      "english": "English",
+      "arabic": "Arabic"
     }
   },
   "Footer": {
-    "rights": "All rights reserved",
-    "companyDescription": "Master Equipment Company",
+    "companyDescription": "Leading provider of safety equipment in Saudi Arabia - Protecting workers since 2008",
     "quickLinks": "Quick Links",
-    "products": "Personal Safety Equipment",
+    "products": "Our Products",
     "contact": "Contact Us",
-    "address": "Saudi Arabia",
-    "email": "Info@melco-ltd.com",
+    "address": "Eastern Province, Saudi Arabia",
     "phone": "+966 XX XXX XXXX",
+    "email": "info@melco-ltd.com",
+    "rights": "All rights reserved",
     "privacyPolicy": "Privacy Policy",
     "termsConditions": "Terms & Conditions",
     "categories": {
       "head": "Head Protection",
-      "eyeFace": "Eye and Face Protection",
+      "eyeFace": "Eye & Face Protection",
       "hearing": "Hearing Protection",
       "respiratory": "Respiratory Protection",
       "hand": "Hand Protection",
@@ -330,10 +313,57 @@
       "gasDetectors": "Gas Detectors"
     }
   },
-  "ThemeSwitcher": {
-    "lightMode": "Switch to light mode",
-    "darkMode": "Switch to dark mode",
-    "toggleTheme": "Toggle theme (currently {current})",
-    "switchTo": "Switch to {target} mode"
+  "Careers": {
+    "title": "Join Our Team",
+    "subtitle": "Build Your Career with MELCO",
+    "description": "Join us in our mission to enhance workplace safety across Saudi Arabia. We're looking for talented individuals who share our commitment to excellence and innovation.",
+    "noJobs": "No job openings available at the moment",
+    "filters": {
+      "search": "Search jobs...",
+      "type": "Job Type",
+      "level": "Experience Level",
+      "location": "Location",
+      "department": "Department",
+      "allTypes": "All Types",
+      "allLevels": "All Levels",
+      "allLocations": "All Locations",
+      "allDepartments": "All Departments"
+    },
+    "jobCard": {
+      "postedOn": "Posted on",
+      "expires": "Expires",
+      "expired": "Position Filled",
+      "viewDetails": "View Details",
+      "apply": "Apply Now",
+      "type": "Type",
+      "level": "Level",
+      "location": "Location",
+      "department": "Department"
+    },
+    "jobDetail": {
+      "applyNow": "Apply Now",
+      "backToJobs": "Back to Jobs",
+      "description": "Job Description",
+      "requirements": "Requirements",
+      "responsibilities": "Responsibilities",
+      "benefits": "Benefits & Perks",
+      "shareJob": "Share Job"
+    },
+    "applicationForm": {
+      "title": "Job Application",
+      "subtitle": "Please fill out the form below to apply",
+      "personalInfo": "Personal Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "experience": "Work Experience",
+      "education": "Education",
+      "resume": "Upload Resume",
+      "coverLetter": "Cover Letter",
+      "submit": "Submit Application",
+      "success": "Application submitted successfully",
+      "error": "Error submitting application"
+    }
   }
 }

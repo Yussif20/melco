@@ -15,9 +15,10 @@ export default function Logo({
         alt="Melco Logo"
         width={120}
         height={40}
-        className="block dark:hidden"
+        className="block dark:hidden w-auto h-auto"
         priority
         suppressHydrationWarning
+        style={{ width: "auto", height: "auto" }}
       />
       {/* Dark mode logo */}
       <Image
@@ -25,9 +26,10 @@ export default function Logo({
         alt="Melco Logo"
         width={120}
         height={40}
-        className="hidden dark:block"
+        className="hidden dark:block w-auto h-auto"
         priority
         suppressHydrationWarning
+        style={{ width: "auto", height: "auto" }}
       />
     </div>
   );

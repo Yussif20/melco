@@ -181,7 +181,7 @@ export default function ContactPage() {
             <div className="bg-white/70 backdrop-blur-sm dark:bg-gray-800/70 p-10 rounded-3xl shadow-2xl border border-white/20 dark:border-gray-700/50 hover:shadow-3xl transition-all duration-300">
               <div className="mb-10">
                 <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t("subtitle")}
+                  {t("info.title")}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 mb-6">
                   {t("info.description")}
@@ -205,14 +205,14 @@ export default function ContactPage() {
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                       {t("info.email.title")}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">
-                      {t("info.email.description")}
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {t("info.email.value")}
                     </p>
                     <a
-                      href="mailto:Ahmed@melco-ltd.com"
+                      href={`mailto:${t("info.email.value")}`}
                       className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline"
                     >
-                      Ahmed@melco-ltd.com
+                      {t("info.email.value")}
                     </a>
                   </div>
                 </div>
@@ -232,14 +232,14 @@ export default function ContactPage() {
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                       {t("info.phone.title")}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">
-                      {t("info.phone.description")}
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {t("info.phone.value")}
                     </p>
                     <a
-                      href="tel:+966553653329"
+                      href={`tel:${t("info.phone.value")}`}
                       className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline"
                     >
-                      +966553653329
+                      {t("info.phone.value")}
                     </a>
                   </div>
                 </div>
@@ -257,13 +257,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
-                      {t("info.address.title")}
+                      {t("info.office.title")}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">
-                      {t("info.address.description")}
-                    </p>
-                    <p className="text-[#1F2937] dark:text-blue-400 font-semibold">
-                      {t("info.address.location")}
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {t("info.office.value")}
                     </p>
                   </div>
                 </div>
