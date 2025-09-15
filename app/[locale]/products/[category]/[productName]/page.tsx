@@ -1,9 +1,10 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import productsData from "@/data/productsData";
 import ContactForm from "@/components/ContactForm";
+import ProductActions from "@/components/ProductActions";
 
 interface ProductPageProps {
   params: {
@@ -13,9 +14,9 @@ interface ProductPageProps {
   };
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const t = useTranslations();
-  const { category, productName } = params;
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { category, productName, locale } = await params;
+  const t = await getTranslations({ locale });
 
   const decodedProductName = decodeURIComponent(productName);
 
@@ -97,6 +98,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
+                  suppressHydrationWarning
                 />
               </div>
             </div>
@@ -113,7 +115,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   {product.name}
                 </h1>
                 <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t(product.description)}
+                  {product.description}
                 </p>
               </div>
 
@@ -140,24 +142,12 @@ export default function ProductPage({ params }: ProductPageProps) {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() =>
-                    document
-                      .getElementById("contact-form")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
-                  className="flex-1 bg-gradient-to-r from-[#1F2937] to-gray-800 hover:from-gray-800 hover:to-[#1F2937] text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
-                >
-                  {t("Product.requestQuote")}
-                </button>
-                <Link
-                  href={`/products/${category}`}
-                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 text-center"
-                >
-                  {t("Product.viewMore")}
-                </Link>
-              </div>
+              <ProductActions
+                category={category}
+                locale={locale}
+                requestQuoteText={t("Product.requestQuote")}
+                viewMoreText={t("Product.viewMore")}
+              />
             </div>
           </div>
 

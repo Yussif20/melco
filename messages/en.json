@@ -68,24 +68,43 @@
     "categories": {
       "head": "Head Protection",
       "headShort": "Safety helmets and accessories",
+      "headDescription": "Comprehensive head protection solutions including hard hats, safety helmets, and bump caps designed to protect against falling objects, electrical hazards, and impact injuries in various work environments.",
       "eyeFace": "Eye & Face Protection",
       "eyeFaceShort": "Safety glasses, goggles, and face shields",
+      "eyeFaceDescription": "Professional eye and face protection equipment including safety glasses, goggles, face shields, and welding helmets to safeguard against chemical splashes, flying particles, and harmful radiation.",
       "hearing": "Hearing Protection",
       "hearingShort": "Earplugs and earmuffs",
+      "hearingDescription": "Advanced hearing protection devices including disposable and reusable earplugs, noise-canceling earmuffs, and communication headsets to prevent noise-induced hearing loss in loud work environments.",
       "respiratory": "Respiratory Protection",
       "respiratoryShort": "Respirators and breathing apparatus",
+      "respiratoryDescription": "High-quality respiratory protection equipment including N95 masks, half-face and full-face respirators, and self-contained breathing apparatus for protection against airborne contaminants and toxic gases.",
       "hand": "Hand Protection",
       "handShort": "Safety gloves for various applications",
+      "handDescription": "Specialized hand protection solutions including cut-resistant gloves, chemical-resistant gloves, heat-resistant gloves, and general-purpose work gloves for various industrial applications.",
       "body": "Body Protection",
       "bodyShort": "Protective clothing and workwear",
+      "bodyDescription": "Complete body protection clothing including coveralls, chemical suits, high-visibility vests, flame-resistant clothing, and protective aprons designed for specific workplace hazards.",
       "foot": "Foot Protection",
       "footShort": "Safety boots and shoes",
+      "footDescription": "Professional safety footwear including steel-toe boots, slip-resistant shoes, electrical hazard boots, and chemical-resistant boots to protect feet from various workplace hazards.",
       "gasDetectors": "Gas Detectors",
-      "gasDetectorsShort": "Gas monitoring and detection equipment"
+      "gasDetectorsShort": "Gas monitoring and detection equipment",
+      "gasDetectorsDescription": "Advanced gas detection and monitoring systems including portable gas detectors, fixed gas monitoring systems, and personal gas monitors for early detection of hazardous gases and vapors."
     },
     "needHelp": "Need Help Finding the Right Product?",
     "needHelpDescription": "Our safety experts are here to help you choose the perfect equipment for your specific needs. Contact us for personalized recommendations.",
     "contactExperts": "Contact Our Experts"
+  },
+  "Product": {
+    "features": "Key Features",
+    "feature1": "High-quality materials and construction",
+    "feature2": "Meets international safety standards",
+    "feature3": "Comfortable and ergonomic design",
+    "feature4": "Durable and long-lasting performance",
+    "requestQuote": "Request Quote",
+    "viewMore": "View More Products",
+    "inquireAbout": "Inquire About This Product",
+    "inquireDescription": "Get detailed information and pricing for this safety equipment. Our experts are ready to help you."
   },
   "Governance": {
     "title": "Corporate Governance",
@@ -227,9 +246,15 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
+      "product": "Product",
       "subject": "Subject",
       "message": "Message",
       "submit": "Send Message",
+      "send": "Send Message",
+      "namePlaceholder": "Your full name",
+      "emailPlaceholder": "your@email.com",
+      "phonePlaceholder": "+966 XX XXX XXXX",
+      "messagePlaceholder": "Tell us how we can help...",
       "placeholders": {
         "name": "Your full name",
         "email": "your@email.com",
@@ -364,6 +389,56 @@
       "submit": "Submit Application",
       "success": "Application submitted successfully",
       "error": "Error submitting application"
+    }
+  },
+  "About": {
+    "title": "About MELCO",
+    "subtitle": "Your trusted partner in workplace safety since 2008, providing comprehensive solutions to protect workers across industries.",
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the leading and most trusted provider of workplace safety solutions in the Middle East, recognized for our commitment to quality, innovation, and customer satisfaction."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To protect lives and enhance workplace safety by providing high-quality, reliable, and innovative safety equipment, expert consultation, and exceptional service to our clients."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "description": "Our values are the foundation of our culture and guide every decision we make.",
+      "list": {
+        "integrity": {
+          "title": "Integrity",
+          "description": "We conduct our business with the highest level of honesty and ethical standards."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "We are committed to delivering superior quality in our products and services."
+        },
+        "customer": {
+          "title": "Customer Focus",
+          "description": "We build lasting relationships by understanding and exceeding our clients' needs."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "We embrace new technologies and continuously improve our safety solutions."
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "We are dedicated to promoting safe and sustainable work environments for future generations."
+        }
+      }
+    },
+    "story": {
+      "title": "Our Story",
+      "content": [
+        "Founded in 2008, MELCO was established with a singular mission: to enhance workplace safety across Saudi Arabia. We recognized a critical need for reliable, high-quality safety equipment and expert guidance in a rapidly industrializing region.",
+        "Over the past 15 years, we have grown from a specialized supplier into a comprehensive safety solutions provider. Our journey has been marked by a relentless commitment to quality, strategic partnerships with world-renowned manufacturers, and a deep understanding of our clients' operational challenges.",
+        "Today, MELCO is a trusted partner to industry leaders in oil & gas, construction, manufacturing, and beyond. We are proud to have played a role in protecting thousands of workers and contributing to a culture of safety in the Kingdom and the wider region."
+      ]
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "description": "Our team of certified safety professionals, engineers, and product experts is our greatest asset. With decades of collective experience, we are dedicated to providing our clients with unparalleled service and support."
     }
   }
 }

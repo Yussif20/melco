@@ -171,7 +171,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
-              {t("backToProducts")}
+              <span>{t("backToProducts")}</span>
             </Link>
           </div>
         </div>

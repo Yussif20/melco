@@ -16,24 +16,22 @@ export default function HeroSection() {
   return (
     <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
       {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        suppressHydrationWarning
-        style={{ display: isClient ? "block" : "none" }}
-      >
-        <source src="/safe.mp4" type="video/mp4" />
-      </video>
+      {isClient && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src="/safe.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Fallback background for SSR */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-[#1F2937] to-gray-800 z-0"
-        suppressHydrationWarning
-        style={{ display: isClient ? "none" : "block" }}
-      ></div>
+      {!isClient && (
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1F2937] to-gray-800 z-0"></div>
+      )}
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/50 z-10"></div>

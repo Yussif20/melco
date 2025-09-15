@@ -28,13 +28,14 @@ export default function AboutPage() {
       </div>
 
       {/* Vision & Mission Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            {/* Vision */}
+            <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl shadow-lg transition-transform transform hover:scale-105">
+              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-6 text-white">
                 <svg
-                  className="w-8 h-8 text-[#1F2937] dark:text-gray-300"
+                  className="w-10 h-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -53,18 +54,19 @@ export default function AboutPage() {
                   />
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t("vision.title")}
               </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t("vision.text")}
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                {t("vision.description")}
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6">
+            {/* Mission */}
+            <div className="bg-gray-50 dark:bg-gray-800 p-10 rounded-3xl shadow-lg transition-transform transform hover:scale-105">
+              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mb-6 text-white">
                 <svg
-                  className="w-8 h-8 text-[#1F2937] dark:text-gray-300"
+                  className="w-10 h-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -73,17 +75,39 @@ export default function AboutPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                   />
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 {t("mission.title")}
               </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t("mission.text")}
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                {t("mission.description")}
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-20 bg-gray-100 dark:bg-gray-800/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              {t("story.title")}
+            </h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full"></div>
+          </div>
+          <div className="max-w-4xl mx-auto space-y-8">
+            {t.raw("story.content").map((paragraph: string, index: number) => (
+              <p
+                key={index}
+                className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-center"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
       </section>
@@ -91,113 +115,42 @@ export default function AboutPage() {
       {/* Core Values Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               {t("values.title")}
             </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              {t("values.description")}
+            </p>
           </div>
-
-          <div className="max-w-7xl mx-auto space-y-8">
-            {/* First Row - 3 Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
-                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src="/values/star.png"
-                    alt="Quality"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                    suppressHydrationWarning
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t("values.quality.title")}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {Object.keys(t.raw("values.list")).map((key) => (
+              <div
+                key={key}
+                className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  {t(`values.list.${key}.title`)}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t("values.quality.description")}
+                <p className="text-gray-600 dark:text-gray-400">
+                  {t(`values.list.${key}.description`)}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
-                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src="/values/innovation.png"
-                    alt="Innovation"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                    suppressHydrationWarning
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t("values.innovation.title")}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t("values.innovation.description")}
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
-                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src="/values/Professionalism.png"
-                    alt="Professionalism"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                    suppressHydrationWarning
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t("values.professionalism.title")}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t("values.professionalism.description")}
-                </p>
-              </div>
-            </div>
-
-            {/* Second Row - 2 Cards Centered */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
-                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src="/values/partnership.png"
-                    alt="Partnership"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                    suppressHydrationWarning
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t("values.partnership.title")}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t("values.partnership.description")}
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center group hover:shadow-xl transition-all duration-300">
-                <div className="w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300">
-                  <Image
-                    src="/values/sustainability.png"
-                    alt="Sustainability"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                    suppressHydrationWarning
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t("values.sustainability.title")}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t("values.sustainability.description")}
-                </p>
-              </div>
-            </div>
+      {/* Team Section */}
+      <section className="py-20 bg-gray-100 dark:bg-gray-800/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              {t("team.title")}
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+              {t("team.description")}
+            </p>
           </div>
         </div>
       </section>
