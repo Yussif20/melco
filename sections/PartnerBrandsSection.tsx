@@ -53,7 +53,7 @@ export default function PartnerBrandsSection() {
           {/* BW Technologies */}
           <div className="group flex items-center justify-center p-8 bg-white dark:bg-white/95 rounded-xl hover:bg-gray-50 dark:hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
             <Image
-              src="/brands/Sensia.png"
+              src="/brands/sensia.png"
               alt="Senia"
               width={300}
               height={150}
