@@ -244,6 +244,8 @@
       "name": "الاسم",
       "email": "البريد الإلكتروني",
       "phone": "الهاتف",
+      "amount": "الكمية",
+      "amountPlaceholder": "أدخل الكمية",
       "product": "المنتج",
       "subject": "الموضوع",
       "message": "الرسالة",

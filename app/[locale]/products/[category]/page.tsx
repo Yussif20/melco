@@ -113,15 +113,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 className="group"
               >
                 <div className="bg-white/70 backdrop-blur-sm dark:bg-gray-800/70 rounded-3xl shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2">
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative w-full aspect-[4/3] bg-gray-50 flex items-center justify-center p-4 border-b border-gray-100 dark:border-gray-700">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      className="object-contain transition-transform duration-300"
+                      style={{ position: "absolute" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
                   <div className="p-6">
                     <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-[#1F2937] dark:group-hover:text-blue-400 transition-colors">

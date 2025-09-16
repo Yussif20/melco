@@ -244,6 +244,8 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
+      "amount": "Amount",
+      "amountPlaceholder": "Enter quantity",
       "product": "Product",
       "subject": "Subject",
       "message": "Message",

@@ -148,6 +148,25 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 requestQuoteText={t("Product.requestQuote")}
                 viewMoreText={t("Product.viewMore")}
               />
+              {/* WhatsApp Contact Button */}
+              <div className="mt-6">
+                <div className="flex justify-center">
+                  <a
+                    href="https://wa.me/966535852438"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                  >
+                    <span>Chat with us on WhatsApp</span>
+                    <Image
+                      src="/whatsapp.svg"
+                      alt="WhatsApp Icon"
+                      width={24}
+                      height={24}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -161,9 +180,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   {t("Product.inquireAbout")}
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-300">
-                  {t("Product.inquireDescription")}
-                </p>
               </div>
               <ContactForm productName={product.name} />
             </div>

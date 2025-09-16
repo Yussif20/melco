@@ -107,11 +107,11 @@ export default function ProductsPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1F2937]/40 to-[#1F2937]/20 group-hover:from-[#1F2937]/30 group-hover:to-[#1F2937]/10 transition-all duration-500"></div>
 
                     {/* Product Count Badge */}
-                    <div className="absolute top-6 left-6">
+                    {/* <div className="absolute top-6 left-6">
                       <div className="bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-white text-sm font-semibold">
                         {category.data.products.length} {t("productsCount")}
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Category Title */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -181,7 +181,7 @@ export default function ProductsPage() {
                 href="https://wa.me/966535852438"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 via-green-500 to-lime-400 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
                 {t("contactExperts")}
                 <Image

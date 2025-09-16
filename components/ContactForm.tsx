@@ -16,6 +16,7 @@ export default function ContactForm({ productName }: ContactFormProps) {
     name: "",
     email: "",
     phone: "",
+    amount: "",
     message: "",
     product: productName || "",
   });
@@ -34,6 +35,7 @@ export default function ContactForm({ productName }: ContactFormProps) {
       name: "",
       email: "",
       phone: "",
+      amount: "",
       message: "",
       product: productName || "",
     });
@@ -115,6 +117,30 @@ export default function ContactForm({ productName }: ContactFormProps) {
           placeholder={t("form.phonePlaceholder")}
           className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-[#1F2937] dark:focus:ring-blue-400 focus:border-transparent transition-all duration-300"
           dir="ltr"
+        />
+      </div>
+
+      {/* Amount Field */}
+      <div>
+        <label
+          htmlFor="amount"
+          className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+        >
+          {t("form.amount", { default: "Amount" })}
+        </label>
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          min="1"
+          value={formData.amount}
+          onChange={handleChange}
+          required
+          placeholder={t("form.amountPlaceholder", {
+            default: "Enter quantity",
+          })}
+          className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-[#1F2937] dark:focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+          dir={isRTL ? "rtl" : "ltr"}
         />
       </div>
 
