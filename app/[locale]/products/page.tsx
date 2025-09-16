@@ -181,16 +181,15 @@ export default function ProductsPage() {
                 href="https://wa.me/966535852438"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 via-green-500 to-lime-400 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
               >
                 {t("contactExperts")}
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M16.988 14.5c-.29-.145-1.715-.848-1.98-.945-.265-.097-.458-.145-.65.146-.19.29-.747.945-.915 1.14-.168.194-.337.218-.627.073-.29-.145-1.223-.451-2.33-1.44-.861-.767-1.44-1.715-1.61-2.005-.168-.29-.018-.447.127-.592.13-.13.29-.337.435-.505.145-.168.193-.29.29-.484.097-.194.048-.364-.024-.51-.073-.145-.65-1.57-.89-2.153-.234-.563-.473-.487-.65-.497l-.555-.01c-.194 0-.51.073-.777.364-.267.29-1.02.997-1.02 2.43 0 1.432 1.04 2.815 1.186 3.01.145.194 2.05 3.13 5.07 4.266.709.244 1.262.39 1.694.499.712.18 1.36.155 1.872.094.571-.067 1.715-.7 1.958-1.377.242-.678.242-1.26.169-1.377-.072-.116-.265-.19-.555-.335zm-4.988 7.5c-4.97 0-9-4.03-9-9 0-1.59.416-3.13 1.205-4.48l-1.28-4.69 4.8 1.26A8.96 8.96 0 0112 3c4.97 0 9 4.03 9 9s-4.03 9-9 9zm0-16C6.486 6 2 10.486 2 16c0 1.657.336 3.233.95 4.68l-1.02 3.74a1 1 0 001.23 1.23l3.74-1.02A8.963 8.963 0 0012 21c5.514 0 10-4.486 10-10S17.514 2 12 2z" />
-                </svg>
+                <Image
+                  src="/whatsapp.svg"
+                  alt="WhatsApp Icon"
+                  width={24}
+                  height={24}
+                />
               </a>
             </div>
           </div>
