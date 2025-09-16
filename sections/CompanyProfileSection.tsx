@@ -1,11 +1,24 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function CompanyProfileSection() {
   const t = useTranslations("HomePage");
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/profile.png"
+          alt="Company Profile Background"
+          fill
+          className="object-cover opacity-30 dark:opacity-20"
+          priority
+          suppressHydrationWarning
+        />
+        <div className="absolute inset-0 bg-transparent"></div>
+      </div>
+      <div className="container mx-auto px-4 text-center relative z-10">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
             <svg

@@ -2,7 +2,6 @@ import {
   HeroSection,
   PartnerBrandsSection,
   CompanyProfileSection,
-  AboutUsSection,
   LocationSection,
 } from "@/sections";
 
@@ -12,7 +11,6 @@ export default function HomePage() {
       <HeroSection />
       <PartnerBrandsSection />
       <CompanyProfileSection />
-      <AboutUsSection />
       <LocationSection />
     </div>
   );
