@@ -205,9 +205,7 @@ export default function ContactPage() {
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                       {t("info.email.title")}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {t("info.email.value")}
-                    </p>
+
                     <a
                       href={`mailto:${t("info.email.value")}`}
                       className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline"
@@ -232,14 +230,17 @@ export default function ContactPage() {
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                       {t("info.phone.title")}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {t("info.phone.value")}
-                    </p>
                     <a
                       href={`tel:${t("info.phone.value")}`}
-                      className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline"
+                      className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline block"
                     >
-                      {t("info.phone.value")}
+                      +966 55 365 3329
+                    </a>
+                    <a
+                      href="tel:+966535852438"
+                      className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline block mt-1"
+                    >
+                      +966 53 585 2438
                     </a>
                   </div>
                 </div>
@@ -279,16 +280,13 @@ export default function ContactPage() {
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                       {t("info.social.title")}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-1">
-                      {t("info.social.description")}
-                    </p>
                     <a
                       href="https://www.linkedin.com/company/melcosa/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline"
                     >
-                      {t("info.social.link")}
+                      {t("info.social.description")}
                     </a>
                   </div>
                 </div>
@@ -300,42 +298,10 @@ export default function ContactPage() {
                   {t("info.hours.title")}
                 </h4>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                  <div
-                    className={`flex ${
-                      locale === "ar"
-                        ? "justify-between flex-row-reverse"
-                        : "justify-between"
-                    }`}
-                  >
-                    <span>{t("info.hours.weekdays.days")}:</span>
-                    <span className="font-semibold">
-                      {t("info.hours.weekdays.time")}
-                    </span>
-                  </div>
-                  <div
-                    className={`flex ${
-                      locale === "ar"
-                        ? "justify-between flex-row-reverse"
-                        : "justify-between"
-                    }`}
-                  >
-                    <span>{t("info.hours.friday.day")}:</span>
-                    <span className="font-semibold">
-                      {t("info.hours.friday.time")}
-                    </span>
-                  </div>
-                  <div
-                    className={`flex ${
-                      locale === "ar"
-                        ? "justify-between flex-row-reverse"
-                        : "justify-between"
-                    }`}
-                  >
-                    <span>{t("info.hours.saturday.day")}:</span>
-                    <span className="font-semibold">
-                      {t("info.hours.saturday.time")}
-                    </span>
-                  </div>
+                  <p>
+                    {useTranslations("HomePage")("location.hours.weekdays")}
+                  </p>
+                  <p>{useTranslations("HomePage")("location.hours.weekend")}</p>
                 </div>
               </div>
             </div>
