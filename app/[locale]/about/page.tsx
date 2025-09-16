@@ -163,7 +163,7 @@ export default function AboutPage() {
                     className="w-8 h-8 mb-4 object-contain"
                     loading="lazy"
                   />
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3.5 text-center">
                     {t(`values.list.${key}.title`)}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-center">
