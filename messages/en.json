@@ -23,21 +23,20 @@
       "learnMore": "Learn More"
     },
     "location": {
-      "title": "Visit Our Location",
-      "description": "Find us in the Eastern Province, Saudi Arabia",
+      "title": "Our Location",
       "address": {
         "title": "Our Address",
-        "details": "Eastern Province, Saudi Arabia"
+        "details": "Aldammam, Eastern Province, Saudi Arabia"
       },
       "contact": {
         "title": "Contact Information",
-        "phone": "+966 XX XXX XXXX",
+        "phone": "+966553653329",
         "email": "info@melco-ltd.com"
       },
       "hours": {
         "title": "Business Hours",
-        "weekdays": "Sunday - Thursday: 8:00 AM - 6:00 PM",
-        "weekend": "Saturday: 9:00 AM - 2:00 PM"
+        "weekdays": "Saturday - Thursday: 8:00 AM - 5:00 PM",
+        "weekend": "Friday: Closed"
       }
     }
   },
@@ -267,11 +266,11 @@
       "description": "Visit our office, give us a call, or send us an email. We're ready to assist you.",
       "office": {
         "title": "Office Location",
-        "value": "Eastern Province, Saudi Arabia"
+        "value": "Aldammam, Eastern Province, Saudi Arabia"
       },
       "phone": {
         "title": "Phone Number",
-        "value": "+966 XX XXX XXXX"
+        "value": "+966553653329"
       },
       "email": {
         "title": "Email Address",
@@ -280,8 +279,8 @@
       "hours": {
         "title": "Business Hours",
         "weekdays": {
-          "days": "Sunday - Thursday",
-          "time": "8:00 AM - 6:00 PM"
+          "days": "Saturday - Thursday",
+          "time": "8:00 AM - 5:00 PM"
         },
         "friday": {
           "day": "Friday",
@@ -289,7 +288,7 @@
         },
         "saturday": {
           "day": "Saturday",
-          "time": "9:00 AM - 2:00 PM"
+          "time": "8:00 AM - 5:00 PM"
         }
       },
       "social": {
@@ -320,8 +319,8 @@
     "quickLinks": "Quick Links",
     "products": "Our Products",
     "contact": "Contact Us",
-    "address": "Eastern Province, Saudi Arabia",
-    "phone": "+966 XX XXX XXXX",
+    "address": "Aldammam, Eastern Province, Saudi Arabia",
+    "phone": "+966553653329",
     "email": "info@melco-ltd.com",
     "rights": "All rights reserved",
     "privacyPolicy": "Privacy Policy",

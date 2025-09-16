@@ -10,9 +10,6 @@ export default function LocationSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             {t("location.title")}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            {t("location.description")}
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -87,12 +84,18 @@ export default function LocationSection() {
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                     {t("location.contact.title")}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <a
+                    href={`tel:${t("location.contact.phone")}`}
+                    className="text-gray-600 dark:text-gray-300 hover:text-[#1F2937] dark:hover:text-white transition-colors duration-200 block"
+                  >
                     {t("location.contact.phone")}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  </a>
+                  <a
+                    href={`mailto:${t("location.contact.email")}`}
+                    className="text-gray-600 dark:text-gray-300 hover:text-[#1F2937] dark:hover:text-white transition-colors duration-200"
+                  >
                     {t("location.contact.email")}
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
