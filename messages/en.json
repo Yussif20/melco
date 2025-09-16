@@ -391,47 +391,45 @@
   },
   "About": {
     "title": "About MELCO",
-    "subtitle": "Your trusted partner in workplace safety since 2008, providing comprehensive solutions to protect workers across industries.",
+    "subtitle": "Your trusted partner in workplace safety, providing comprehensive solutions to protect workers across industries.",
     "vision": {
       "title": "Our Vision",
-      "description": "To be the leading and most trusted provider of workplace safety solutions in the Middle East, recognized for our commitment to quality, innovation, and customer satisfaction."
+      "description": "To be the first choice and trusted destination in the commercial sector by delivering innovative products and services that enhance business efficiency and contribute to sustainable economic growth in the Kingdom of Saudi Arabia."
     },
     "mission": {
       "title": "Our Mission",
-      "description": "To protect lives and enhance workplace safety by providing high-quality, reliable, and innovative safety equipment, expert consultation, and exceptional service to our clients."
+      "description": "We strive to meet our clients’ needs by providing high-quality products and services driven by innovation and efficiency, while building long-term business relationships founded on trust and commitment enhancing our market position and supporting our partners’ growth and success."
     },
     "values": {
       "title": "Our Core Values",
       "description": "Our values are the foundation of our culture and guide every decision we make.",
       "list": {
-        "integrity": {
-          "title": "Integrity",
-          "description": "We conduct our business with the highest level of honesty and ethical standards."
-        },
-        "excellence": {
-          "title": "Excellence",
-          "description": "We are committed to delivering superior quality in our products and services."
-        },
-        "customer": {
-          "title": "Customer Focus",
-          "description": "We build lasting relationships by understanding and exceeding our clients' needs."
+        "quality": {
+          "title": "Quality",
+          "description": "Commitment to the highest standards of quality in all our projects and operations"
         },
         "innovation": {
           "title": "Innovation",
-          "description": "We embrace new technologies and continuously improve our safety solutions."
+          "description": "Delivering innovative solutions that meet our clients' aspirations and achieve excellence"
+        },
+        "professionalism": {
+          "title": "Professionalism",
+          "description": "Upholding ethical standards and high practices to build trust and excellence"
+        },
+        "partnership": {
+          "title": "Partnership",
+          "description": "Establishing long-term relationships with clients and partners to foster collaboration and mutual success"
         },
         "sustainability": {
           "title": "Sustainability",
-          "description": "We are dedicated to promoting safe and sustainable work environments for future generations."
+          "description": "Contributing to sustainable development that supports the economy and society"
         }
       }
     },
     "story": {
       "title": "Our Story",
       "content": [
-        "Founded in 2008, MELCO was established with a singular mission: to enhance workplace safety across Saudi Arabia. We recognized a critical need for reliable, high-quality safety equipment and expert guidance in a rapidly industrializing region.",
-        "Over the past 15 years, we have grown from a specialized supplier into a comprehensive safety solutions provider. Our journey has been marked by a relentless commitment to quality, strategic partnerships with world-renowned manufacturers, and a deep understanding of our clients' operational challenges.",
-        "Today, MELCO is a trusted partner to industry leaders in oil & gas, construction, manufacturing, and beyond. We are proud to have played a role in protecting thousands of workers and contributing to a culture of safety in the Kingdom and the wider region."
+        "Founded in 2025, MELCO was established with a singular mission: to enhance workplace safety across Saudi Arabia. We recognized a critical need for reliable, high-quality safety equipment and expert guidance in a rapidly industrializing region."
       ]
     },
     "team": {

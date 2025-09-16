@@ -123,34 +123,55 @@ export default function AboutPage() {
               {t("values.description")}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {Object.keys(t.raw("values.list")).map((key) => (
-              <div
-                key={key}
-                className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  {t(`values.list.${key}.title`)}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {t(`values.list.${key}.description`)}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 bg-gray-100 dark:bg-gray-800/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              {t("team.title")}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-              {t("team.description")}
-            </p>
+          <div className="flex flex-col w-full items-center justify-center gap-8">
+            {/* Top row: three values */}
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
+              {["quality", "innovation", "professionalism"].map((key) => (
+                <div
+                  key={key}
+                  className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center min-h-[14rem] w-full max-w-xs"
+                >
+                  <Image
+                    width={64}
+                    height={64}
+                    src={`/values/${key}.png`}
+                    alt={t(`values.list.${key}.title`)}
+                    className="w-8 h-8 mb-4 object-contain"
+                    loading="lazy"
+                  />
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                    {t(`values.list.${key}.title`)}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-center">
+                    {t(`values.list.${key}.description`)}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {/* Bottom row: two values, centered and narrower on large screens */}
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:w-[66%]">
+              {["partnership", "sustainability"].map((key) => (
+                <div
+                  key={key}
+                  className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center min-h-[14rem] w-full max-w-xs"
+                >
+                  <Image
+                    width={64}
+                    height={64}
+                    src={`/values/${key}.png`}
+                    alt={t(`values.list.${key}.title`)}
+                    className="w-8 h-8 mb-4 object-contain"
+                    loading="lazy"
+                  />
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                    {t(`values.list.${key}.title`)}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-center">
+                    {t(`values.list.${key}.description`)}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

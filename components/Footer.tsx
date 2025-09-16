@@ -36,7 +36,9 @@ export default function Footer() {
             <div className="flex gap-4 justify-center md:justify-start">
               {/* Social Media Icons */}
               <a
-                href="#"
+                href="https://www.linkedin.com/company/melcosa/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
                 aria-label="LinkedIn"
               >
