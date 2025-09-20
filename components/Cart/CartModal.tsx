@@ -177,23 +177,26 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex min-h-screen py-4 px-4 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex min-h-screen py-2 sm:py-4 px-2 sm:px-4 overflow-y-auto">
         <div
-          className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl m-auto overflow-hidden flex flex-col border dark:border-gray-700"
-          style={{ maxHeight: "calc(100vh - 2rem)" }}
+          className="bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl w-full max-w-4xl m-auto overflow-hidden flex flex-col border dark:border-gray-700"
+          style={{
+            maxHeight: "calc(100vh - 1rem)",
+            minHeight: "calc(100vh - 1rem)",
+          }}
           dir={isRTL ? "rtl" : "ltr"}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <div className="flex items-center justify-between p-3 sm:p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex-shrink-0">
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
               {currentStep === 1 && t("modal.orderDetails")}
               {currentStep === 2 && t("modal.sendQuotation")}
               {currentStep === 3 && t("modal.confirmationTitle")}
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+              className="p-1 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
             >
               <svg
                 className="w-6 h-6"
@@ -212,12 +215,12 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
           </div>
 
           {/* Progress Indicator */}
-          <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+          <div className="px-3 sm:px-6 py-3 sm:py-4 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
             <div className="flex items-center justify-center">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center">
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
+                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold transition-colors ${
                       step <= currentStep
                         ? "bg-blue-500 text-white"
                         : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-300"
@@ -227,7 +230,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                   </div>
                   {step < 3 && (
                     <div
-                      className={`w-16 h-1 mx-2 transition-colors ${
+                      className={`w-8 sm:w-16 h-1 mx-1 sm:mx-2 transition-colors ${
                         step < currentStep
                           ? "bg-blue-500"
                           : "bg-gray-300 dark:bg-gray-600"
@@ -238,7 +241,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
               ))}
             </div>
             <div className="flex justify-center mt-2">
-              <span className="text-sm text-gray-600 dark:text-gray-300">
+              <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                 {currentStep === 1 && t("modal.step1Label")}
                 {currentStep === 2 && t("modal.step2Label")}
                 {currentStep === 3 && t("modal.step3Label")}
@@ -247,7 +250,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-6 min-h-0">
             {/* Step 1: Order Details */}
             {currentStep === 1 && (
               <div className="space-y-6">
@@ -274,18 +277,19 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                   Object.entries(itemsByCategory).map(([category, items]) => (
                     <div
                       key={category}
-                      className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border dark:border-gray-700"
+                      className="bg-gray-50 dark:bg-gray-800 rounded-xl p-3 sm:p-4 border dark:border-gray-700"
                     >
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3 sm:mb-4">
                         {category}
                       </h3>
                       <div className="space-y-3">
                         {items.map((item) => (
                           <div
                             key={item.id}
-                            className="flex items-center gap-4 bg-white dark:bg-gray-700 rounded-lg p-4 border dark:border-gray-600"
+                            className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-gray-700 rounded-lg p-3 sm:p-4 border dark:border-gray-600"
                           >
-                            <div className="w-16 h-16 relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-600">
+                            {/* Product Image - Hidden on mobile */}
+                            <div className="hidden sm:block w-16 h-16 relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-600">
                               <Image
                                 src={item.image}
                                 alt={item.name}
@@ -293,15 +297,15 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                                 className="object-cover"
                               />
                             </div>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-sm sm:text-base">
                                 {item.name}
                               </h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-300">
+                              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                                 {item.category}
                               </p>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                               <button
                                 onClick={() =>
                                   handleQuantityChange(
@@ -309,10 +313,10 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                                     item.quantity - 1
                                   )
                                 }
-                                className="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors text-gray-700 dark:text-gray-200"
+                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors text-gray-700 dark:text-gray-200"
                               >
                                 <svg
-                                  className="w-4 h-4"
+                                  className="w-3 h-3 sm:w-4 sm:h-4"
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
@@ -325,7 +329,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                                   />
                                 </svg>
                               </button>
-                              <span className="w-12 text-center font-semibold text-gray-900 dark:text-gray-100">
+                              <span className="w-8 sm:w-12 text-center font-semibold text-gray-900 dark:text-gray-100 text-sm sm:text-base">
                                 {item.quantity}
                               </span>
                               <button
@@ -335,7 +339,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                                     item.quantity + 1
                                   )
                                 }
-                                className="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors text-gray-700 dark:text-gray-200"
+                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors text-gray-700 dark:text-gray-200"
                               >
                                 <svg
                                   className="w-4 h-4"
@@ -558,13 +562,13 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
           </div>
 
           {/* Footer */}
-          <div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-            <div className="flex items-center justify-between">
+          <div className="p-3 sm:p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
+            <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
                 {currentStep > 1 && (
                   <button
                     onClick={handleBack}
-                    className="px-6 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors"
+                    className="px-4 sm:px-6 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors text-sm sm:text-base"
                   >
                     {t("modal.back")}
                   </button>
@@ -575,7 +579,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                 {currentStep === 1 && cart.items.length > 0 && (
                   <button
                     onClick={handleNext}
-                    className="px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-colors"
+                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-colors text-sm sm:text-base"
                   >
                     {t("modal.next")}
                   </button>
@@ -590,7 +594,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                       !contactData.email ||
                       !contactData.phone
                     }
-                    className="px-8 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2"
+                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2 text-sm sm:text-base"
                   >
                     {isSubmitting && (
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -603,7 +607,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                   <button
                     onClick={handleFinalSubmit}
                     disabled={isSubmitting}
-                    className="px-8 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2"
+                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2 text-sm sm:text-base"
                   >
                     {isSubmitting && (
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -619,9 +623,9 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
 
       {/* Toast Notification */}
       {showToast && (
-        <div className={`fixed bottom-6 z-60 ${isRTL ? "left-6" : "right-6"}`}>
-          <div className="bg-blue-500 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 animate-in slide-in-from-bottom duration-300">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
+        <div className="fixed inset-0 z-60 flex items-center justify-center pointer-events-none">
+          <div className="bg-blue-500 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 animate-in fade-in zoom-in duration-300 pointer-events-auto max-w-sm mx-4">
+            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
               <svg
                 className="w-4 h-4"
                 fill="none"
