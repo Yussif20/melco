@@ -119,7 +119,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               return (
                 <div
                   key={index}
-                  className="bg-white/70 backdrop-blur-sm dark:bg-gray-800/70 rounded-3xl shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+                  className="bg-white/70 backdrop-blur-sm dark:bg-gray-800/70 rounded-3xl shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
                 >
                   <Link
                     href={`/${locale}/products/${category}/${encodeURIComponent(
@@ -139,22 +139,24 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     </div>
                   </Link>
 
-                  <div className="p-6">
-                    <Link
-                      href={`/${locale}/products/${category}/${encodeURIComponent(
-                        product.name
-                      )}`}
-                    >
-                      <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-[#1F2937] dark:group-hover:text-blue-400 transition-colors">
-                        {product.name}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-4">
-                        {product.description}
-                      </p>
-                    </Link>
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex-grow">
+                      <Link
+                        href={`/${locale}/products/${category}/${encodeURIComponent(
+                          product.name
+                        )}`}
+                      >
+                        <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-[#1F2937] dark:group-hover:text-blue-400 transition-colors">
+                          {product.name}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-4">
+                          {product.description}
+                        </p>
+                      </Link>
+                    </div>
 
-                    {/* Cart Button and View Details */}
-                    <div className="flex flex-col gap-3">
+                    {/* Cart Button and View Details - Always at bottom */}
+                    <div className="flex flex-col gap-3 mt-auto">
                       <CartButton
                         product={productData}
                         size="sm"

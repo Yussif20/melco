@@ -479,6 +479,36 @@
     },
     "groupBy": "Group by Category",
     "expandAll": "Expand All",
-    "collapseAll": "Collapse All"
+    "collapseAll": "Collapse All",
+    "modal": {
+      "orderDetails": "Cart Review",
+      "sendQuotation": "Request Quotation",
+      "confirmationTitle": "Submit Inquiry",
+      "step1Label": "Review your items",
+      "step2Label": "Contact information",
+      "step3Label": "Submit inquiry",
+      "next": "Next",
+      "back": "Back",
+      "submit": "Submit",
+      "confirm": "Send Inquiry",
+      "successMessage": "Thanks for your inquiry! We'll send you a detailed quotation soon.",
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message",
+        "namePlaceholder": "Enter your full name",
+        "emailPlaceholder": "Enter your email address",
+        "phonePlaceholder": "Enter your phone number",
+        "messagePlaceholder": "Tell us about your requirements (optional)"
+      },
+      "confirmation": {
+        "title": "Ready to Send!",
+        "description": "Please review your inquiry details below. We'll prepare a custom quotation based on your selected items and quantities.",
+        "orderSummary": "Items Summary",
+        "contactInfo": "Contact Information",
+        "totalItems": "Total Items"
+      }
+    }
   }
 }

@@ -479,6 +479,36 @@
     },
     "groupBy": "تجميع حسب الفئة",
     "expandAll": "توسيع الكل",
-    "collapseAll": "طي الكل"
+    "collapseAll": "طي الكل",
+    "modal": {
+      "orderDetails": "مراجعة السلة",
+      "sendQuotation": "طلب عرض أسعار",
+      "confirmationTitle": "إرسال الاستعلام",
+      "step1Label": "مراجعة العناصر",
+      "step2Label": "معلومات الاتصال",
+      "step3Label": "إرسال الاستعلام",
+      "next": "التالي",
+      "back": "السابق",
+      "submit": "إرسال",
+      "confirm": "إرسال الاستعلام",
+      "successMessage": "شكراً لاستعلامك! سنرسل لك عرض أسعار مفصل قريباً.",
+      "form": {
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "message": "الرسالة",
+        "namePlaceholder": "أدخل اسمك الكامل",
+        "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+        "phonePlaceholder": "أدخل رقم هاتفك",
+        "messagePlaceholder": "أخبرنا عن متطلباتك (اختياري)"
+      },
+      "confirmation": {
+        "title": "جاهز للإرسال!",
+        "description": "يرجى مراجعة تفاصيل استعلامك أدناه. سنقوم بإعداد عرض أسعار مخصص بناءً على العناصر والكميات المحددة.",
+        "orderSummary": "ملخص العناصر",
+        "contactInfo": "معلومات الاتصال",
+        "totalItems": "إجمالي العناصر"
+      }
+    }
   }
 }
