@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import productsData from "@/data/productsData";
 import ContactForm from "@/components/ContactForm";
-import ProductActions from "@/components/ProductActions";
+import CartButton from "@/components/Cart/CartButton";
 
 interface ProductPageProps {
   params: {
@@ -35,6 +35,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
+
+  // Generate unique product ID
+  const productIndex = categoryData.products.findIndex(
+    (p) => p.name === decodedProductName
+  );
+  const productId = `${category}-${productIndex}`;
 
   // Map category keys to translations
   const categoryTitles: Record<string, string> = {
@@ -141,13 +147,40 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <ProductActions
-                category={category}
-                locale={locale}
-                requestQuoteText={t("Product.requestQuote")}
-                viewMoreText={t("Product.viewMore")}
-              />
+              {/* Cart Button */}
+              <div className="flex flex-col items-center gap-4">
+                <CartButton
+                  product={{
+                    id: productId,
+                    name: product.name,
+                    category: categoryTitles[category] || category,
+                    image: product.image,
+                    description: product.description,
+                  }}
+                  size="lg"
+                  variant="primary"
+                  className="min-w-48"
+                />
+                <Link
+                  href={`/${locale}/products/${category}`}
+                  className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                >
+                  <svg
+                    className="w-4 h-4 rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                  <span>{t("Product.viewMore")}</span>
+                </Link>
+              </div>
               {/* WhatsApp Contact Button */}
               <div className="mt-6">
                 <div className="flex justify-center">

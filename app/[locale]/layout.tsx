@@ -3,6 +3,7 @@ import { getMessages } from "next-intl/server";
 import { Inter, Tajawal } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/components/Cart/CartProvider";
 import "../globals.css";
 
 // English font - Inter
@@ -36,11 +37,13 @@ export default async function RootLayout({
     <html lang={locale} dir={direction} className={`light ${fontClass}`}>
       <body className="min-h-screen bg-gray-50 dark:bg-gray-900">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
+          <CartProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </CartProvider>
         </NextIntlClientProvider>
       </body>
     </html>

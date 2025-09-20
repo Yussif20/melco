@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { CartItem } from "@/types/cart";
 
 interface ContactFormProps {
   productName?: string;
+  cartItems?: CartItem[];
 }
 
-export default function ContactForm({ productName }: ContactFormProps) {
+export default function ContactForm({
+  productName,
+  cartItems,
+}: ContactFormProps) {
   const t = useTranslations("Contact");
   const locale = useLocale();
   const isRTL = locale === "ar";
@@ -16,7 +21,6 @@ export default function ContactForm({ productName }: ContactFormProps) {
     name: "",
     email: "",
     phone: "",
-    amount: "",
     message: "",
     product: productName || "",
   });
@@ -27,6 +31,16 @@ export default function ContactForm({ productName }: ContactFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Prepare submission data
+    const submissionData = {
+      ...formData,
+      cartItems: cartItems || [],
+      submissionType:
+        cartItems && cartItems.length > 0 ? "cart_inquiry" : "product_inquiry",
+    };
+
+    console.log("Form submission data:", submissionData);
+
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -35,13 +49,18 @@ export default function ContactForm({ productName }: ContactFormProps) {
       name: "",
       email: "",
       phone: "",
-      amount: "",
       message: "",
       product: productName || "",
     });
 
     setIsSubmitting(false);
-    alert(t("form.successMessage"));
+
+    const successMessage =
+      cartItems && cartItems.length > 0
+        ? "Your cart inquiry has been submitted successfully! We'll get back to you soon."
+        : t("form.successMessage");
+
+    alert(successMessage);
   };
 
   const handleChange = (
@@ -120,30 +139,6 @@ export default function ContactForm({ productName }: ContactFormProps) {
         />
       </div>
 
-      {/* Amount Field */}
-      <div>
-        <label
-          htmlFor="amount"
-          className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-        >
-          {t("form.amount", { default: "Amount" })}
-        </label>
-        <input
-          type="number"
-          id="amount"
-          name="amount"
-          min="1"
-          value={formData.amount}
-          onChange={handleChange}
-          required
-          placeholder={t("form.amountPlaceholder", {
-            default: "Enter quantity",
-          })}
-          className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-[#1F2937] dark:focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-          dir={isRTL ? "rtl" : "ltr"}
-        />
-      </div>
-
       {/* Product Field (if productName is provided) */}
       {productName && (
         <div>
@@ -162,6 +157,30 @@ export default function ContactForm({ productName }: ContactFormProps) {
             className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-600 text-gray-900 dark:text-white cursor-not-allowed"
             dir={isRTL ? "rtl" : "ltr"}
           />
+        </div>
+      )}
+
+      {/* Cart Items Summary (if cartItems are provided) */}
+      {cartItems && cartItems.length > 0 && (
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            Selected Items ({cartItems.length})
+          </label>
+          <div className="bg-gray-50 dark:bg-gray-600/50 rounded-xl p-4 space-y-3">
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center justify-between text-sm"
+              >
+                <span className="text-gray-900 dark:text-white font-medium">
+                  {item.name}
+                </span>
+                <span className="text-gray-600 dark:text-gray-300">
+                  Qty: {item.quantity}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

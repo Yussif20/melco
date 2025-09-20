@@ -5,8 +5,8 @@ import { useLocale } from "next-intl";
 import Logo from "./Logo";
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
-import LanguageSelector from "./LanguageSelector";
-import ThemeSwitcher from "./ThemeSwitcher";
+import SettingsDropdown from "./SettingsDropdown";
+import CartIcon from "./Cart/CartIcon";
 
 export default function Header() {
   const locale = useLocale();
@@ -27,8 +27,8 @@ export default function Header() {
 
           {/* Right side controls */}
           <div className="flex items-center gap-4">
-            <LanguageSelector />
-            <ThemeSwitcher />
+            <CartIcon />
+            <SettingsDropdown />
             <MobileNavigation />
           </div>
         </div>

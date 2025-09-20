@@ -244,8 +244,6 @@
       "name": "الاسم",
       "email": "البريد الإلكتروني",
       "phone": "الهاتف",
-      "amount": "الكمية",
-      "amountPlaceholder": "أدخل الكمية",
       "product": "المنتج",
       "subject": "الموضوع",
       "message": "الرسالة",
@@ -314,6 +312,19 @@
     "languages": {
       "english": "الإنجليزية",
       "arabic": "العربية"
+    },
+    "settings": {
+      "title": "الإعدادات",
+      "language": {
+        "title": "اللغة",
+        "description": "اختر لغتك المفضلة"
+      },
+      "theme": {
+        "title": "المظهر",
+        "description": "تبديل الوضع الفاتح/المظلم",
+        "lightMode": "الوضع الفاتح",
+        "darkMode": "الوضع المظلم"
+      }
     }
   },
   "Footer": {
@@ -438,5 +449,36 @@
       "title": "تعرف على فريقنا",
       "description": "فريقنا من محترفي السلامة المعتمدين والمهندسين وخبراء المنتجات هو أعظم أصولنا. مع عقود من الخبرة الجماعية، نحن ملتزمون بتزويد عملائنا بخدمة ودعم لا مثيل لهما."
     }
+  },
+  "Cart": {
+    "addToCart": "أضف إلى السلة",
+    "cart": "السلة",
+    "cartEmpty": "سلتك فارغة",
+    "cartEmptyDescription": "أضف بعض المنتجات إلى سلتك للبدء",
+    "continueShopping": "متابعة التسوق",
+    "quantity": "الكمية",
+    "remove": "إزالة",
+    "totalItems": "إجمالي العناصر",
+    "inquireAboutCart": "استعلام عن العناصر المحددة",
+    "itemsInCart": "{count, plural, =0 {لا توجد عناصر} =1 {عنصر واحد} other {# عناصر}}",
+    "quantityButtons": {
+      "increase": "زيادة الكمية",
+      "decrease": "تقليل الكمية"
+    },
+    "bulkActions": {
+      "selectAll": "تحديد الكل",
+      "removeSelected": "إزالة المحدد",
+      "clearAll": "مسح الكل",
+      "selectedItems": "{count, plural, =0 {لم يتم تحديد عناصر} =1 {تم تحديد عنصر واحد} other {تم تحديد # عناصر}}"
+    },
+    "categories": "الفئات",
+    "summary": {
+      "title": "ملخص السلة",
+      "itemCount": "{count, plural, =0 {لا توجد عناصر} =1 {عنصر واحد} other {# عناصر}}",
+      "uniqueProducts": "{count, plural, =0 {لا توجد منتجات} =1 {منتج واحد} other {# منتجات}}"
+    },
+    "groupBy": "تجميع حسب الفئة",
+    "expandAll": "توسيع الكل",
+    "collapseAll": "طي الكل"
   }
 }

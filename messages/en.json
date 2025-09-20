@@ -244,8 +244,6 @@
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
-      "amount": "Amount",
-      "amountPlaceholder": "Enter quantity",
       "product": "Product",
       "subject": "Subject",
       "message": "Message",
@@ -314,6 +312,19 @@
     "languages": {
       "english": "English",
       "arabic": "Arabic"
+    },
+    "settings": {
+      "title": "Settings",
+      "language": {
+        "title": "Language",
+        "description": "Choose your language"
+      },
+      "theme": {
+        "title": "Theme",
+        "description": "Toggle light/dark mode",
+        "lightMode": "Light Mode",
+        "darkMode": "Dark Mode"
+      }
     }
   },
   "Footer": {
@@ -438,5 +449,36 @@
       "title": "Meet Our Team",
       "description": "Our team of certified safety professionals, engineers, and product experts is our greatest asset. With decades of collective experience, we are dedicated to providing our clients with unparalleled service and support."
     }
+  },
+  "Cart": {
+    "addToCart": "Add to Cart",
+    "cart": "Cart",
+    "cartEmpty": "Your cart is empty",
+    "cartEmptyDescription": "Add some products to your cart to get started",
+    "continueShopping": "Continue Shopping",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "totalItems": "Total Items",
+    "inquireAboutCart": "Inquire About Selected Items",
+    "itemsInCart": "{count, plural, =0 {No items} =1 {1 item} other {# items}}",
+    "quantityButtons": {
+      "increase": "Increase quantity",
+      "decrease": "Decrease quantity"
+    },
+    "bulkActions": {
+      "selectAll": "Select All",
+      "removeSelected": "Remove Selected",
+      "clearAll": "Clear All",
+      "selectedItems": "{count, plural, =0 {No items selected} =1 {1 item selected} other {# items selected}}"
+    },
+    "categories": "Categories",
+    "summary": {
+      "title": "Cart Summary",
+      "itemCount": "{count, plural, =0 {No items} =1 {1 item} other {# items}}",
+      "uniqueProducts": "{count, plural, =0 {No products} =1 {1 product} other {# products}}"
+    },
+    "groupBy": "Group by Category",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All"
   }
 }
