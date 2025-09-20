@@ -481,17 +481,16 @@
     "expandAll": "توسيع الكل",
     "collapseAll": "طي الكل",
     "modal": {
-      "orderDetails": "مراجعة السلة",
-      "sendQuotation": "طلب عرض أسعار",
-      "confirmationTitle": "إرسال الاستعلام",
-      "step1Label": "مراجعة العناصر",
-      "step2Label": "معلومات الاتصال",
-      "step3Label": "إرسال الاستعلام",
-      "next": "التالي",
+      "cartReview": "مراجعة السلة",
+      "inquiryForm": "نموذج الاستعلام",
+      "inquirySent": "تم إرسال الاستعلام",
+      "inquiryDescription": "يرجى تقديم معلومات الاتصال الخاصة بك وسنرسل لك عرض أسعار للعناصر المحددة.",
+      "proceedToInquiry": "المتابعة إلى الاستعلام",
+      "submitInquiry": "إرسال الاستعلام",
+      "inquirySuccessMessage": "شكراً لك على استعلامك. سنتواصل معك قريباً مع عرض أسعار مفصل.",
+      "autoCloseMessage": "ستُغلق هذه النافذة تلقائياً خلال ثوانٍ قليلة.",
+      "cancelAutoClose": "انقر في أي مكان لإلغاء الإغلاق التلقائي",
       "back": "السابق",
-      "submit": "إرسال",
-      "confirm": "إرسال الاستعلام",
-      "successMessage": "شكراً لاستعلامك! سنرسل لك عرض أسعار مفصل قريباً.",
       "form": {
         "name": "الاسم",
         "email": "البريد الإلكتروني",
@@ -500,15 +499,12 @@
         "namePlaceholder": "أدخل اسمك الكامل",
         "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
         "phonePlaceholder": "أدخل رقم هاتفك",
-        "messagePlaceholder": "أخبرنا عن متطلباتك (اختياري)"
-      },
-      "confirmation": {
-        "title": "جاهز للإرسال!",
-        "description": "يرجى مراجعة تفاصيل استعلامك أدناه. سنقوم بإعداد عرض أسعار مخصص بناءً على العناصر والكميات المحددة.",
-        "orderSummary": "ملخص العناصر",
-        "contactInfo": "معلومات الاتصال",
-        "totalItems": "إجمالي العناصر"
+        "messagePlaceholder": "أي متطلبات إضافية أو أسئلة..."
       }
-    }
+    },
+    "emptyCart": "سلتك فارغة",
+    "clearCart": "مسح السلة",
+    "close": "إغلاق",
+    "optional": "اختياري"
   }
 }

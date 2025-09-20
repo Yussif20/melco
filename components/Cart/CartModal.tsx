@@ -1,42 +1,63 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { useCart } from "./CartProvider";
-import { CartItem } from "@/types/cart";
 
 interface CartModalProps {
   isOpen: boolean;
   onClose: () => void;
+  clearCartOnSuccess?: boolean;
+  autoCloseMs?: number | null;
+  groupingMode?: "category" | "flat";
 }
 
-interface ContactData {
+interface InquiryForm {
   name: string;
   email: string;
   phone: string;
   message: string;
 }
 
-export default function CartModal({ isOpen, onClose }: CartModalProps) {
+type InquiryErrors = Partial<Record<keyof InquiryForm, string>>;
+type ModalStep = 1 | 2 | 3; // 1: Cart Review, 2: Inquiry Form, 3: Success
+
+export default function CartModal({
+  isOpen,
+  onClose,
+  clearCartOnSuccess = true,
+  autoCloseMs = 3000,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  groupingMode = "category", // Reserved for Phase 3: category grouping
+}: CartModalProps) {
   const t = useTranslations("Cart");
   const locale = useLocale();
   const isRTL = locale === "ar";
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
 
-  const [currentStep, setCurrentStep] = useState(1);
-  const [contactData, setContactData] = useState<ContactData>({
+  // Refs for focus management
+  const modalRef = useRef<HTMLDivElement>(null);
+  const firstFocusableRef = useRef<HTMLButtonElement>(null);
+  const lastFocusableRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  const [currentStep, setCurrentStep] = useState<ModalStep>(1);
+  const [formData, setFormData] = useState<InquiryForm>({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
+  const [validationErrors, setValidationErrors] = useState<InquiryErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-  const [validationErrors, setValidationErrors] = useState<{
-    email?: string;
-    phone?: string;
-  }>({});
+  const [autoCloseTimer, setAutoCloseTimer] = useState<NodeJS.Timeout | null>(
+    null
+  );
+  const [showModal, setShowModal] = useState(false);
+  const [animationStep, setAnimationStep] = useState<
+    "entering" | "entered" | "exiting"
+  >("entering");
 
   // Validation functions
   const validateEmail = (email: string): boolean => {
@@ -45,66 +66,180 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
   };
 
   const validatePhone = (phone: string): boolean => {
-    // Allow international formats: +966123456789, 0123456789, etc.
-    const phoneRegex = /^[\+]?[0-9\-\(\)\s]{10,15}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ""));
+    const phoneRegex = /^[\+]?[0-9\-\(\)\s]{10,18}$/;
+    const digitsOnly = phone.replace(/[^\d]/g, "");
+    return (
+      phoneRegex.test(phone) &&
+      digitsOnly.length >= 10 &&
+      digitsOnly.length <= 15
+    );
+  };
+
+  const validateName = (name: string): boolean => {
+    const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{2,80}$/;
+    return nameRegex.test(name.trim());
   };
 
   const validateForm = (): boolean => {
-    const errors: { email?: string; phone?: string } = {};
+    const errors: InquiryErrors = {};
 
-    if (!validateEmail(contactData.email)) {
+    if (!validateName(formData.name)) {
+      errors.name =
+        locale === "ar"
+          ? "يرجى إدخال اسم صحيح (2-80 حرف)"
+          : "Please enter a valid name (2-80 characters)";
+    }
+
+    if (!validateEmail(formData.email)) {
       errors.email =
         locale === "ar"
           ? "يرجى إدخال بريد إلكتروني صحيح"
           : "Please enter a valid email address";
     }
 
-    if (!validatePhone(contactData.phone)) {
+    if (!validatePhone(formData.phone)) {
       errors.phone =
         locale === "ar"
-          ? "يرجى إدخال رقم هاتف صحيح"
-          : "Please enter a valid phone number";
+          ? "يرجى إدخال رقم هاتف صحيح (10-15 رقم)"
+          : "Please enter a valid phone number (10-15 digits)";
+    }
+
+    if (formData.message.length > 500) {
+      errors.message =
+        locale === "ar"
+          ? "الرسالة يجب أن تكون أقل من 500 حرف"
+          : "Message must be less than 500 characters";
     }
 
     setValidationErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  // Reset modal state when opened
+  // Focus trap utility
+  const trapFocus = useCallback((e: KeyboardEvent) => {
+    if (e.key !== "Tab") return;
+
+    const focusableElements = modalRef.current?.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+
+    if (!focusableElements || focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
+    } else {
+      if (document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+  }, []);
+
+  // Modal animation and focus management
   useEffect(() => {
     if (isOpen) {
-      setCurrentStep(1);
-      setContactData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
-      setIsSubmitting(false);
-      setShowToast(false);
-      setValidationErrors({});
+      // Store previous focus
+      previousFocusRef.current = document.activeElement as HTMLElement;
+
+      // Show modal with animation
+      setShowModal(true);
+      setAnimationStep("entering");
+
+      // Focus first element after animation
+      const timer = setTimeout(() => {
+        setAnimationStep("entered");
+        if (firstFocusableRef.current) {
+          firstFocusableRef.current.focus();
+        }
+      }, 150);
+
+      return () => clearTimeout(timer);
+    } else {
+      // Restore previous focus
+      if (previousFocusRef.current) {
+        previousFocusRef.current.focus();
+      }
+
+      // Exit animation
+      setAnimationStep("exiting");
+      const timer = setTimeout(() => {
+        setShowModal(false);
+      }, 150);
+
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
-  // Handle escape key and backdrop click
+  // Reset state when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentStep(1);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setValidationErrors({});
+      setIsSubmitting(false);
+    }
+  }, [isOpen]);
+
+  // Handle ESC key, prevent body scroll, and setup focus trap
   useEffect(() => {
     if (!isOpen) return;
 
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+      if (e.key === "Escape") onClose();
     };
 
     document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", trapFocus);
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", trapFocus);
       document.body.style.overflow = "unset";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, trapFocus]);
+
+  // Auto-close timer management with cancellation
+  useEffect(() => {
+    if (currentStep === 3 && autoCloseMs && isOpen) {
+      const timer = setTimeout(() => {
+        onClose();
+      }, autoCloseMs);
+
+      setAutoCloseTimer(timer);
+
+      return () => {
+        clearTimeout(timer);
+        setAutoCloseTimer(null);
+      };
+    } else {
+      // Clear timer if we're not on success step
+      setAutoCloseTimer((prevTimer) => {
+        if (prevTimer) {
+          clearTimeout(prevTimer);
+        }
+        return null;
+      });
+    }
+  }, [currentStep, autoCloseMs, isOpen, onClose]);
+
+  // Cancel auto-close timer on user interaction
+  const cancelAutoClose = useCallback(() => {
+    setAutoCloseTimer((prevTimer) => {
+      if (prevTimer) {
+        clearTimeout(prevTimer);
+      }
+      return null;
+    });
+  }, []);
 
   const handleQuantityChange = (productId: string, newQuantity: number) => {
     if (newQuantity <= 0) {
@@ -114,89 +249,134 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
     }
   };
 
-  const handleNext = () => {
-    if (currentStep < 3) {
-      setCurrentStep(currentStep + 1);
+  const handleProceedToInquiry = () => {
+    if (cart.items.length > 0) {
+      setAnimationStep("exiting");
+      setTimeout(() => {
+        setCurrentStep(2);
+        setAnimationStep("entering");
+        setTimeout(() => setAnimationStep("entered"), 150);
+      }, 150);
     }
   };
 
-  const handleBack = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const handleContactSubmit = async () => {
-    // Validate form before submitting
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setCurrentStep(3);
-  };
-
-  const handleFinalSubmit = async () => {
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    // Clear the cart after successful submission
-    clearCart();
-
-    // Show toast and close modal
-    setShowToast(true);
+  const handleBackToCart = () => {
+    setAnimationStep("exiting");
     setTimeout(() => {
-      setShowToast(false);
-      onClose();
-    }, 3000);
-
-    setIsSubmitting(false);
+      setCurrentStep(1);
+      setAnimationStep("entering");
+      setTimeout(() => setAnimationStep("entered"), 150);
+    }, 150);
   };
 
-  if (!isOpen) return null;
-
-  // Group items by category
-  const itemsByCategory = cart.items.reduce((acc, item) => {
-    if (!acc[item.category]) {
-      acc[item.category] = [];
+  const handleFormChange = (field: keyof InquiryForm, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Clear validation error when user starts typing
+    if (validationErrors[field]) {
+      setValidationErrors((prev) => ({ ...prev, [field]: undefined }));
     }
-    acc[item.category].push(item);
-    return acc;
-  }, {} as Record<string, CartItem[]>);
+  };
+
+  const handleSubmitInquiry = async () => {
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Success: animate to confirmation step
+      setAnimationStep("exiting");
+      setTimeout(() => {
+        setCurrentStep(3);
+        setAnimationStep("entering");
+        setTimeout(() => setAnimationStep("entered"), 150);
+      }, 150);
+
+      // Clear cart if configured to do so
+      if (clearCartOnSuccess) {
+        clearCart();
+      }
+    } catch (error) {
+      // In real implementation, handle API errors here
+      console.error("Inquiry submission failed:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const isFormValid = () => {
+    return (
+      formData.name.trim() &&
+      formData.email.trim() &&
+      formData.phone.trim() &&
+      Object.keys(validationErrors).length === 0
+    );
+  };
+
+  if (!showModal) return null;
+
+  // Animation classes
+  const backdropClasses = `fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+    animationStep === "entering"
+      ? "opacity-0"
+      : animationStep === "entered"
+      ? "opacity-100"
+      : "opacity-0"
+  }`;
+
+  const modalClasses = `bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full max-w-2xl border dark:border-gray-700 flex flex-col my-auto transition-all duration-300 ${
+    animationStep === "entering"
+      ? "opacity-0 scale-95 translate-y-4"
+      : animationStep === "entered"
+      ? "opacity-100 scale-100 translate-y-0"
+      : "opacity-0 scale-95 translate-y-4"
+  }`;
+
+  const contentClasses = `transition-all duration-300 ${
+    animationStep === "entering"
+      ? "opacity-0 translate-x-4"
+      : "opacity-100 translate-x-0"
+  }`;
 
   return (
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-        onClick={onClose}
+        className={backdropClasses}
+        onClick={() => {
+          cancelAutoClose();
+          onClose();
+        }}
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex py-4 sm:py-4 px-2 sm:px-4 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
         <div
-          className="bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl w-full max-w-4xl m-auto overflow-hidden flex flex-col border dark:border-gray-700"
-          style={{
-            maxHeight: "calc(100vh - 6rem)",
-            minHeight: "min(calc(100vh - 6rem), 32rem)",
-          }}
+          ref={modalRef}
+          className={modalClasses}
+          style={{ maxHeight: "calc(100dvh - 4rem)" }}
           dir={isRTL ? "rtl" : "ltr"}
+          role="dialog"
+          aria-modal="true"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-3 sm:p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 flex-shrink-0">
-            <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
-              {currentStep === 1 && t("modal.orderDetails")}
-              {currentStep === 2 && t("modal.sendQuotation")}
-              {currentStep === 3 && t("modal.confirmationTitle")}
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+              {currentStep === 1 && (t("modal.cartReview") || "Cart Review")}
+              {currentStep === 2 && (t("modal.inquiryForm") || "Inquiry Form")}
+              {currentStep === 3 && (t("modal.inquirySent") || "Inquiry Sent")}
             </h2>
             <button
-              onClick={onClose}
-              className="p-1 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+              ref={firstFocusableRef}
+              onClick={() => {
+                cancelAutoClose();
+                onClose();
+              }}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+              aria-label={t("close") || "Close"}
             >
               <svg
                 className="w-6 h-6"
@@ -214,44 +394,11 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
             </button>
           </div>
 
-          {/* Progress Indicator */}
-          <div className="px-3 sm:px-6 py-3 sm:py-4 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
-            <div className="flex items-center justify-center">
-              {[1, 2, 3].map((step) => (
-                <div key={step} className="flex items-center">
-                  <div
-                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold transition-colors ${
-                      step <= currentStep
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-300"
-                    }`}
-                  >
-                    {step}
-                  </div>
-                  {step < 3 && (
-                    <div
-                      className={`w-8 sm:w-16 h-1 mx-1 sm:mx-2 transition-colors ${
-                        step < currentStep
-                          ? "bg-blue-500"
-                          : "bg-gray-300 dark:bg-gray-600"
-                      }`}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center mt-2">
-              <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-                {currentStep === 1 && t("modal.step1Label")}
-                {currentStep === 2 && t("modal.step2Label")}
-                {currentStep === 3 && t("modal.step3Label")}
-              </span>
-            </div>
-          </div>
-
           {/* Content */}
-          <div className="flex-1 overflow-y-auto p-3 sm:p-6 min-h-0">
-            {/* Step 1: Order Details */}
+          <div
+            className={`flex-1 overflow-y-auto p-4 sm:p-6 min-h-0 ${contentClasses}`}
+          >
+            {/* Step 1: Cart Review */}
             {currentStep === 1 && (
               <div className="space-y-6">
                 {cart.items.length === 0 ? (
@@ -270,148 +417,160 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                       />
                     </svg>
                     <p className="text-lg text-gray-600 dark:text-gray-300">
-                      {t("cartEmpty")}
+                      {t("emptyCart") || "Your cart is empty"}
                     </p>
                   </div>
                 ) : (
-                  Object.entries(itemsByCategory).map(([category, items]) => (
-                    <div
-                      key={category}
-                      className="bg-gray-50 dark:bg-gray-800 rounded-xl p-3 sm:p-4 border dark:border-gray-700"
-                    >
-                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3 sm:mb-4">
-                        {category}
-                      </h3>
-                      <div className="space-y-3">
-                        {items.map((item) => (
-                          <div
-                            key={item.id}
-                            className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-gray-700 rounded-lg p-3 sm:p-4 border dark:border-gray-600"
-                          >
-                            {/* Product Image - Hidden on mobile */}
-                            <div className="hidden sm:block w-16 h-16 relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-600">
-                              <Image
-                                src={item.image}
-                                alt={item.name}
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-sm sm:text-base">
-                                {item.name}
-                              </h4>
-                              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-                                {item.category}
-                              </p>
-                            </div>
-                            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-                              <button
-                                onClick={() =>
-                                  handleQuantityChange(
-                                    item.id,
-                                    item.quantity - 1
-                                  )
-                                }
-                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors text-gray-700 dark:text-gray-200"
-                              >
-                                <svg
-                                  className="w-3 h-3 sm:w-4 sm:h-4"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M20 12H4"
-                                  />
-                                </svg>
-                              </button>
-                              <span className="w-8 sm:w-12 text-center font-semibold text-gray-900 dark:text-gray-100 text-sm sm:text-base">
-                                {item.quantity}
-                              </span>
-                              <button
-                                onClick={() =>
-                                  handleQuantityChange(
-                                    item.id,
-                                    item.quantity + 1
-                                  )
-                                }
-                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors text-gray-700 dark:text-gray-200"
-                              >
-                                <svg
-                                  className="w-4 h-4"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                                  />
-                                </svg>
-                              </button>
-                            </div>
+                  <>
+                    {/* Product List */}
+                    <div className="space-y-4">
+                      {cart.items.map((item) => (
+                        <div
+                          key={item.id}
+                          className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border dark:border-gray-700"
+                        >
+                          {/* Product Image - Hidden on mobile */}
+                          <div className="hidden sm:block w-16 h-16 relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-600 flex-shrink-0">
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              className="object-cover"
+                            />
                           </div>
-                        ))}
+
+                          {/* Product Info */}
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-gray-900 dark:text-gray-100">
+                              {item.name}
+                            </h4>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                              {item.category}
+                            </p>
+                          </div>
+
+                          {/* Quantity Controls */}
+                          <div className="flex items-center gap-2 flex-shrink-0">
+                            <button
+                              onClick={() =>
+                                handleQuantityChange(item.id, item.quantity - 1)
+                              }
+                              className="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors"
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M20 12H4"
+                                />
+                              </svg>
+                            </button>
+                            <span className="w-12 text-center font-semibold text-gray-900 dark:text-gray-100">
+                              {item.quantity}
+                            </span>
+                            <button
+                              onClick={() =>
+                                handleQuantityChange(item.id, item.quantity + 1)
+                              }
+                              className="w-8 h-8 rounded-lg bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 flex items-center justify-center transition-colors"
+                            >
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Summary */}
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border dark:border-gray-700">
+                      <div className="flex justify-between items-center">
+                        <span className="font-semibold text-gray-900 dark:text-gray-100">
+                          {t("totalItems") || "Total Items"}
+                        </span>
+                        <span className="font-bold text-lg text-gray-900 dark:text-gray-100">
+                          {cart.totalItems}
+                        </span>
                       </div>
                     </div>
-                  ))
+                  </>
                 )}
               </div>
             )}
 
-            {/* Step 2: Contact Form */}
+            {/* Step 2: Inquiry Form */}
             {currentStep === 2 && (
-              <div className="max-w-lg mx-auto">
+              <div className="max-w-lg mx-auto space-y-6">
+                <p className="text-gray-600 dark:text-gray-300 text-center">
+                  {t("modal.inquiryDescription") ||
+                    "Please provide your contact information and we'll send you a quotation for the selected items."}
+                </p>
+
                 <div className="space-y-4">
+                  {/* Name Field */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      {t("modal.form.name")}
+                      {t("modal.form.name") || "Name"} *
                     </label>
                     <input
                       type="text"
-                      value={contactData.name}
-                      onChange={(e) =>
-                        setContactData({ ...contactData, name: e.target.value })
+                      value={formData.name}
+                      onChange={(e) => handleFormChange("name", e.target.value)}
+                      className={`w-full px-4 py-3 rounded-xl border ${
+                        validationErrors.name
+                          ? "border-red-500 focus:ring-red-500"
+                          : "border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                      } bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all`}
+                      placeholder={
+                        t("modal.form.namePlaceholder") ||
+                        "Enter your full name"
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                      placeholder={t("modal.form.namePlaceholder")}
-                      required
                       dir={isRTL ? "rtl" : "ltr"}
                     />
+                    {validationErrors.name && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {validationErrors.name}
+                      </p>
+                    )}
                   </div>
+
+                  {/* Email Field */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      {t("modal.form.email")}
+                      {t("modal.form.email") || "Email"} *
                     </label>
                     <input
                       type="email"
-                      value={contactData.email}
-                      onChange={(e) => {
-                        setContactData({
-                          ...contactData,
-                          email: e.target.value,
-                        });
-                        // Clear validation error when user starts typing
-                        if (validationErrors.email) {
-                          setValidationErrors({
-                            ...validationErrors,
-                            email: undefined,
-                          });
-                        }
-                      }}
+                      value={formData.email}
+                      onChange={(e) =>
+                        handleFormChange("email", e.target.value)
+                      }
                       className={`w-full px-4 py-3 rounded-xl border ${
                         validationErrors.email
                           ? "border-red-500 focus:ring-red-500"
                           : "border-gray-300 dark:border-gray-600 focus:ring-blue-500"
                       } bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all`}
-                      placeholder={t("modal.form.emailPlaceholder")}
-                      required
+                      placeholder={
+                        t("modal.form.emailPlaceholder") ||
+                        "Enter your email address"
+                      }
                       dir={isRTL ? "rtl" : "ltr"}
                     />
                     {validationErrors.email && (
@@ -420,33 +579,27 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                       </p>
                     )}
                   </div>
+
+                  {/* Phone Field */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      {t("modal.form.phone")}
+                      {t("modal.form.phone") || "Phone"} *
                     </label>
                     <input
                       type="tel"
-                      value={contactData.phone}
-                      onChange={(e) => {
-                        setContactData({
-                          ...contactData,
-                          phone: e.target.value,
-                        });
-                        // Clear validation error when user starts typing
-                        if (validationErrors.phone) {
-                          setValidationErrors({
-                            ...validationErrors,
-                            phone: undefined,
-                          });
-                        }
-                      }}
+                      value={formData.phone}
+                      onChange={(e) =>
+                        handleFormChange("phone", e.target.value)
+                      }
                       className={`w-full px-4 py-3 rounded-xl border ${
                         validationErrors.phone
                           ? "border-red-500 focus:ring-red-500"
                           : "border-gray-300 dark:border-gray-600 focus:ring-blue-500"
                       } bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all`}
-                      placeholder={t("modal.form.phonePlaceholder")}
-                      required
+                      placeholder={
+                        t("modal.form.phonePlaceholder") ||
+                        "Enter your phone number"
+                      }
                       dir={isRTL ? "rtl" : "ltr"}
                     />
                     {validationErrors.phone && (
@@ -455,195 +608,147 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                       </p>
                     )}
                   </div>
+
+                  {/* Message Field */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
-                      {t("modal.form.message")}
+                      {t("modal.form.message") || "Message"} (
+                      {t("optional") || "optional"})
                     </label>
                     <textarea
-                      value={contactData.message}
+                      value={formData.message}
                       onChange={(e) =>
-                        setContactData({
-                          ...contactData,
-                          message: e.target.value,
-                        })
+                        handleFormChange("message", e.target.value)
                       }
                       rows={4}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                      placeholder={t("modal.form.messagePlaceholder")}
+                      maxLength={500}
+                      className={`w-full px-4 py-3 rounded-xl border ${
+                        validationErrors.message
+                          ? "border-red-500 focus:ring-red-500"
+                          : "border-gray-300 dark:border-gray-600 focus:ring-blue-500"
+                      } bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:border-transparent transition-all resize-none`}
+                      placeholder={
+                        t("modal.form.messagePlaceholder") ||
+                        "Any additional requirements or questions..."
+                      }
                       dir={isRTL ? "rtl" : "ltr"}
                     />
+                    <div className="flex justify-between mt-1">
+                      <div>
+                        {validationErrors.message && (
+                          <p className="text-red-500 text-sm">
+                            {validationErrors.message}
+                          </p>
+                        )}
+                      </div>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        {formData.message.length}/500
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Step 3: Confirmation */}
+            {/* Step 3: Success */}
             {currentStep === 3 && (
-              <div className="max-w-2xl mx-auto">
-                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 mb-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-semibold text-green-800 dark:text-green-200">
-                      {t("modal.confirmation.title")}
-                    </h3>
-                  </div>
-                  <p className="text-green-700 dark:text-green-300">
-                    {t("modal.confirmation.description")}
-                  </p>
+              <div className="text-center py-8" onClick={cancelAutoClose}>
+                <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
                 </div>
-
-                {/* Order Summary */}
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6 border dark:border-gray-700">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                    {t("modal.confirmation.orderSummary")}
-                  </h4>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                  {t("modal.inquirySent") || "Inquiry Sent Successfully!"}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  {t("modal.inquirySuccessMessage") ||
+                    "Thank you for your inquiry. We will contact you shortly with a detailed quotation."}
+                </p>
+                {autoCloseMs && autoCloseTimer && (
                   <div className="space-y-2">
-                    {cart.items.map((item) => (
-                      <div
-                        key={item.id}
-                        className="flex justify-between text-sm"
-                      >
-                        <span className="text-gray-600 dark:text-gray-300">
-                          {item.name} × {item.quantity}
-                        </span>
-                      </div>
-                    ))}
-                    <div className="border-t border-gray-200 dark:border-gray-600 pt-2 mt-2">
-                      <div className="flex justify-between font-semibold text-gray-900 dark:text-gray-100">
-                        <span>{t("modal.confirmation.totalItems")}</span>
-                        <span>{cart.totalItems}</span>
-                      </div>
-                    </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      {t("modal.autoCloseMessage") ||
+                        "This window will close automatically in a few seconds."}
+                    </p>
+                    <button
+                      onClick={cancelAutoClose}
+                      className="text-sm text-blue-500 hover:text-blue-600 underline transition-colors"
+                    >
+                      {t("modal.cancelAutoClose") ||
+                        "Click anywhere to cancel auto-close"}
+                    </button>
                   </div>
-                </div>
-
-                {/* Contact Info */}
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border dark:border-gray-700">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                    {t("modal.confirmation.contactInfo")}
-                  </h4>
-                  <div className="space-y-2 text-sm text-gray-700 dark:text-gray-200">
-                    <div>
-                      <strong>{t("modal.form.name")}:</strong>{" "}
-                      {contactData.name}
-                    </div>
-                    <div>
-                      <strong>{t("modal.form.email")}:</strong>{" "}
-                      {contactData.email}
-                    </div>
-                    <div>
-                      <strong>{t("modal.form.phone")}:</strong>{" "}
-                      {contactData.phone}
-                    </div>
-                    {contactData.message && (
-                      <div>
-                        <strong>{t("modal.form.message")}:</strong>{" "}
-                        {contactData.message}
-                      </div>
-                    )}
-                  </div>
-                </div>
+                )}
               </div>
             )}
           </div>
 
           {/* Footer */}
-          <div className="p-3 sm:p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
-            <div className="flex items-center justify-between flex-wrap gap-3">
-              <div>
-                {currentStep > 1 && (
-                  <button
-                    onClick={handleBack}
-                    className="px-4 sm:px-6 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors text-sm sm:text-base"
-                  >
-                    {t("modal.back")}
-                  </button>
-                )}
-              </div>
+          {currentStep !== 3 && (
+            <div className="border-t border-gray-200 dark:border-gray-700 p-4 sm:p-6 flex-shrink-0">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  {currentStep === 2 && (
+                    <button
+                      onClick={handleBackToCart}
+                      className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors"
+                    >
+                      {t("modal.back") || "Back"}
+                    </button>
+                  )}
+                </div>
 
-              <div className="flex gap-3">
-                {currentStep === 1 && cart.items.length > 0 && (
-                  <button
-                    onClick={handleNext}
-                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-colors text-sm sm:text-base"
-                  >
-                    {t("modal.next")}
-                  </button>
-                )}
+                <div className="flex gap-3">
+                  {currentStep === 1 && (
+                    <>
+                      <button
+                        onClick={clearCart}
+                        className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors"
+                        disabled={cart.items.length === 0}
+                      >
+                        {t("clearCart") || "Clear Cart"}
+                      </button>
+                      <button
+                        ref={currentStep === 1 ? lastFocusableRef : undefined}
+                        onClick={handleProceedToInquiry}
+                        disabled={cart.items.length === 0}
+                        className="px-6 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors"
+                      >
+                        {t("modal.proceedToInquiry") || "Proceed to Inquiry"}
+                      </button>
+                    </>
+                  )}
 
-                {currentStep === 2 && (
-                  <button
-                    onClick={handleContactSubmit}
-                    disabled={
-                      isSubmitting ||
-                      !contactData.name ||
-                      !contactData.email ||
-                      !contactData.phone
-                    }
-                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2 text-sm sm:text-base"
-                  >
-                    {isSubmitting && (
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    )}
-                    {t("modal.submit")}
-                  </button>
-                )}
-
-                {currentStep === 3 && (
-                  <button
-                    onClick={handleFinalSubmit}
-                    disabled={isSubmitting}
-                    className="px-6 sm:px-8 py-2 sm:py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2 text-sm sm:text-base"
-                  >
-                    {isSubmitting && (
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    )}
-                    {t("modal.confirm")}
-                  </button>
-                )}
+                  {currentStep === 2 && (
+                    <button
+                      ref={lastFocusableRef}
+                      onClick={handleSubmitInquiry}
+                      disabled={!isFormValid() || isSubmitting}
+                      className="px-6 py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-xl transition-colors flex items-center gap-2"
+                    >
+                      {isSubmitting && (
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      )}
+                      {t("modal.submitInquiry") || "Submit Inquiry"}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
-
-      {/* Toast Notification */}
-      {showToast && (
-        <div className="fixed inset-0 z-60 flex items-center justify-center pointer-events-none">
-          <div className="bg-blue-500 text-white px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 animate-in fade-in zoom-in duration-300 pointer-events-auto max-w-sm mx-4">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                />
-              </svg>
-            </div>
-            <span className="font-semibold">{t("modal.successMessage")}</span>
-          </div>
-        </div>
-      )}
     </>
   );
 }

@@ -481,17 +481,16 @@
     "expandAll": "Expand All",
     "collapseAll": "Collapse All",
     "modal": {
-      "orderDetails": "Cart Review",
-      "sendQuotation": "Request Quotation",
-      "confirmationTitle": "Submit Inquiry",
-      "step1Label": "Review your items",
-      "step2Label": "Contact information",
-      "step3Label": "Submit inquiry",
-      "next": "Next",
+      "cartReview": "Cart Review",
+      "inquiryForm": "Inquiry Form",
+      "inquirySent": "Inquiry Sent",
+      "inquiryDescription": "Please provide your contact information and we'll send you a quotation for the selected items.",
+      "proceedToInquiry": "Proceed to Inquiry",
+      "submitInquiry": "Submit Inquiry",
+      "inquirySuccessMessage": "Thank you for your inquiry. We will contact you shortly with a detailed quotation.",
+      "autoCloseMessage": "This window will close automatically in a few seconds.",
+      "cancelAutoClose": "Click anywhere to cancel auto-close",
       "back": "Back",
-      "submit": "Submit",
-      "confirm": "Send Inquiry",
-      "successMessage": "Thanks for your inquiry! We'll send you a detailed quotation soon.",
       "form": {
         "name": "Name",
         "email": "Email",
@@ -500,15 +499,12 @@
         "namePlaceholder": "Enter your full name",
         "emailPlaceholder": "Enter your email address",
         "phonePlaceholder": "Enter your phone number",
-        "messagePlaceholder": "Tell us about your requirements (optional)"
-      },
-      "confirmation": {
-        "title": "Ready to Send!",
-        "description": "Please review your inquiry details below. We'll prepare a custom quotation based on your selected items and quantities.",
-        "orderSummary": "Items Summary",
-        "contactInfo": "Contact Information",
-        "totalItems": "Total Items"
+        "messagePlaceholder": "Any additional requirements or questions..."
       }
-    }
+    },
+    "emptyCart": "Your cart is empty",
+    "clearCart": "Clear Cart",
+    "close": "Close",
+    "optional": "optional"
   }
 }
