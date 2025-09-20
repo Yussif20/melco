@@ -177,12 +177,12 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex min-h-screen py-2 sm:py-4 px-2 sm:px-4 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex py-4 sm:py-4 px-2 sm:px-4 overflow-y-auto">
         <div
           className="bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl w-full max-w-4xl m-auto overflow-hidden flex flex-col border dark:border-gray-700"
           style={{
-            maxHeight: "calc(100vh - 1rem)",
-            minHeight: "calc(100vh - 1rem)",
+            maxHeight: "calc(100vh - 6rem)",
+            minHeight: "min(calc(100vh - 6rem), 32rem)",
           }}
           dir={isRTL ? "rtl" : "ltr"}
           onClick={(e) => e.stopPropagation()}
