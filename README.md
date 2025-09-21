@@ -184,7 +184,3 @@ This is a private project for MELCO. For internal development:
 ## 📞 Support
 
 For technical support or questions about this project, contact the development team.
-
----
-
-Built with ❤️ for workplace safety in Saudi Arabia.
