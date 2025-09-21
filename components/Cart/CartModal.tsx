@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { useCart } from "./CartProvider";
+import { sendInquiryEmail, prepareEmailTemplateParams } from "@/lib/emailjs";
 
 interface CartModalProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface CartModalProps {
   clearCartOnSuccess?: boolean;
   autoCloseMs?: number | null;
   groupingMode?: "category" | "flat";
+  enableAnalytics?: boolean;
+  requireTermsAcceptance?: boolean;
 }
 
 interface InquiryForm {
@@ -18,10 +21,18 @@ interface InquiryForm {
   email: string;
   phone: string;
   message: string;
+  acceptTerms?: boolean;
+}
+
+interface ApiResponse {
+  success: boolean;
+  message?: string;
+  inquiryId?: string;
+  estimatedResponse?: string;
 }
 
 type InquiryErrors = Partial<Record<keyof InquiryForm, string>>;
-type ModalStep = 1 | 2 | 3; // 1: Cart Review, 2: Inquiry Form, 3: Success
+type ModalStep = 1 | 2 | 3 | 4; // 1: Cart Review, 2: Inquiry Form, 3: Success, 4: Error
 
 export default function CartModal({
   isOpen,
@@ -30,6 +41,8 @@ export default function CartModal({
   autoCloseMs = 3000,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   groupingMode = "category", // Reserved for Phase 3: category grouping
+  enableAnalytics = true,
+  requireTermsAcceptance = false,
 }: CartModalProps) {
   const t = useTranslations("Cart");
   const locale = useLocale();
@@ -41,6 +54,7 @@ export default function CartModal({
   const firstFocusableRef = useRef<HTMLButtonElement>(null);
   const lastFocusableRef = useRef<HTMLButtonElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+  const modalOpenTime = useRef<number | null>(null);
 
   const [currentStep, setCurrentStep] = useState<ModalStep>(1);
   const [formData, setFormData] = useState<InquiryForm>({
@@ -48,9 +62,13 @@ export default function CartModal({
     email: "",
     phone: "",
     message: "",
+    acceptTerms: false,
   });
   const [validationErrors, setValidationErrors] = useState<InquiryErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const [autoCloseTimer, setAutoCloseTimer] = useState<NodeJS.Timeout | null>(
     null
   );
@@ -79,6 +97,34 @@ export default function CartModal({
     const nameRegex = /^[a-zA-Z\u0600-\u06FF\s]{2,80}$/;
     return nameRegex.test(name.trim());
   };
+
+  // Analytics tracking utility
+  const trackEvent = useCallback(
+    (eventName: string, properties?: Record<string, unknown>) => {
+      if (!enableAnalytics) return;
+
+      // Implementation depends on your analytics provider (Google Analytics, Mixpanel, etc.)
+      if (typeof window !== "undefined") {
+        // Example for Google Analytics 4
+        const gtag = (window as { gtag?: (...args: unknown[]) => void }).gtag;
+        if (gtag) {
+          gtag("event", eventName, {
+            ...properties,
+            cart_items: cart.totalItems,
+            locale: locale,
+          });
+        }
+
+        // Example for custom analytics
+        console.log("Analytics Event:", {
+          eventName,
+          ...properties,
+          timestamp: new Date().toISOString(),
+        });
+      }
+    },
+    [enableAnalytics, cart.totalItems, locale]
+  );
 
   const validateForm = (): boolean => {
     const errors: InquiryErrors = {};
@@ -109,6 +155,13 @@ export default function CartModal({
         locale === "ar"
           ? "الرسالة يجب أن تكون أقل من 500 حرف"
           : "Message must be less than 500 characters";
+    }
+
+    if (requireTermsAcceptance && !formData.acceptTerms) {
+      errors.acceptTerms =
+        locale === "ar"
+          ? "يجب الموافقة على الشروط والأحكام"
+          : "You must accept the terms and conditions";
     }
 
     setValidationErrors(errors);
@@ -146,8 +199,9 @@ export default function CartModal({
   // Modal animation and focus management
   useEffect(() => {
     if (isOpen) {
-      // Store previous focus
+      // Store previous focus and track modal open time
       previousFocusRef.current = document.activeElement as HTMLElement;
+      modalOpenTime.current = Date.now();
 
       // Show modal with animation
       setShowModal(true);
@@ -269,7 +323,10 @@ export default function CartModal({
     }, 150);
   };
 
-  const handleFormChange = (field: keyof InquiryForm, value: string) => {
+  const handleFormChange = (
+    field: keyof InquiryForm,
+    value: string | boolean
+  ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear validation error when user starts typing
     if (validationErrors[field]) {
@@ -280,11 +337,32 @@ export default function CartModal({
   const handleSubmitInquiry = async () => {
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
-
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setIsSubmitting(true);
+      setSubmitError(null);
+
+      // Track form submission attempt
+      trackEvent("inquiry_form_submit_start", {
+        name: formData.name,
+        email: formData.email,
+        form_step: "inquiry",
+        retry_count: retryCount,
+      });
+
+      // Prepare EmailJS template parameters
+      const templateParams = prepareEmailTemplateParams(formData, cart, locale);
+
+      // Send email via EmailJS
+      const emailResult = await sendInquiryEmail(templateParams);
+      setApiResponse(emailResult);
+
+      // Track successful email submission
+      trackEvent("inquiry_email_success", {
+        inquiry_id: emailResult.inquiryId,
+        retry_count: retryCount,
+        total_items: cart.totalItems,
+        unique_products: cart.items.length,
+      });
 
       // Success: animate to confirmation step
       setAnimationStep("exiting");
@@ -292,15 +370,43 @@ export default function CartModal({
         setCurrentStep(3);
         setAnimationStep("entering");
         setTimeout(() => setAnimationStep("entered"), 150);
+        setRetryCount(0); // Reset retry count on success
+
+        // Track successful form completion
+        trackEvent("inquiry_form_complete", {
+          completion_step: "success",
+          time_to_complete: Date.now() - (modalOpenTime.current || Date.now()),
+          retry_count: retryCount,
+          inquiry_id: emailResult.inquiryId,
+        });
       }, 150);
 
       // Clear cart if configured to do so
       if (clearCartOnSuccess) {
         clearCart();
       }
-    } catch (error) {
-      // In real implementation, handle API errors here
-      console.error("Inquiry submission failed:", error);
+    } catch (error: unknown) {
+      console.error("EmailJS submission failed:", error);
+
+      const errorMessage =
+        error instanceof Error ? error.message : "Email sending failed";
+      setSubmitError(errorMessage);
+      setRetryCount((prev) => prev + 1);
+
+      // Animate to error step (step 4)
+      setAnimationStep("exiting");
+      setTimeout(() => {
+        setCurrentStep(4);
+        setAnimationStep("entering");
+        setTimeout(() => setAnimationStep("entered"), 150);
+      }, 150);
+
+      // Track submission failure
+      trackEvent("inquiry_submit_error", {
+        error_message: errorMessage,
+        error_step: "emailjs_send",
+        retry_count: retryCount + 1,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -368,6 +474,8 @@ export default function CartModal({
               {currentStep === 1 && (t("modal.cartReview") || "Cart Review")}
               {currentStep === 2 && (t("modal.inquiryForm") || "Inquiry Form")}
               {currentStep === 3 && (t("modal.inquirySent") || "Inquiry Sent")}
+              {currentStep === 4 &&
+                (t("modal.submissionError") || "Submission Error")}
             </h2>
             <button
               ref={firstFocusableRef}
@@ -646,6 +754,31 @@ export default function CartModal({
                       </span>
                     </div>
                   </div>
+
+                  {/* Terms and Conditions Checkbox */}
+                  {requireTermsAcceptance && (
+                    <div className="mt-6">
+                      <label className="flex items-start space-x-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.acceptTerms || false}
+                          onChange={(e) =>
+                            handleFormChange("acceptTerms", e.target.checked)
+                          }
+                          className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        />
+                        <span className="text-sm text-gray-700 dark:text-gray-200">
+                          {t("modal.form.acceptTerms") ||
+                            "I agree to the terms and conditions and privacy policy"}
+                        </span>
+                      </label>
+                      {validationErrors.acceptTerms && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {validationErrors.acceptTerms}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -675,6 +808,22 @@ export default function CartModal({
                   {t("modal.inquirySuccessMessage") ||
                     "Thank you for your inquiry. We will contact you shortly with a detailed quotation."}
                 </p>
+                {apiResponse?.inquiryId && (
+                  <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+                    <p className="text-sm text-blue-700 dark:text-blue-300">
+                      <span className="font-semibold">Inquiry ID:</span>{" "}
+                      {apiResponse.inquiryId}
+                    </p>
+                    {apiResponse.estimatedResponse && (
+                      <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
+                        <span className="font-semibold">
+                          Estimated Response:
+                        </span>{" "}
+                        {apiResponse.estimatedResponse}
+                      </p>
+                    )}
+                  </div>
+                )}
                 {autoCloseMs && autoCloseTimer && (
                   <div className="space-y-2">
                     <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -690,6 +839,68 @@ export default function CartModal({
                     </button>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Step 4: Error */}
+            {currentStep === 4 && (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-red-600 dark:text-red-400 mb-2">
+                  {t("modal.submissionError") || "Submission Failed"}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {t("modal.submissionErrorMessage") ||
+                    "We encountered an error while submitting your inquiry. Please try again."}
+                </p>
+                {submitError && (
+                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6">
+                    <p className="text-sm text-red-700 dark:text-red-300 font-mono break-words">
+                      {submitError}
+                    </p>
+                  </div>
+                )}
+                {retryCount > 0 && (
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                    {t("modal.retryAttempt") || "Retry attempt"}: {retryCount}
+                  </p>
+                )}
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <button
+                    onClick={() => {
+                      // Reset to inquiry form
+                      setAnimationStep("exiting");
+                      setTimeout(() => {
+                        setCurrentStep(2);
+                        setAnimationStep("entering");
+                        setTimeout(() => setAnimationStep("entered"), 150);
+                      }, 150);
+                    }}
+                    className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  >
+                    {t("modal.tryAgain") || "Try Again"}
+                  </button>
+                  <button
+                    onClick={onClose}
+                    className="px-6 py-2 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                  >
+                    {t("modal.closeModal") || "Close"}
+                  </button>
+                </div>
               </div>
             )}
           </div>

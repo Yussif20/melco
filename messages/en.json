@@ -484,12 +484,17 @@
       "cartReview": "Cart Review",
       "inquiryForm": "Inquiry Form",
       "inquirySent": "Inquiry Sent",
+      "submissionError": "Submission Error",
       "inquiryDescription": "Please provide your contact information and we'll send you a quotation for the selected items.",
       "proceedToInquiry": "Proceed to Inquiry",
       "submitInquiry": "Submit Inquiry",
       "inquirySuccessMessage": "Thank you for your inquiry. We will contact you shortly with a detailed quotation.",
+      "submissionErrorMessage": "We encountered an error while submitting your inquiry. Please try again.",
       "autoCloseMessage": "This window will close automatically in a few seconds.",
       "cancelAutoClose": "Click anywhere to cancel auto-close",
+      "tryAgain": "Try Again",
+      "closeModal": "Close",
+      "retryAttempt": "Retry attempt",
       "back": "Back",
       "form": {
         "name": "Name",
@@ -499,7 +504,8 @@
         "namePlaceholder": "Enter your full name",
         "emailPlaceholder": "Enter your email address",
         "phonePlaceholder": "Enter your phone number",
-        "messagePlaceholder": "Any additional requirements or questions..."
+        "messagePlaceholder": "Any additional requirements or questions...",
+        "acceptTerms": "I agree to the terms and conditions and privacy policy"
       }
     },
     "emptyCart": "Your cart is empty",

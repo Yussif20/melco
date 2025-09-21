@@ -484,12 +484,17 @@
       "cartReview": "مراجعة السلة",
       "inquiryForm": "نموذج الاستعلام",
       "inquirySent": "تم إرسال الاستعلام",
+      "submissionError": "خطأ في الإرسال",
       "inquiryDescription": "يرجى تقديم معلومات الاتصال الخاصة بك وسنرسل لك عرض أسعار للعناصر المحددة.",
       "proceedToInquiry": "المتابعة إلى الاستعلام",
       "submitInquiry": "إرسال الاستعلام",
       "inquirySuccessMessage": "شكراً لك على استعلامك. سنتواصل معك قريباً مع عرض أسعار مفصل.",
+      "submissionErrorMessage": "واجهنا خطأ أثناء إرسال استعلامك. يرجى المحاولة مرة أخرى.",
       "autoCloseMessage": "ستُغلق هذه النافذة تلقائياً خلال ثوانٍ قليلة.",
       "cancelAutoClose": "انقر في أي مكان لإلغاء الإغلاق التلقائي",
+      "tryAgain": "حاول مرة أخرى",
+      "closeModal": "إغلاق",
+      "retryAttempt": "محاولة إعادة",
       "back": "السابق",
       "form": {
         "name": "الاسم",
@@ -499,7 +504,8 @@
         "namePlaceholder": "أدخل اسمك الكامل",
         "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
         "phonePlaceholder": "أدخل رقم هاتفك",
-        "messagePlaceholder": "أي متطلبات إضافية أو أسئلة..."
+        "messagePlaceholder": "أي متطلبات إضافية أو أسئلة...",
+        "acceptTerms": "أوافق على الشروط والأحكام وسياسة الخصوصية"
       }
     },
     "emptyCart": "سلتك فارغة",
