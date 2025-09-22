@@ -38,57 +38,56 @@ const productsData = {
     headerImage: "/category-headers/eye.png",
     products: [
       {
-        name: "3M SecureFit Protective Eyewear SF401AS-FM",
+        name: "3M Virtua AP Protective Eyewear",
         description:
           "Secure fit protective eyewear with anti-fog coating and superior clarity",
         image: "/show-products/eye-protection/eye1.jpg",
       },
       {
-        name: "3M Virtua AP Protective Eyewear 11228-00000-20",
+        name: "3M Virtua AP Protective Eyewear",
         description:
           "Lightweight protective eyewear with excellent optical clarity and comfort",
         image: "/show-products/eye-protection/eye2.avif",
       },
       {
-        name: "3M SecureFit Protective Eyewear SF402AS-EU",
+        name: "3M Safety Splash Goggle",
         description:
-          "Premium eye protection with superior comfort and all-day wearability",
+          "Splash protection goggles with anti-fog lens and comfortable head strap",
         image: "/show-products/eye-protection/eye3.jpg",
       },
       {
-        name: "3M Safety Glasses BX Reader",
+        name: "3M GoggleGear",
         description:
-          "Safety reading glasses with magnification and impact protection",
+          "Protective goggles offering robust coverage and anti-scratch properties",
         image: "/show-products/eye-protection/eye4.avif",
       },
       {
-        name: "3M Virtua CCS Protective Eyewear",
+        name: "3M Universal Headgear For Hard Hat",
         description:
-          "Comfortable protective eyewear with wraparound design for maximum coverage",
+          "Universal compatible headgear designed for secure attachment to hard hats",
         image: "/show-products/eye-protection/eye5.avif",
       },
       {
-        name: "3M SecureFit Safety Glasses",
+        name: "3M Ratchet Headgear H8A",
         description:
-          "Ergonomic safety glasses with secure fit technology and scratch resistance",
+          "Adjustable ratchet headgear for personalized comfort and secure fit",
         image: "/show-products/eye-protection/eye6.avif",
       },
       {
-        name: "MSA Safety Glasses Altimeter",
-        description:
-          "Professional safety glasses with anti-scratch and anti-fog coating",
+        name: "Polycarbonate Clear Faceshield Window",
+        description: "Clear faceshield window with superior impact resistance",
         image: "/show-products/eye-protection/eye7.jpg",
       },
       {
-        name: "MSA ChemPro Safety Goggles",
+        name: "3M Ratchet Headgear H8A",
         description:
-          "Chemical resistant safety goggles for hazardous environment protection",
+          "Durable ratchet headgear for use with various protective eyewear",
         image: "/show-products/eye-protection/eye8.jpg",
       },
       {
-        name: "MSA Perspecta GV2000 Face Shield",
+        name: "3M Wide Clear PETG Faceshield",
         description:
-          "Full face protection shield with excellent visibility and comfort",
+          "Wide faceshield with excellent visibility and lightweight design",
         image: "/show-products/eye-protection/eye9.jpg",
       },
     ],
@@ -97,56 +96,53 @@ const productsData = {
     headerImage: "/category-headers/hear.jpg",
     products: [
       {
-        name: "3M PELTOR ProTac III Headset",
+        name: "3M Earplugs 1100 Series",
         description:
-          "Advanced electronic hearing protection with ambient sound amplification",
+          "Comfortable foam earplugs offering effective noise reduction",
         image: "/show-products/ear-protection/ear1.webp",
       },
       {
-        name: "3M PELTOR Optime 101 Earmuffs",
+        name: "3M Foam Earplugs 1110, Corded",
         description:
-          "Comfortable over-the-head earmuffs with excellent noise reduction rating",
+          "Corded disposable earplugs providing reliable hearing protection",
         image: "/show-products/ear-protection/ear2.jpeg",
       },
       {
-        name: "3M E-A-R Classic Foam Earplugs",
-        description:
-          "Disposable foam earplugs providing reliable hearing protection",
+        name: "3M E-A-R TaperFit 2 Large Uncorded Earplugs",
+        description: "Large size, taper fit earplugs for extended use comfort",
         image: "/show-products/ear-protection/ear3.avif",
       },
       {
-        name: "3M PELTOR X-Series Earmuffs",
-        description:
-          "Professional grade earmuffs with superior attenuation and comfort",
+        name: "3M E-A-R TaperFit 2 Corded Earplugs 312-1223, Regular",
+        description: "Corded taper fit earplugs with superior attenuation",
         image: "/show-products/ear-protection/ear4.webp",
       },
       {
-        name: "3M E-A-R UltraFit Earplugs",
+        name: "3M Peltor Optime 98 Cap-Mount Earmuffs",
         description:
-          "Reusable silicone earplugs with comfortable fit and excellent seal",
+          "Cap-mounted earmuffs for protection against high noise levels",
         image: "/show-products/ear-protection/ear5.jpg",
       },
       {
-        name: "MSA Sordin Supreme Pro Headset",
+        name: "3M PELTOR Optime 105 Over-the-Head Earmuffs H10A HV",
         description:
-          "Electronic hearing protection with communication capabilities",
+          "Over-the-head earmuffs designed to protect against industrial noise",
         image: "/show-products/ear-protection/ear6.avif",
       },
       {
-        name: "MSA Left/Right Earmuffs",
-        description:
-          "Lightweight earmuffs with adjustable headband for all-day comfort",
+        name: "3M PELTOR Optime II Earmuffs H520A",
+        description: "Professional earmuffs with high noise attenuation rating",
         image: "/show-products/ear-protection/ear7.avif",
       },
       {
-        name: "3M PELTOR ComTac Headset",
-        description:
-          "Military-grade communication headset with hearing protection",
+        name: "3M PELTOR Optime I Earmuffs, Yellow, Headband",
+        description: "Bright yellow earmuffs with comfortable headband design",
         image: "/show-products/ear-protection/ear8.avif",
       },
       {
-        name: "3M E-A-R Push-Ins Earplugs",
-        description: "Easy-to-use push-in earplugs with consistent protection",
+        name: "3M™ PELTOR™ Optime™ 105 Over-the-Head Earmuffs H10A HV",
+        description:
+          "Heavy-duty earmuffs with excellent noise reduction capabilities",
         image: "/show-products/ear-protection/ear9.png",
       },
     ],
@@ -155,52 +151,40 @@ const productsData = {
     headerImage: "/category-headers/resp.jpg",
     products: [
       {
-        name: "3M Half Facepiece Respirator 6200",
+        name: "3M Particulate Respirator 8210, N95",
         description:
-          "Comfortable half facepiece respirator with excellent seal and durability",
-        image: "/show-products/resp-protection/resp1.webp",
+          "N95 particulate filtering facepiece respirator for protection against airborne particles",
+        image: "/show-products/resp-protection/resp1.png",
       },
       {
-        name: "3M Full Facepiece Respirator 6800",
+        name: "3M Half Facepiece Reusable Respirator 6200/07025(AAD), Medium",
         description:
-          "Full face respirator providing complete respiratory and eye protection",
-        image: "/show-products/resp-protection/resp2.webp",
+          "Comfortable reusable half-face respirator with replaceable filters",
+        image: "/show-products/resp-protection/resp2.jpg",
       },
       {
-        name: "3M Disposable Respirator 8210",
+        name: "3M Reusable Full Face Mask 6800, Medium",
         description:
-          "N95 disposable respirator with comfortable fit and reliable filtration",
-        image: "/show-products/resp-protection/resp3.webp",
+          "Full face respirator mask providing comprehensive respiratory protection",
+        image: "/show-products/resp-protection/resp3.jpg",
       },
       {
-        name: "3M PAPR System TR-300",
+        name: "3M Organic Vapor Cartridge 6001",
         description:
-          "Powered air purifying respirator system for extended use comfort",
-        image: "/show-products/resp-protection/resp4.webp",
+          "Organic vapor cartridges compatible with various 3M respirators",
+        image: "/show-products/resp-protection/resp4.avif",
       },
       {
-        name: "3M Gas & Vapor Cartridge 6001",
+        name: "3M Organic Vapor/Acid Gas Cartridge 6003/07047(AAD)",
         description:
-          "Organic vapor cartridge for use with 3M half and full facepiece respirators",
-        image: "/show-products/resp-protection/resp5.webp",
+          "Combination cartridge for protection against organic vapors and acid gases",
+        image: "/show-products/resp-protection/resp5.avif",
       },
       {
-        name: "MSA Advantage 900 Respirator",
+        name: "3M Multi Gas/Vapor Cartridge 6006",
         description:
-          "Full facepiece respirator with wide field of view and secure fit",
-        image: "/show-products/resp-protection/resp6.webp",
-      },
-      {
-        name: "MSA Ultra Elite Respirator",
-        description:
-          "Half mask respirator with advanced silicone design for comfort",
-        image: "/show-products/resp-protection/resp7.webp",
-      },
-      {
-        name: "3M Adflo PAPR System",
-        description:
-          "Advanced powered air purifying respirator with climate control",
-        image: "/show-products/resp-protection/resp8.webp",
+          "Multi-gas cartridge designed for protection against multiple gases and vapors",
+        image: "/show-products/resp-protection/resp6.avif",
       },
     ],
   },
@@ -208,51 +192,70 @@ const productsData = {
     headerImage: "/category-headers/hand.png",
     products: [
       {
-        name: "3M Comfort Grip Gloves",
+        name: "Safety Jogger PROTECTOR 4X44C",
         description:
-          "Comfortable grip gloves with excellent dexterity and protection",
-        image: "/show-products/hand-protection/hand1.jpg",
+          "Durable protective work gloves designed for increased grip and dexterity",
+        image: "/show-products/hand-protection/hand1.png",
       },
       {
-        name: "3M Cut Resistant Gloves",
+        name: "Safety Jogger ALLFLEX 4131A",
         description:
-          "High-performance cut resistant gloves for sharp object handling",
-        image: "/show-products/hand-protection/hand2.jpg",
+          "Lightweight gloves providing flexible protection for manual tasks",
+        image: "/show-products/hand-protection/hand2.webp",
       },
       {
-        name: "Ansell HyFlex Gloves",
+        name: "Safety Jogger SHIELD 4X43C",
         description:
-          "Flexible protective gloves with superior grip and comfort",
+          "Protective gloves with reinforced palms for heavy-duty applications",
         image: "/show-products/hand-protection/hand3.jpg",
       },
       {
-        name: "Ansell AlphaTec Gloves",
-        description:
-          "Chemical resistant gloves for hazardous material handling",
-        image: "/show-products/hand-protection/hand4.jpg",
+        name: "Proimpacts 4X42CP",
+        description: "Impact-resistant gloves engineered for industrial safety",
+        image: "/show-products/hand-protection/hand4.png",
       },
       {
-        name: "MSA Workman Gloves",
-        description:
-          "Durable work gloves with reinforced palms and excellent grip",
-        image: "/show-products/hand-protection/hand5.jpg",
+        name: "Allflexdot 4131A",
+        description: "Comfortable gloves tailored for precise handling",
+        image: "/show-products/hand-protection/hand5.png",
       },
       {
-        name: "3M Nitrile Disposable Gloves",
-        description:
-          "Disposable nitrile gloves with excellent chemical resistance",
+        name: "EDGE 48 - 128 (4121)",
+        description: "Edge protective gloves designed for sharp object safety",
         image: "/show-products/hand-protection/hand6.jpg",
       },
       {
-        name: "Ansell PowerFlex Gloves",
-        description:
-          "Ergonomic gloves with natural rubber coating for enhanced grip",
+        name: "EDGE 48 - 305 (2142)",
+        description: "Heavy-duty gloves offering excellent abrasion resistance",
         image: "/show-products/hand-protection/hand7.jpg",
       },
       {
-        name: "3M Heat Resistant Gloves",
-        description: "Heat resistant gloves for high temperature applications",
-        image: "/show-products/hand-protection/hand8.jpg",
+        name: "EDGE 48 - 706 (4X43C)",
+        description:
+          "Innovative gloves with high-performance protection features",
+        image: "/show-products/hand-protection/hand8.jpeg",
+      },
+      {
+        name: "EDGE 48 - 205",
+        description:
+          "Reliable gloves for industrial safety with enhanced comfort",
+        image: "/show-products/hand-protection/hand9.jpg",
+      },
+      {
+        name: "EDGE 48 - 701 (4342)",
+        description: "High-quality gloves combining safety and flexibility",
+        image: "/show-products/hand-protection/hand10.jpg",
+      },
+      {
+        name: "EDGE 48 - 216 (Heavy Duty Welding Glove)",
+        description: "Welding gloves designed for heat and flame resistance",
+        image: "/show-products/hand-protection/hand11.jpg",
+      },
+      {
+        name: "HyFlex 11 - 840 (4231)",
+        description:
+          "Ergonomic gloves designed to provide flexibility and protection",
+        image: "/show-products/hand-protection/hand12.jpeg",
       },
     ],
   },
@@ -260,59 +263,168 @@ const productsData = {
     headerImage: "/category-headers/foot.png",
     products: [
       {
-        name: "Safety Jogger BESTRUN S3",
+        name: "Safety Jogger X2000 S3",
         description:
-          "Athletic safety shoes with steel toe protection and slip resistance",
-        image: "/show-products/foot-protection/foot1.png",
-      },
-      {
-        name: "Safety Jogger TURBO S1P",
-        description: "Lightweight safety shoes with puncture resistant sole",
-        image: "/show-products/foot-protection/foot10.png",
-      },
-      {
-        name: "Safety Jogger ARCTIC S3",
-        description: "Insulated safety boots for cold weather conditions",
-        image: "/show-products/foot-protection/foot11.jpg",
-      },
-      {
-        name: "Safety Jogger VOLCANO S3",
-        description: "Heat resistant safety boots for hot work environments",
-        image: "/show-products/foot-protection/foot12.jpg",
-      },
-      {
-        name: "3M DBI-SALA Safety Boots",
-        description:
-          "Professional safety boots with advanced protection features",
-        image: "/show-products/foot-protection/foot13.png",
-      },
-      {
-        name: "MSA Safety Shoes STEEL TOE",
-        description:
-          "Heavy-duty steel toe safety shoes for industrial applications",
-        image: "/show-products/foot-protection/foot14.png",
-      },
-      {
-        name: "Safety Jogger MANAGER S3",
-        description:
-          "Executive style safety shoes with professional appearance",
-        image: "/show-products/foot-protection/foot15.png",
-      },
-      {
-        name: "Safety Jogger HERCULES S3",
-        description:
-          "Extra sturdy safety boots for heavy-duty work environments",
+          "Safety shoes with steel toe and slip-resistant soles for protection",
         image: "/show-products/foot-protection/foot16.jpg",
       },
       {
-        name: "Safety Jogger CLIMBER S3",
-        description: "High-ankle safety boots with superior ankle protection",
+        name: "Safety Jogger X2020 S3",
+        description:
+          "Lightweight and durable safety shoes for industrial environments",
         image: "/show-products/foot-protection/foot17.jpg",
       },
       {
-        name: "Safety Jogger RANGER S3",
-        description: "Outdoor safety boots with waterproof protection",
-        image: "/show-products/foot-protection/foot18.png",
+        name: "Safety Jogger HERCULES S5 FO",
+        description:
+          "Comfortable and sturdy safety boots designed for heavy-duty tasks",
+        image: "/show-products/foot-protection/foot19.jpeg",
+      },
+      {
+        name: "Safety Jogger Bestboy S3",
+        description:
+          "Compact and reliable safety shoes offering impact protection",
+        image: "/show-products/foot-protection/foot20.jpeg",
+      },
+      {
+        name: "Safety Jogger Bestrun S3",
+        description:
+          "Athletic-style safety shoes with excellent protective features",
+        image: "/show-products/foot-protection/foot21.png",
+      },
+      {
+        name: "MODULO S3S MID TLS",
+        description:
+          "Mid-cut safety shoes equipped with TLS slip-resistant sole",
+        image: "/show-products/foot-protection/foot22.png",
+      },
+      {
+        name: "MODULO S3S LOW TLS",
+        description:
+          "Low-cut safety shoes with TLS technology for stable footing",
+        image: "/show-products/foot-protection/foot23.png",
+      },
+      {
+        name: "MODULO S3S MID",
+        description: "Mid cut safety shoes designed for comfort and protection",
+        image: "/show-products/foot-protection/foot24.png",
+      },
+      {
+        name: "MODULO S3S LOW",
+        description: "Low cut safety shoes engineered for dexterity and safety",
+        image: "/show-products/foot-protection/foot25.png",
+      },
+      {
+        name: "MODULO ARMOR S3S LOW",
+        description:
+          "Armored low cut safety shoes offering enhanced impact resistance",
+        image: "/show-products/foot-protection/foot26.jpg",
+      },
+      {
+        name: "MODULO ARMOR S3S MID",
+        description:
+          "Armored mid cut safety shoes combining strength and comfort",
+        image: "/show-products/foot-protection/foot27.jpg",
+      },
+      {
+        name: "MODULO LE S3S LOW TG",
+        description:
+          "Low cut safety shoes with TPU toe guards for extra protection",
+        image: "/show-products/foot-protection/foot28.jpg",
+      },
+      {
+        name: "MODULO LE S3S MID TG",
+        description:
+          "Mid cut safety shoes featuring TPU toe guards for durability",
+        image: "/show-products/foot-protection/foot29.png",
+      },
+      {
+        name: "X430 S3",
+        description:
+          "Safety shoes with rugged design and high protection standards",
+        image: "/show-products/foot-protection/foot30.jpg",
+      },
+      {
+        name: "ULTIMA S3",
+        description:
+          "Comfortable safety shoes designed for wide industrial use",
+        image: "/show-products/foot-protection/foot31.png",
+      },
+      {
+        name: "ALTAR S3 HIGH",
+        description: "High cut safety shoes offering strong ankle support",
+        image: "/show-products/foot-protection/foot32.png",
+      },
+      {
+        name: "ALTAR S3 MID",
+        description:
+          "Mid cut safety shoes with excellent cushioning and protection",
+        image: "/show-products/foot-protection/foot33.png",
+      },
+      {
+        name: "BASALT S7S",
+        description:
+          "Heavy-duty safety shoes designed for extreme working conditions",
+        image: "/show-products/foot-protection/foot34.png",
+      },
+      {
+        name: "X330 S3",
+        description:
+          "Reliable safety shoes providing balance of comfort and protection",
+        image: "/show-products/foot-protection/foot35.png",
+      },
+      {
+        name: "HEKLA S3S MID",
+        description:
+          "Mid cut safety shoes engineered for ergonomic fit and security",
+        image: "/show-products/foot-protection/foot36.png",
+      },
+      {
+        name: "JUMPER-EH SB",
+        description:
+          "Electrical hazard rated safety shoes with slip resistance",
+        image: "/show-products/foot-protection/foot37.png",
+      },
+      {
+        name: "X430-EH SB",
+        description:
+          "Electrical hazard safety shoes with enhanced toe protection",
+        image: "/show-products/foot-protection/foot38.png",
+      },
+      {
+        name: "X330-EH SB",
+        description: "Safety shoes designed for electrical hazard environments",
+        image: "/show-products/foot-protection/foot39.png",
+      },
+      {
+        name: "PLUTO-EH SB",
+        description:
+          "Robust electrical hazard rated safety shoes with durable build",
+        image: "/show-products/foot-protection/foot40.png",
+      },
+      {
+        name: "MARS-EH SB",
+        description:
+          "Heavy-duty safety shoes with electrical hazard protection",
+        image: "/show-products/foot-protection/foot41.webp",
+      },
+      {
+        name: "DAKAR-EH SB",
+        description:
+          "Electrical hazard safety shoes designed for industrial use",
+        image: "/show-products/foot-protection/foot42.png",
+      },
+      {
+        name: "BESTBOY MF EH SB",
+        description:
+          "Multi-functional electrical hazard safety shoes for varied tasks",
+        image: "/show-products/foot-protection/foot43.png",
+      },
+      {
+        name: "BESTRUN MF EH SB",
+        description:
+          "Comfortable safety shoes with multifunctional electrical hazard rating",
+        image: "/show-products/foot-protection/foot44.png",
       },
     ],
   },
@@ -320,55 +432,55 @@ const productsData = {
     headerImage: "/category-headers/body.jpg",
     products: [
       {
-        name: "3M High Visibility Vest",
+        name: "61111 Desert/Tropical FR Coverall",
         description:
-          "High visibility safety vest with reflective stripes for enhanced visibility",
+          "Flame-resistant coverall designed for hot, tropical work environments",
         image: "/show-products/body-protection/body1.webp",
       },
       {
-        name: "3M Chemical Protective Suit",
+        name: "61640 Desert Tropical Non-FR Coverall",
         description:
-          "Full body chemical protection suit for hazardous material handling",
+          "Lightweight coverall suitable for desert conditions without flame resistance",
         image: "/show-products/body-protection/body2.jpg",
       },
       {
-        name: "MSA Fire Resistant Coveralls",
-        description: "Flame resistant coveralls for fire hazard protection",
+        name: "61615 Desert Tropical FR Coverall",
+        description:
+          "Flame resistant coverall combining comfort and protection in tropical climates",
         image: "/show-products/body-protection/body3.jpeg",
       },
       {
-        name: "3M Disposable Coveralls",
+        name: "66411 FR Plain Front Trousers",
         description:
-          "Lightweight disposable coveralls for contamination protection",
+          "Flame resistant trousers with plain front design for safety wear",
         image: "/show-products/body-protection/body4.webp",
       },
       {
-        name: "MSA High-Vis Safety Jacket",
-        description: "Insulated high visibility jacket for cold weather work",
+        name: "66311 FR Shirt",
+        description:
+          "Flame resistant work shirt designed for industrial safety",
         image: "/show-products/body-protection/body5.jpg",
       },
       {
-        name: "3M Welding Apron",
+        name: "69007 Soft Shell Jacket",
         description:
-          "Heat resistant welding apron for metalworking applications",
+          "Soft shell jacket providing warmth and protection in cold conditions",
         image: "/show-products/body-protection/body6.png",
       },
       {
-        name: "MSA Cut Resistant Sleeves",
-        description:
-          "Arm protection sleeves with cut resistance for sharp object handling",
+        name: "69018 Soft Shell Jacket",
+        description: "Lightweight soft shell jacket with adjustable features",
         image: "/show-products/body-protection/body7.png",
       },
       {
-        name: "3M Cooling Vest",
+        name: "69006 Winter Soft Shell Jacket",
         description:
-          "Cooling vest for hot environment work with temperature regulation",
+          "Insulated soft shell jacket designed for winter weather protection",
         image: "/show-products/body-protection/body8.png",
       },
       {
-        name: "MSA Arc Flash Suit",
-        description:
-          "Complete arc flash protection suit for electrical work safety",
+        name: "69019 Backpack",
+        description: "Durable backpack suitable for carrying safety equipment",
         image: "/show-products/body-protection/body9.png",
       },
     ],
@@ -377,50 +489,22 @@ const productsData = {
     headerImage: "/category-headers/gas.jpg",
     products: [
       {
-        name: "MSA ALTAIR 4X Gas Detector",
+        name: "BW Clip Series Single-Gas Detector",
         description:
-          "Multi-gas detector with advanced sensor technology and wireless connectivity",
-        image: "/show-products/gas-protection/gas1.webp",
+          "Compact single-gas detector providing reliable gas concentration measurements",
+        image: "/show-products/gas-protection/gas1.jpeg",
       },
       {
-        name: "MSA ALTAIR 5X Gas Detector",
+        name: "BW Gasalert Max XT LL Multi Gas",
         description:
-          "Five-gas detector with color display and extended battery life",
+          "Multi-gas detector with extended battery life and rugged design",
         image: "/show-products/gas-protection/gas2.webp",
       },
       {
-        name: "BW Technologies GasAlert Quattro",
-        description: "Four-gas detector with rugged design and easy operation",
+        name: "BW MicroClip XL Serviceable Multi-Gas Detector",
+        description:
+          "Serviceable multi-gas detector with easy maintenance features",
         image: "/show-products/gas-protection/gas3.webp",
-      },
-      {
-        name: "MSA Sirius Gas Detector",
-        description:
-          "Advanced gas detection system with real-time monitoring capabilities",
-        image: "/show-products/gas-protection/gas4.webp",
-      },
-      {
-        name: "BW Technologies GasAlert Max XT II",
-        description: "Single gas detector with extended range and reliability",
-        image: "/show-products/gas-protection/gas5.webp",
-      },
-      {
-        name: "MSA LUNAR Fixed Gas Detector",
-        description:
-          "Fixed-point gas detection system for continuous area monitoring",
-        image: "/show-products/gas-protection/gas6.webp",
-      },
-      {
-        name: "BW Technologies MicroClip XL",
-        description:
-          "Compact multi-gas detector with simple operation and maintenance",
-        image: "/show-products/gas-protection/gas7.webp",
-      },
-      {
-        name: "MSA PrimaX Gas Detector",
-        description:
-          "High-performance gas detector with intelligent sensor technology",
-        image: "/show-products/gas-protection/gas8.webp",
       },
     ],
   },
