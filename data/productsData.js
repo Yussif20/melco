@@ -3,34 +3,210 @@ const productsData = {
     headerImage: "/category-headers/head.png",
     products: [
       {
+        id: "head1",
         name: "3M SecureFit Hard Hat H-700SFV-UV",
         description:
           "Professional hard hat with secure fit technology and UV protection for enhanced safety",
-        image: "/show-products/head-protection/head1.webp",
+        defaultImage: "/show-products/head-protection/head1_white.jpg",
+        hasColorVariants: true,
+        colors: [
+          {
+            name: "green",
+            displayName: "Green",
+            colorCode: "#22C55E",
+            image: "/show-products/head-protection/head1_green.jpg",
+          },
+          {
+            name: "blue",
+            displayName: "Blue",
+            colorCode: "#2563EB",
+            image: "/show-products/head-protection/head1_blue.jpg",
+          },
+          {
+            name: "yellow",
+            displayName: "Yellow",
+            colorCode: "#EAB308",
+            image: "/show-products/head-protection/head1_yellow.jpg",
+          },
+          {
+            name: "white",
+            displayName: "White",
+            colorCode: "#F8FAFC",
+            image: "/show-products/head-protection/head1_white.jpg",
+          },
+        ],
       },
       {
+        id: "head2",
         name: "3M SecureFit Hard Hat H-700SFR-UV",
         description:
           "Lightweight hard hat with reflective stripes for enhanced visibility in low light conditions",
-        image: "/show-products/head-protection/head2.jpg",
+        defaultImage: "/show-products/head-protection/head2_yellow.jpg",
+        hasColorVariants: true,
+        colors: [
+          {
+            name: "red",
+            displayName: "Red",
+            colorCode: "#DC2626",
+            image: "/show-products/head-protection/head2_red.jpg",
+          },
+          {
+            name: "blue",
+            displayName: "Blue",
+            colorCode: "#2563EB",
+            image: "/show-products/head-protection/head2_blue.jpg",
+          },
+          {
+            name: "yellow",
+            displayName: "Yellow",
+            colorCode: "#EAB308",
+            image: "/show-products/head-protection/head2_yellow.jpg",
+          },
+          {
+            name: "white",
+            displayName: "White",
+            colorCode: "#F8FAFC",
+            image: "/show-products/head-protection/head2_white.jpg",
+          },
+          {
+            name: "orange",
+            displayName: "Orange",
+            colorCode: "#EA580C",
+            image: "/show-products/head-protection/head2_orange.jpg",
+          },
+          {
+            name: "green",
+            displayName: "Green",
+            colorCode: "#22C55E",
+            image: "/show-products/head-protection/head2_green.jpg",
+          },
+        ],
       },
       {
+        id: "head3",
         name: "3M SecureFit Hard Hat H-800SFR-UV",
         description:
           "Advanced protection hard hat with superior comfort and durability for industrial applications",
-        image: "/show-products/head-protection/head3.jpg",
+        defaultImage: "/show-products/head-protection/head3_white.jpg",
+        hasColorVariants: true,
+        colors: [
+          {
+            name: "red",
+            displayName: "Red",
+            colorCode: "#DC2626",
+            image: "/show-products/head-protection/head3_red.jpg",
+          },
+          {
+            name: "blue",
+            displayName: "Blue",
+            colorCode: "#2563EB",
+            image: "/show-products/head-protection/head3_blue.jpg",
+          },
+          {
+            name: "yellow",
+            displayName: "Yellow",
+            colorCode: "#EAB308",
+            image: "/show-products/head-protection/head3_yellow.jpg",
+          },
+          {
+            name: "white",
+            displayName: "White",
+            colorCode: "#F8FAFC",
+            image: "/show-products/head-protection/head3_white.jpg",
+          },
+        ],
       },
       {
+        id: "head4",
         name: "MSA Safety Helmet - V-Gard Shell",
         description:
           "Durable safety helmet with V-Gard shell protection and excellent impact resistance",
-        image: "/show-products/head-protection/head4.jpeg",
+        defaultImage: "/show-products/head-protection/head4_blue.jpeg",
+        hasColorVariants: true,
+        colors: [
+          {
+            name: "red",
+            displayName: "Red",
+            colorCode: "#DC2626",
+            image: "/show-products/head-protection/head4_red.jpg",
+          },
+          {
+            name: "blue",
+            displayName: "Blue",
+            colorCode: "#2563EB",
+            image: "/show-products/head-protection/head4_blue.jpeg",
+          },
+          {
+            name: "yellow",
+            displayName: "Yellow",
+            colorCode: "#EAB308",
+            image: "/show-products/head-protection/head4_yellow.jpg",
+          },
+          {
+            name: "white",
+            displayName: "White",
+            colorCode: "#F8FAFC",
+            image: "/show-products/head-protection/head4_white.jpg",
+          },
+          {
+            name: "green",
+            displayName: "Green",
+            colorCode: "#22C55E",
+            image: "/show-products/head-protection/head4_green.jpg",
+          },
+          {
+            name: "orange",
+            displayName: "Orange",
+            colorCode: "#EA580C",
+            image: "/show-products/head-protection/head4_orange.jpg",
+          },
+        ],
       },
       {
+        id: "head5",
         name: "MSA Safety Helmet, V-Gard Full Brim",
         description:
           "Full brim safety helmet providing complete head protection from sun and falling objects",
-        image: "/show-products/head-protection/head5.jpeg",
+        defaultImage: "/show-products/head-protection/head5_orange.jpg",
+        hasColorVariants: true,
+        colors: [
+          {
+            name: "red",
+            displayName: "Red",
+            colorCode: "#DC2626",
+            image: "/show-products/head-protection/head5_red.jpg",
+          },
+          {
+            name: "blue",
+            displayName: "Blue",
+            colorCode: "#2563EB",
+            image: "/show-products/head-protection/head5_blue.jpg",
+          },
+          {
+            name: "yellow",
+            displayName: "Yellow",
+            colorCode: "#EAB308",
+            image: "/show-products/head-protection/head5_yellow.jpg",
+          },
+          {
+            name: "white",
+            displayName: "White",
+            colorCode: "#F8FAFC",
+            image: "/show-products/head-protection/head5_white.jpg",
+          },
+          {
+            name: "orange",
+            displayName: "Orange",
+            colorCode: "#EA580C",
+            image: "/show-products/head-protection/head5_orange.jpg",
+          },
+          {
+            name: "green",
+            displayName: "Green",
+            colorCode: "#22C55E",
+            image: "/show-products/head-protection/head5_green.jpg",
+          },
+        ],
       },
     ],
   },

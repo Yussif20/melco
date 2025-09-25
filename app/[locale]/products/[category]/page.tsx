@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import productsData from "@/data/productsData";
-import CartButton from "@/components/Cart/CartButton";
+import ProductCard from "@/components/ProductCard";
+import { Product, ProductColor } from "@/types/product";
 
 interface CategoryPageProps {
   params: {
@@ -106,87 +107,38 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {categoryData.products.map((product, index) => {
-              // Create unique product ID
-              const productId = `${category}-${index}`;
-              const productData = {
-                id: productId,
-                name: product.name,
-                category: categoryTitle,
-                image: product.image,
-                description: product.description,
+              // Handle both old and new product structures
+              type LegacyProduct = {
+                name: string;
+                description: string;
+                image?: string;
+                id?: string;
+                defaultImage?: string;
+                hasColorVariants?: boolean;
+                colors?: ProductColor[];
+              };
+
+              const legacyProduct = product as LegacyProduct;
+
+              const productWithId: Product = {
+                id: legacyProduct.id || `${category}-${index}`,
+                name: legacyProduct.name,
+                description: legacyProduct.description,
+                defaultImage:
+                  legacyProduct.defaultImage || legacyProduct.image || "",
+                hasColorVariants: legacyProduct.hasColorVariants || false,
+                colors: legacyProduct.colors,
               };
 
               return (
-                <div
-                  key={index}
-                  className="bg-white/70 backdrop-blur-sm dark:bg-gray-800/70 rounded-3xl shadow-xl border border-white/20 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
-                >
-                  <Link
-                    href={`/${locale}/products/${category}/${encodeURIComponent(
-                      product.name
-                    )}`}
-                    className="block"
-                  >
-                    <div className="relative w-full aspect-[4/3] bg-gray-50 flex items-center justify-center p-4 border-b border-gray-100 dark:border-gray-700 group-hover:-translate-y-2 transition-transform duration-300">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-contain transition-transform duration-300"
-                        style={{ position: "absolute" }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                    </div>
-                  </Link>
-
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex-grow">
-                      <Link
-                        href={`/${locale}/products/${category}/${encodeURIComponent(
-                          product.name
-                        )}`}
-                      >
-                        <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-[#1F2937] dark:group-hover:text-blue-400 transition-colors">
-                          {product.name}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3 mb-4">
-                          {product.description}
-                        </p>
-                      </Link>
-                    </div>
-
-                    {/* Cart Button and View Details - Always at bottom */}
-                    <div className="flex flex-col gap-3 mt-auto">
-                      <CartButton
-                        product={productData}
-                        size="sm"
-                        variant="primary"
-                        className="w-full"
-                      />
-                      <Link
-                        href={`/${locale}/products/${category}/${encodeURIComponent(
-                          product.name
-                        )}`}
-                        className="flex items-center justify-center text-[#1F2937] dark:text-blue-400 font-semibold hover:gap-2 transition-all duration-300 text-sm"
-                      >
-                        <span>{t("viewDetails")}</span>
-                        <svg
-                          className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                          />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard
+                  key={productWithId.id}
+                  product={productWithId}
+                  category={category}
+                  categoryTitle={categoryTitle}
+                  locale={locale}
+                  viewDetailsText={t("viewDetails")}
+                />
               );
             })}
           </div>
