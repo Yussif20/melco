@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,15 +7,15 @@ import ProductCard from "@/components/ProductCard";
 import { Product, ProductColor } from "@/types/product";
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     category: string;
     locale: string;
-  };
+  }>;
 }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const t = useTranslations("Products");
-  const { category, locale } = params;
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const t = await getTranslations("Products");
+  const { category, locale } = await params;
 
   // Check if category exists
   if (!productsData[category as keyof typeof productsData]) {
