@@ -5,13 +5,14 @@ import { notFound } from "next/navigation";
 import productsData from "@/data/productsData";
 import ContactForm from "@/components/ContactForm";
 import CartButton from "@/components/Cart/CartButton";
+import { ProductColor } from "@/types/product";
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     category: string;
     productName: string;
     locale: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -35,6 +36,24 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
+
+  // Helper function to get the product image
+  type LegacyProduct = {
+    name: string;
+    description: string;
+    image?: string;
+    id?: string;
+    defaultImage?: string;
+    hasColorVariants?: boolean;
+    colors?: ProductColor[];
+  };
+
+  const getProductImage = (product: LegacyProduct): string => {
+    return product.defaultImage || product.image || "";
+  };
+
+  const legacyProduct = product as LegacyProduct;
+  const productImage = getProductImage(legacyProduct);
 
   // Generate unique product ID
   const productIndex = categoryData.products.findIndex(
@@ -98,7 +117,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="space-y-6">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800">
                 <Image
-                  src={product.image}
+                  src={productImage}
                   alt={product.name}
                   fill
                   className="object-cover"
@@ -154,7 +173,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     id: productId,
                     name: product.name,
                     category: categoryTitles[category] || category,
-                    image: product.image,
+                    image: productImage,
                     description: product.description,
                   }}
                   size="lg"
