@@ -16,7 +16,7 @@ export default function LocationSection() {
           {/* Map */}
           <div className="relative h-96 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-700">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875840.1796856397!2d41.82148359999999!3d24.066157699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e7b33fe7952a41%3A0x5960504bc21ab69b!2sSaudi%20Arabia!5e0!3m2!1sen!2s!4v1703158800000!5m2!1sen!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.344651120651!2d50.1378779!3d26.4123523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fb0068995fc3%3A0x83e2590e8fa8601a!2sMELCO-%20MASTER%20EQUIPMENT!5e0!3m2!1sar!2ssa!4v1760555904702!5m2!1sar!2ssa"
               width="100%"
               height="100%"
               style={{ border: 0 }}
