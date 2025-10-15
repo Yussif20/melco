@@ -15,7 +15,7 @@ export default function PartnerBrandsSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
           {/* 3M */}
-          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-400/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-500/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
+          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-200/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-300/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
             <Image
               src="/brands/3m.png"
               alt="3M"
@@ -27,7 +27,7 @@ export default function PartnerBrandsSection() {
           </div>
 
           {/* Safety Jogger */}
-          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-400/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-500/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
+          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-200/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-300/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
             <Image
               src="/brands/safety-jogger.png"
               alt="Safety Jogger"
@@ -39,7 +39,7 @@ export default function PartnerBrandsSection() {
           </div>
 
           {/* MSA */}
-          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-400/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-500/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
+          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-200/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-300/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
             <Image
               src="/brands/msa.png"
               alt="MSA"
@@ -51,7 +51,7 @@ export default function PartnerBrandsSection() {
           </div>
 
           {/* BW Technologies */}
-          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-400/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-500/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
+          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-200/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-300/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20">
             <Image
               src="/brands/sensia.png"
               alt="Senia"
@@ -63,7 +63,7 @@ export default function PartnerBrandsSection() {
           </div>
 
           {/* Ansell */}
-          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-400/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-500/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20 md:col-span-3 lg:col-span-1">
+          <div className="group flex items-center justify-center p-8 bg-white dark:bg-gray-200/95 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-300/95 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-xl border border-gray-150 dark:border-gray-300/20 md:col-span-3 lg:col-span-1">
             <Image
               src="/brands/ansell.svg"
               alt="Ansell"

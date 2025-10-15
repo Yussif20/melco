@@ -301,7 +301,30 @@
   "News": {
     "title": "News & Updates",
     "description": "Stay informed with the latest safety industry news, company updates, and insights from MELCO",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "comingSoon": {
+      "heading": "Coming Soon",
+      "description": "We're working hard to bring you the latest news and updates about our products and services. Stay tuned for exciting announcements!",
+      "features": {
+        "industryNews": {
+          "title": "Industry News",
+          "description": "Latest updates from the safety equipment industry and regulatory changes."
+        },
+        "productUpdates": {
+          "title": "Product Updates",
+          "description": "New product launches, certifications, and feature announcements."
+        },
+        "companyEvents": {
+          "title": "Company Events",
+          "description": "Trade shows, training sessions, and community engagement activities."
+        }
+      },
+      "callToAction": {
+        "title": "Stay Connected",
+        "description": "Want to be the first to know when we launch our news section? Get in touch with us for updates.",
+        "buttonText": "Contact Us"
+      }
+    }
   },
   "Common": {
     "home": "Home",
