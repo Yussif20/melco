@@ -97,7 +97,7 @@ export async function generateMetadata({
       siteName: "MELCO - Master Equipment",
       images: [
         {
-          url: `og-image.png`,
+          url: `logo.png`,
           width: 1200,
           height: 630,
           alt:
@@ -111,7 +111,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`/og-image.png`],
+      images: [`/logo.png`],
     },
     robots: {
       index: true,
