@@ -29,15 +29,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://melco-ltd.com";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.masterequiment.com";
   const title =
     locale === "ar"
-      ? "ميلكو - معدات السلامة والحماية | المملكة العربية السعودية"
-      : "MELCO - Safety Equipment & Protection | Saudi Arabia";
+      ? "ميلكو - مدفوعون بالجودة، محددون بالثقة"
+      : "MELCO - Driven by Quality, Defined by Trust";
   const description =
     locale === "ar"
-      ? "الشركة الرائدة في توفير معدات السلامة في المملكة العربية السعودية. نوفر مجموعة شاملة من معدات الحماية الشخصية عالية الجودة لجميع الصناعات."
-      : "Leading provider of safety equipment in Saudi Arabia. We offer a comprehensive range of high-quality personal protective equipment for all industries.";
+      ? "مدفوعون بالجودة، محددون بالثقة. نوفر مجموعة شاملة من معدات السلامة والحماية الشخصية عالية الجودة لجميع الصناعات في المملكة العربية السعودية."
+      : "Driven by Quality, Defined by Trust. We offer a comprehensive range of high-quality safety equipment and personal protective equipment for all industries in Saudi Arabia.";
 
   return {
     title: {
@@ -54,6 +55,9 @@ export async function generateMetadata({
             "المملكة العربية السعودية",
             "ميلكو",
             "الدمام",
+            "معدات الوقاية",
+            "الجودة",
+            "الثقة",
           ]
         : [
             "safety equipment",
@@ -63,10 +67,14 @@ export async function generateMetadata({
             "Saudi Arabia",
             "MELCO",
             "Dammam",
+            "quality",
+            "trust",
+            "protection equipment",
           ],
     authors: [{ name: "MELCO" }],
     creator: "MELCO",
     publisher: "MELCO",
+    applicationName: "MELCO - Master Equipment",
     formatDetection: {
       email: false,
       address: false,
@@ -89,13 +97,13 @@ export async function generateMetadata({
       siteName: "MELCO - Master Equipment",
       images: [
         {
-          url: `${siteUrl}/og-image.jpg`,
+          url: `${siteUrl}/og-image.png`,
           width: 1200,
           height: 630,
           alt:
             locale === "ar"
-              ? "ميلكو - معدات السلامة"
-              : "MELCO - Safety Equipment",
+              ? "ميلكو - مدفوعون بالجودة، محددون بالثقة"
+              : "MELCO - Driven by Quality, Defined by Trust",
         },
       ],
     },
@@ -103,9 +111,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`${siteUrl}/og-image.jpg`],
-      creator: "@melcosa",
-      site: "@melcosa",
+      images: [`${siteUrl}/og-image.png`],
     },
     robots: {
       index: true,
@@ -119,9 +125,15 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: "/favicon.ico",
-      shortcut: "/favicon.ico",
-      apple: "/apple-touch-icon.png",
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/logo.png", type: "image/png" },
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     manifest: "/site.webmanifest",
   };

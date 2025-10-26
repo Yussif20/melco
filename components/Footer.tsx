@@ -76,7 +76,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">{footer("contact")}</h3>
             <div className="space-y-3">
-              <div className="flex items-center gap-2 justify-center md:justify-start">
+              <div className=" flex items-center gap-2 justify-center md:justify-start">
                 <svg
                   className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0"
                   fill="none"
