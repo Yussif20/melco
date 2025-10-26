@@ -8,10 +8,74 @@
   [dir="rtl"] {
     font-family: var(--font-tajawal, sans-serif);
   }
+
+  /* Custom Scrollbar Styles */
+  /* For Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #64748b 0%, #475569 100%);
+    border-radius: 10px;
+    border: 2px solid #f1f5f9;
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #475569 0%, #334155 100%);
+    border-color: #e2e8f0;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+    border-color: #1f2937;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%);
+    border-color: #374151;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #64748b #f1f5f9;
+  }
+
+  .dark * {
+    scrollbar-color: #94a3b8 #1f2937;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
+
 body {
   overflow-x: hidden;
 }
+
 button,
 a,
 select {
