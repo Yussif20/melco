@@ -331,10 +331,24 @@
     "news": "News",
     "backToNews": "Back to News",
     "readMore": "Read More",
+    "comingSoon": "Coming Soon",
     "selectLanguage": "Select language",
     "languages": {
       "english": "English",
       "arabic": "Arabic"
+    },
+    "comingSoonFeatures": {
+      "comprehensive": "Comprehensive",
+      "comprehensiveDesc": "Detailed and thorough documentation covering all aspects.",
+      "secure": "Secure & Private",
+      "secureDesc": "Your information is protected with the highest security standards.",
+      "transparent": "Clear & Transparent",
+      "transparentDesc": "Easy to understand language with no hidden clauses."
+    },
+    "comingSoonCTA": {
+      "title": "Have Questions?",
+      "description": "If you have any questions or need clarification, feel free to contact us.",
+      "button": "Contact Us"
     },
     "settings": {
       "title": "Settings",
@@ -535,5 +549,13 @@
     "clearCart": "Clear Cart",
     "close": "Close",
     "optional": "optional"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "description": "We are working on our comprehensive privacy policy to ensure transparency about how we collect, use, and protect your personal information. Your privacy and data security are our top priorities."
+  },
+  "Terms": {
+    "title": "Terms & Conditions",
+    "description": "We are preparing detailed terms and conditions that will clearly outline the rules, guidelines, and policies for using our services. These terms will ensure a fair and transparent relationship with all our clients."
   }
 }

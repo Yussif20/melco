@@ -134,7 +134,7 @@ export default function AboutPage() {
                   <Image
                     width={64}
                     height={64}
-                    src={`/values/${key}.png`}
+                    src={`/values/${key}.svg`}
                     alt={t(`values.list.${key}.title`)}
                     className="w-8 h-8 mb-4 object-contain"
                     loading="lazy"
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   <Image
                     width={64}
                     height={64}
-                    src={`/values/${key}.png`}
+                    src={`/values/${key}.svg`}
                     alt={t(`values.list.${key}.title`)}
                     className="w-8 h-8 mb-4 object-contain"
                     loading="lazy"
