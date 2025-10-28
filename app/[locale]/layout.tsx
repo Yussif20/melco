@@ -33,11 +33,11 @@ export async function generateMetadata({
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.masterequiment.com";
   const title =
     locale === "ar"
-      ? "ميلكو - مدفوعون بالجودة، محددون بالثقة"
+      ? "ميلكو - ملتزمون بالجودة، معروفون بالثقة"
       : "MELCO - Driven by Quality, Defined by Trust";
   const description =
     locale === "ar"
-      ? "مدفوعون بالجودة، محددون بالثقة. نوفر مجموعة شاملة من معدات السلامة والحماية الشخصية عالية الجودة لجميع الصناعات في المملكة العربية السعودية."
+      ? "ملتزمون بالجودة، معروفون بالثقة. نوفر مجموعة شاملة من معدات السلامة والحماية الشخصية عالية الجودة لجميع الصناعات في المملكة العربية السعودية."
       : "Driven by Quality, Defined by Trust. We offer a comprehensive range of high-quality safety equipment and personal protective equipment for all industries in Saudi Arabia.";
 
   return {
@@ -102,7 +102,7 @@ export async function generateMetadata({
           height: 630,
           alt:
             locale === "ar"
-              ? "ميلكو - مدفوعون بالجودة، محددون بالثقة"
+              ? "ميلكو - ملتزمون بالجودة، معروفون بالثقة"
               : "MELCO - Driven by Quality, Defined by Trust",
         },
       ],
