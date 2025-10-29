@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { sendCareerApplicationEmail } from "@/lib/emailjs";
 
@@ -22,7 +22,6 @@ interface FormErrors {
 export default function CareerApplicationForm() {
   const t = useTranslations("Careers.applicationForm");
   const locale = useLocale();
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -35,7 +34,6 @@ export default function CareerApplicationForm() {
     coverLetter: "",
   });
 
-  const [cvFile, setCvFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
@@ -58,21 +56,6 @@ export default function CareerApplicationForm() {
 
     if (!formData.phone.trim()) {
       newErrors.phone = t("errors.phoneRequired");
-    }
-
-    if (!cvFile) {
-      newErrors.cvFile = t("errors.cvRequired");
-    } else if (cvFile.size > 5 * 1024 * 1024) {
-      // 5MB limit
-      newErrors.cvFile = t("errors.cvTooLarge");
-    } else if (
-      ![
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      ].includes(cvFile.type)
-    ) {
-      newErrors.cvFile = t("errors.cvInvalidFormat");
     }
 
     setErrors(newErrors);
@@ -98,19 +81,6 @@ export default function CareerApplicationForm() {
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setCvFile(file);
-      if (errors.cvFile) {
-        setErrors((prev) => ({
-          ...prev,
-          cvFile: "",
-        }));
-      }
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -122,11 +92,7 @@ export default function CareerApplicationForm() {
     setSubmitStatus("idle");
 
     try {
-      const result = await sendCareerApplicationEmail(
-        formData,
-        cvFile!,
-        locale
-      );
+      const result = await sendCareerApplicationEmail(formData, locale);
 
       if (result.success) {
         setSubmitStatus("success");
@@ -142,10 +108,6 @@ export default function CareerApplicationForm() {
           linkedin: "",
           coverLetter: "",
         });
-        setCvFile(null);
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
-        }
       } else {
         setSubmitStatus("error");
         setSubmitMessage(result.message || t("error"));
@@ -412,60 +374,46 @@ export default function CareerApplicationForm() {
             </div>
           </div>
 
-          {/* CV Upload */}
-          <div>
-            <label
-              htmlFor="cvFile"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-            >
-              {t("uploadCV")} <span className="text-red-500">*</span>
-            </label>
-            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg hover:border-blue-500 transition-colors duration-200">
-              <div className="space-y-1 text-center">
-                <svg
-                  className="mx-auto h-12 w-12 text-gray-400"
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 48 48"
-                >
-                  <path
-                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <div className="flex text-sm text-gray-600 dark:text-gray-400">
-                  <label
-                    htmlFor="cvFile"
-                    className="relative cursor-pointer bg-white dark:bg-gray-800 rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
-                  >
-                    <span>{t("uploadFile")}</span>
-                    <input
-                      ref={fileInputRef}
-                      id="cvFile"
-                      name="cvFile"
-                      type="file"
-                      className="sr-only"
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleFileChange}
-                    />
-                  </label>
-                  <p className="pl-1">{t("orDragDrop")}</p>
-                </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  {t("cvFormats")}
-                </p>
-                {cvFile && (
-                  <p className="text-sm text-green-600 dark:text-green-400 mt-2">
-                    ✓ {cvFile.name}
+          {/* CV/Resume Instructions */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-xl p-6">
+            <div className="flex items-start">
+              <svg
+                className="w-6 h-6 text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              <div className="ml-4">
+                <h4 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                  {t("cvInstructions.title")}
+                </h4>
+                <div className="space-y-2 text-blue-800 dark:text-blue-200">
+                  <p className="flex items-start">
+                    <span className="font-bold mr-2">1.</span>
+                    <span>{t("cvInstructions.step1")}</span>
                   </p>
-                )}
+                  <p className="flex items-start">
+                    <span className="font-bold mr-2">2.</span>
+                    <span>{t("cvInstructions.step2")}</span>
+                  </p>
+                  <p className="flex items-start">
+                    <span className="font-bold mr-2">3.</span>
+                    <span>{t("cvInstructions.step3")}</span>
+                  </p>
+                  <p className="flex items-start mt-3 text-sm">
+                    <span className="mr-2">📎</span>
+                    <span className="italic">{t("cvInstructions.note")}</span>
+                  </p>
+                </div>
               </div>
             </div>
-            {errors.cvFile && (
-              <p className="mt-1 text-sm text-red-500">{errors.cvFile}</p>
-            )}
           </div>
 
           {/* Cover Letter */}

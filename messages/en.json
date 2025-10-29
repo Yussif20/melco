@@ -449,24 +449,24 @@
       },
       "education": "Highest Education",
       "educationPlaceholder": "e.g., Bachelor's in Business Administration",
-      "uploadCV": "Upload Your CV/Resume",
-      "uploadFile": "Upload a file",
-      "orDragDrop": "or drag and drop",
-      "cvFormats": "PDF, DOC, DOCX up to 5MB",
       "coverLetter": "Cover Letter (Optional)",
       "coverLetterPlaceholder": "Tell us why you're interested in joining MELCO and what makes you a great fit for our team...",
+      "cvInstructions": {
+        "title": "📄 CV/Resume Submission Instructions",
+        "step1": "Fill out the form above with your information",
+        "step2": "Click 'Submit Application' - your email client will open with a pre-filled message",
+        "step3": "Attach your CV/Resume file (PDF, DOC, or DOCX) and click Send",
+        "note": "Supported formats: PDF, DOC, DOCX • Maximum size: 5MB"
+      },
       "submit": "Submit Application",
       "submitting": "Submitting...",
-      "success": "✅ Your application has been submitted successfully! We'll review it and get back to you soon.",
-      "error": "Failed to submit your application. Please try again.",
+      "success": "✅ Your email client will open with all your information pre-filled. Please attach your CV and click send!",
+      "error": "Failed to open email client. Please try again.",
       "errors": {
         "nameRequired": "Full name is required",
         "emailRequired": "Email is required",
         "emailInvalid": "Please enter a valid email address",
-        "phoneRequired": "Phone number is required",
-        "cvRequired": "Please upload your CV/Resume",
-        "cvTooLarge": "File size must be less than 5MB",
-        "cvInvalidFormat": "Only PDF, DOC, and DOCX files are allowed"
+        "phoneRequired": "Phone number is required"
       }
     }
   },
