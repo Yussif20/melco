@@ -15,18 +15,18 @@ export default function CartIcon() {
     <>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="relative flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        className="relative flex items-center p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         aria-label={t("cart")}
       >
         {/* Shopping Cart Icon */}
         <ShoppingCart
-          className="w-6 h-6 text-gray-700 dark:text-gray-300"
+          className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300"
           aria-hidden="true"
         />
 
         {/* Item Count Badge */}
         {cart.totalItems > 0 && (
-          <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center min-w-5">
+          <span className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 bg-blue-600 text-white text-[10px] sm:text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center min-w-[1rem] sm:min-w-5">
             {cart.totalItems > 99 ? "99+" : cart.totalItems}
           </span>
         )}

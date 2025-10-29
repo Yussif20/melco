@@ -36,13 +36,13 @@ export default function MobileNavigation() {
       {/* Hamburger Button */}
       <button
         onClick={toggleMenu}
-        className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+        className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
         aria-expanded="false"
       >
         <span className="sr-only">فتح القائمة الرئيسية</span>
         {/* Hamburger Icon */}
         <svg
-          className={`${isOpen ? "hidden" : "block"} h-6 w-6`}
+          className={`${isOpen ? "hidden" : "block"} h-5 w-5 sm:h-6 sm:w-6`}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ export default function MobileNavigation() {
         </svg>
         {/* Close Icon */}
         <svg
-          className={`${isOpen ? "block" : "hidden"} h-6 w-6`}
+          className={`${isOpen ? "block" : "hidden"} h-5 w-5 sm:h-6 sm:w-6`}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
