@@ -1,9 +1,16 @@
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
+import { newsArticles, formatArticleDate } from "@/data/newsData";
 
 export default function NewsPage() {
   const t = useTranslations("News");
-  const locale = useLocale();
+  const locale = useLocale() as "en" | "ar";
+
+  // Sort news by date (newest first)
+  const sortedNews = [...newsArticles].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
@@ -28,144 +35,100 @@ export default function NewsPage() {
         </div>
       </div>
 
-      {/* Coming Soon Section */}
-      <div className="container mx-auto px-4 py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Icon */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl">
-                <svg
-                  className="w-16 h-16 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+      {/* News Articles Grid */}
+      <div className="container mx-auto px-4 py-16">
+        {sortedNews.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sortedNews.map((article) => {
+              const content = article.translations[locale];
+              return (
+                <Link
+                  key={article.id}
+                  href={`/${locale}/news/${article.id}`}
+                  className="group"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-indigo-600/20 rounded-full blur-xl"></div>
-            </div>
+                  <article className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col">
+                    {/* Image */}
+                    <div className="relative h-56 overflow-hidden bg-gray-100 dark:bg-gray-700">
+                      <Image
+                        src={article.image}
+                        alt={content.title}
+                        fill
+                        className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 text-sm font-semibold bg-blue-600 text-white rounded-full">
+                          {content.category}
+                        </span>
+                      </div>
+
+                      {/* Featured Badge */}
+                      {article.featured && (
+                        <div className="absolute top-4 right-4">
+                          <span className="px-3 py-1 text-xs font-bold bg-yellow-400 text-gray-900 rounded-full flex items-center gap-1">
+                            <svg
+                              className="w-4 h-4"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            {locale === "ar" ? "مميز" : "Featured"}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      {/* Date */}
+                      <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                        {formatArticleDate(article.date, locale)}
+                      </div>
+
+                      {/* Title */}
+                      <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                        {content.title}
+                      </h2>
+
+                      {/* Description */}
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-1">
+                        {content.description}
+                      </p>
+
+                      {/* Read More Link */}
+                      <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold">
+                        <span>{t("readMore")}</span>
+                        <svg
+                          className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1 rtl:rotate-180"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              );
+            })}
           </div>
-
-          {/* Coming Soon Text */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            {t("comingSoon.heading")}
-          </h2>
-
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-            {t("comingSoon.description")}
-          </p>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-blue-600 dark:text-blue-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2zM8 11h8M8 15h4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                {t("comingSoon.features.industryNews.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {t("comingSoon.features.industryNews.description")}
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-green-600 dark:text-green-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                {t("comingSoon.features.productUpdates.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {t("comingSoon.features.productUpdates.description")}
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-purple-600 dark:text-purple-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                {t("comingSoon.features.companyEvents.title")}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {t("comingSoon.features.companyEvents.description")}
-              </p>
-            </div>
-          </div>
-
-          {/* Contact Call-to-Action */}
-          <div className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">
-              {t("comingSoon.callToAction.title")}
-            </h3>
-            <p className="text-blue-100 mb-6">
-              {t("comingSoon.callToAction.description")}
+        ) : (
+          <div className="text-center py-16">
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              {t("noNews")}
             </p>
-            <Link
-              href={`/${locale}/contact`}
-              className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors duration-200"
-            >
-              {t("comingSoon.callToAction.buttonText")}
-              <svg
-                className="w-5 h-5 ml-2 rtl:rotate-180"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

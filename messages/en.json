@@ -302,6 +302,7 @@
     "title": "News & Updates",
     "description": "Stay informed with the latest safety industry news, company updates, and insights from MELCO",
     "readMore": "Read More",
+    "noNews": "No news articles available at the moment. Check back soon!",
     "comingSoon": {
       "heading": "Coming Soon",
       "description": "We're working hard to bring you the latest news and updates about our products and services. Stay tuned for exciting announcements!",

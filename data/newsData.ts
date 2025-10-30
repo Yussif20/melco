@@ -34,7 +34,10 @@ export interface NewsArticle {
     };
   };
   date: string;
-  image: string;
+  image: string; // Main cover image
+  images?: string[]; // Additional gallery images (optional)
+  featured?: boolean; // Featured news (optional)
+  slug?: string; // URL-friendly slug (optional)
 }
 
 export const newsArticles: NewsArticle[] = [
@@ -42,85 +45,46 @@ export const newsArticles: NewsArticle[] = [
     id: 1,
     translations: {
       en: {
-        title: "Melco Opens New State-of-the-Art Facility",
+        title: "Strategic Partnership with Safety Jogger Works",
         description:
-          "Expanding our capacity to serve the growing safety equipment market in Saudi Arabia with a new facility featuring advanced logistics and quality control systems.",
-        category: "Company News",
+          "MELCO announces strategic supply partnership with Safety Jogger Works, a leading global brand in industrial safety footwear and PPE.",
+        category: "Partnership",
         content: {
           intro:
-            "Melco Safety Equipment has taken a significant step forward in its mission to enhance workplace safety across Saudi Arabia with the opening of its new state-of-the-art facility.",
+            "We are pleased to announce a strategic supply partnership agreement between MELCO | ميلكو and Safety Jogger Works, one of the leading global brands in industrial safety footwear and PPE.",
           details: [
-            "The new 10,000 square meter facility features advanced warehousing systems and enhanced quality control capabilities.",
-            "This expansion enables us to stock a wider range of safety equipment and respond more quickly to customer needs.",
-            "The facility includes a dedicated training center for safety equipment demonstrations and certification courses.",
-          ],
-          quote: {
-            text: "This new facility represents our commitment to providing the highest quality safety equipment and services to our customers across the Kingdom.",
-            author: "Abdullah Al-Saud",
-            position: "CEO of Melco Safety Equipment",
-          },
-        },
-      },
-      ar: {
-        title: "ملكو تفتتح منشأة جديدة متطورة",
-        description:
-          "توسيع قدرتنا على خدمة سوق معدات السلامة المتنامي في المملكة العربية السعودية من خلال منشأة جديدة تتميز بأنظمة لوجستية ومراقبة جودة متقدمة.",
-        category: "أخبار الشركة",
-        content: {
-          intro:
-            "اتخذت شركة ملكو لمعدات السلامة خطوة مهمة إلى الأمام في مهمتها لتعزيز السلامة المهنية في جميع أنحاء المملكة العربية السعودية من خلال افتتاح منشأتها الجديدة المتطورة.",
-          details: [
-            "تتميز المنشأة الجديدة البالغة مساحتها 10,000 متر مربع بأنظمة تخزين متقدمة وقدرات محسنة لمراقبة الجودة.",
-            "يتيح هذا التوسع لنا تخزين مجموعة أوسع من معدات السلامة والاستجابة بشكل أسرع لاحتياجات العملاء.",
-            "تتضمن المنشأة مركزاً تدريبياً مخصصاً لعروض معدات السلامة ودورات الشهادات.",
-          ],
-          quote: {
-            text: "تمثل هذه المنشأة الجديدة التزامنا بتقديم أعلى جودة من معدات وخدمات السلامة لعملائنا في جميع أنحاء المملكة.",
-            author: "عبدالله آل سعود",
-            position: "الرئيس التنفيذي لشركة ملكو لمعدات السلامة",
-          },
-        },
-      },
-    },
-    date: "2024-01-15",
-    image: "/news/new-facility.jpg",
-  },
-  {
-    id: 2,
-    translations: {
-      en: {
-        title: "ISO 45001:2018 Certification Achievement",
-        description:
-          "Melco demonstrates commitment to occupational health and safety with ISO 45001:2018 certification.",
-        category: "Certification",
-        content: {
-          intro:
-            "Melco Safety Equipment has successfully achieved ISO 45001:2018 certification, demonstrating our commitment to occupational health and safety management systems.",
-          details: [
-            "The certification process involved a comprehensive audit of our safety management systems.",
-            "This achievement reinforces our position as a leader in workplace safety solutions.",
-            "The certification will help us better serve our clients with enhanced safety standards.",
+            "This partnership expands our product portfolio with globally certified solutions, ensuring enhanced protection and performance for workers across vital sectors such as oil & gas, construction, and industrial operations in Saudi Arabia.",
+            "Safety Jogger Works brings decades of expertise in manufacturing high-quality safety footwear that meets international standards and certifications.",
+            "The collaboration will enable MELCO to offer a comprehensive range of safety footwear solutions tailored to the specific needs of Saudi Arabia's industrial sectors.",
+            "Both companies are committed to delivering innovative safety solutions that prioritize worker protection and operational efficiency.",
           ],
         },
       },
       ar: {
-        title: "الحصول على شهادة الأيزو 45001:2018",
+        title: "شراكة استراتيجية مع Safety Jogger Works",
         description:
-          "ملكو تثبت التزامها بالصحة والسلامة المهنية بالحصول على شهادة الأيزو 45001:2018.",
-        category: "شهادات",
+          "ميلكو تعلن عن شراكة توريد استراتيجية مع Safety Jogger Works، إحدى العلامات العالمية الرائدة في أحذية ومعدات السلامة المهنية.",
+        category: "شراكات",
         content: {
           intro:
-            "نجحت شركة ملكو لمعدات السلامة في الحصول على شهادة الأيزو 45001:2018، مما يؤكد التزامنا بأنظمة إدارة الصحة والسلامة المهنية.",
+            "يسعدنا الإعلان عن إتفاقية شراكة توريد استراتيجية بين شركة MELCO | ميلكو و Safety Jogger Works، إحدى العلامات العالمية المتميزة في أحذية ومعدات السلامة المهنية.",
           details: [
-            "تضمنت عملية الحصول على الشهادة تدقيقاً شاملاً لأنظمة إدارة السلامة لدينا.",
-            "يعزز هذا الإنجاز مكانتنا كشركة رائدة في حلول السلامة المهنية.",
-            "ستساعدنا هذه الشهادة على خدمة عملائنا بشكل أفضل من خلال معايير سلامة معززة.",
+            "تهدف هذه الشراكة إلى توسيع مجموعة منتجاتنا المعتمدة دوليًا، ودعم قطاعات النفط والغاز والإنشاءات والصناعات المختلفة بحلول سلامة موثوقة تعزز أداء القوى العاملة وتحميها.",
+            "تقدم Safety Jogger Works عقوداً من الخبرة في تصنيع أحذية السلامة عالية الجودة التي تلبي المعايير والشهادات الدولية.",
+            "سيمكن هذا التعاون ميلكو من تقديم مجموعة شاملة من حلول أحذية السلامة المصممة خصيصاً لتلبية احتياجات القطاعات الصناعية في المملكة العربية السعودية.",
+            "تلتزم كلتا الشركتين بتقديم حلول سلامة مبتكرة تعطي الأولوية لحماية العمال والكفاءة التشغيلية.",
           ],
         },
       },
     },
-    date: "2023-12-10",
-    image: "/news/iso-certification.jpg",
+    date: "2025-10-29",
+    image: "/news/safety-jogger/safety-jogger-partnership-2.jpeg",
+    images: [
+      "/news/safety-jogger/safety-jogger-partnership-1.jpeg",
+      "/news/safety-jogger/safety-jogger-partnership-3.jpeg",
+    ],
+    featured: true,
+    slug: "strategic-partnership-safety-jogger-works",
   },
 ];
 
