@@ -230,17 +230,12 @@ export default function ContactPage() {
                     <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
                       {t("info.phone.title")}
                     </h3>
+
                     <a
-                      href={`tel:${t("info.phone.value")}`}
-                      className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline block"
-                    >
-                      +966 55 365 3329
-                    </a>
-                    <a
-                      href="tel:+966535852438"
+                      href="tel:+966506706962"
                       className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline block mt-1"
                     >
-                      +966 53 585 2438
+                      +966 50 670 6962
                     </a>
                   </div>
                 </div>

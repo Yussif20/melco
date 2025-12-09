@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/components/Cart/CartProvider";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "../globals.css";
 
 // English font - Inter
@@ -160,6 +161,7 @@ export default async function RootLayout({
               <Header />
               <main className="flex-grow">{children}</main>
               <Footer />
+              <WhatsAppButton locale={locale} />
             </div>
           </CartProvider>
         </NextIntlClientProvider>

@@ -178,7 +178,7 @@ export default function ProductsPage() {
                 {t("needHelpDescription")}
               </p>
               <a
-                href="https://wa.me/966535852438"
+                href="https://wa.me/966506706962"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"

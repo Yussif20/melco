@@ -370,8 +370,8 @@ NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
 
 ## 📞 Contact Information
 
-- **WhatsApp**: [+966 53 585 2438](https://wa.me/966535852438)
-- **Phone**: [+966 55 365 3329](tel:+966553653329)
+- **WhatsApp**: [+966 50 670 6962](https://wa.me/966506706962)
+- **Phone**: [+966 50 670 6962](tel:+966506706962)
 - **Email**: [Info@melco-ltd.com](mailto:Info@melco-ltd.com)
 - **Location**: Aldammam, Eastern Province, Saudi Arabia
 - **LinkedIn**: [MELCO Company Profile](https://www.linkedin.com/company/melco-ksa)
@@ -549,7 +549,7 @@ Closes #123
 For technical support or questions:
 
 - **Email**: [Info@melco-ltd.com](mailto:Info@melco-ltd.com)
-- **WhatsApp**: [+966 53 585 2438](https://wa.me/966535852438)
+- **WhatsApp**: [+966 50 670 6962](https://wa.me/966506706962)
 
 ---
 
