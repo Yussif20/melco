@@ -87,6 +87,7 @@ export default function LocationSection() {
                   <a
                     href={`tel:${t("location.contact.phone")}`}
                     className="text-gray-600 dark:text-gray-300 hover:text-[#1F2937] dark:hover:text-white transition-colors duration-200 block"
+                    dir="ltr"
                   >
                     {t("location.contact.phone")}
                   </a>

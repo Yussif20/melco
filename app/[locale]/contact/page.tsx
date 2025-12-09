@@ -234,6 +234,7 @@ export default function ContactPage() {
                     <a
                       href="tel:+966506706962"
                       className="text-[#1F2937] dark:text-blue-400 font-semibold hover:underline block mt-1"
+                      dir="ltr"
                     >
                       +966 50 670 6962
                     </a>
