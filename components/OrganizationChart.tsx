@@ -2,7 +2,13 @@
 
 import { useTranslations, useLocale } from "next-intl";
 
-type Variant = "primary" | "secondary" | "tertiary" | "committee" | "default" | "leaf";
+type Variant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "committee"
+  | "default"
+  | "leaf";
 
 function OrgBox({
   titleKey,
@@ -31,8 +37,7 @@ function OrgBox({
       "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600 shadow-md",
     default:
       "bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-100 border-gray-200 dark:border-gray-700 shadow-md",
-    leaf:
-      "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 shadow-sm",
+    leaf: "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 shadow-sm",
   };
 
   const sizeClasses: Record<Variant, string> = {
@@ -47,7 +52,9 @@ function OrgBox({
   const textKey = locale === "ar" ? `${titleKey}.ar` : `${titleKey}.en`;
 
   return (
-    <div className={`${baseStyles} ${variants[variant]} ${sizeClasses[variant]} ${className}`}>
+    <div
+      className={`${baseStyles} ${variants[variant]} ${sizeClasses[variant]} ${className}`}
+    >
       <div className="font-bold text-xs sm:text-sm lg:text-base leading-tight">
         {t(textKey)}
       </div>
@@ -55,15 +62,27 @@ function OrgBox({
   );
 }
 
-function Connector({ type, className = "" }: { type: "vertical" | "horizontal" | "t-down" | "corner-left" | "corner-right"; className?: string }) {
+function Connector({
+  type,
+  className = "",
+}: {
+  type: "vertical" | "horizontal" | "t-down" | "corner-left" | "corner-right";
+  className?: string;
+}) {
   const lineColor = "border-gray-300 dark:border-gray-600";
 
   if (type === "vertical") {
-    return <div className={`w-0.5 h-6 sm:h-8 bg-gray-300 dark:bg-gray-600 mx-auto ${className}`} />;
+    return (
+      <div
+        className={`w-0.5 h-6 sm:h-8 bg-gray-300 dark:bg-gray-600 mx-auto ${className}`}
+      />
+    );
   }
 
   if (type === "horizontal") {
-    return <div className={`h-0.5 bg-gray-300 dark:bg-gray-600 ${className}`} />;
+    return (
+      <div className={`h-0.5 bg-gray-300 dark:bg-gray-600 ${className}`} />
+    );
   }
 
   if (type === "t-down") {
@@ -78,7 +97,9 @@ function Connector({ type, className = "" }: { type: "vertical" | "horizontal" |
   if (type === "corner-left") {
     return (
       <div className={`relative w-8 h-8 ${className}`}>
-        <div className={`absolute top-0 right-0 w-1/2 h-1/2 border-b-2 border-l-2 ${lineColor} rounded-bl-lg`} />
+        <div
+          className={`absolute top-0 right-0 w-1/2 h-1/2 border-b-2 border-l-2 ${lineColor} rounded-bl-lg`}
+        />
       </div>
     );
   }
@@ -86,7 +107,9 @@ function Connector({ type, className = "" }: { type: "vertical" | "horizontal" |
   if (type === "corner-right") {
     return (
       <div className={`relative w-8 h-8 ${className}`}>
-        <div className={`absolute top-0 left-0 w-1/2 h-1/2 border-b-2 border-r-2 ${lineColor} rounded-br-lg`} />
+        <div
+          className={`absolute top-0 left-0 w-1/2 h-1/2 border-b-2 border-r-2 ${lineColor} rounded-br-lg`}
+        />
       </div>
     );
   }
@@ -111,7 +134,13 @@ function DepartmentColumn({
       <Connector type="vertical" />
       <div className="flex flex-col gap-1.5 sm:gap-2">
         {children.map((child) => (
-          <OrgBox key={child} titleKey={child} t={t} locale={locale} variant="leaf" />
+          <OrgBox
+            key={child}
+            titleKey={child}
+            t={t}
+            locale={locale}
+            variant="leaf"
+          />
         ))}
       </div>
     </div>
@@ -137,19 +166,19 @@ function ManagementBranch({
       {/* Departments with T-connector */}
       <div className="relative">
         {/* Horizontal line spanning between departments */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-gray-300 dark:bg-gray-600" style={{ width: 'calc(50% + 3rem)' }} />
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-gray-300 dark:bg-gray-600"
+          style={{ width: "calc(50% + 3rem)" }}
+        />
 
         {/* Departments container */}
         <div className="flex gap-3 sm:gap-4 lg:gap-6">
           {departments.map((dept) => (
             <div key={dept.titleKey} className="flex flex-col items-center">
               <div className="w-0.5 h-4 sm:h-6 bg-gray-300 dark:bg-gray-600" />
-              <DepartmentColumn
-                titleKey={dept.titleKey}
-                children={dept.children}
-                t={t}
-                locale={locale}
-              />
+              <DepartmentColumn titleKey={dept.titleKey} t={t} locale={locale}>
+                {dept.children}
+              </DepartmentColumn>
             </div>
           ))}
         </div>
@@ -163,13 +192,25 @@ export default function OrganizationChart() {
   const locale = useLocale();
 
   const resourcesDepts = [
-    { titleKey: "hrAdmin", children: ["hr", "administration", "governmentRelations"] },
-    { titleKey: "finance", children: ["accountingCompliance", "financeFPA", "treasury"] },
+    {
+      titleKey: "hrAdmin",
+      children: ["hr", "administration", "governmentRelations"],
+    },
+    {
+      titleKey: "finance",
+      children: ["accountingCompliance", "financeFPA", "treasury"],
+    },
   ];
 
   const operationsDepts = [
-    { titleKey: "supplyChain", children: ["procurement", "warehouse", "logistics"] },
-    { titleKey: "salesBusiness", children: ["sales", "marketing", "businessDev"] },
+    {
+      titleKey: "supplyChain",
+      children: ["procurement", "warehouse", "logistics"],
+    },
+    {
+      titleKey: "salesBusiness",
+      children: ["sales", "marketing", "businessDev"],
+    },
   ];
 
   return (
@@ -185,37 +226,70 @@ export default function OrganizationChart() {
         {/* Desktop Layout */}
         <div className="hidden lg:flex flex-col items-center">
           {/* Level 1: General Assembly */}
-          <OrgBox titleKey="generalAssembly" t={t} locale={locale} variant="primary" />
+          <OrgBox
+            titleKey="generalAssembly"
+            t={t}
+            locale={locale}
+            variant="primary"
+          />
           <Connector type="vertical" />
 
           {/* Level 2: Board with Committees Row */}
           <div className="flex items-center gap-0">
             {/* Left Committee */}
-            <OrgBox titleKey="governanceRisk" t={t} locale={locale} variant="committee" />
+            <OrgBox
+              titleKey="governanceRisk"
+              t={t}
+              locale={locale}
+              variant="committee"
+            />
             {/* Line */}
             <div className="w-8 xl:w-12 h-0.5 bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
             {/* Board */}
-            <OrgBox titleKey="boardOfDirectors" t={t} locale={locale} variant="primary" />
+            <OrgBox
+              titleKey="boardOfDirectors"
+              t={t}
+              locale={locale}
+              variant="primary"
+            />
             {/* Line */}
             <div className="w-8 xl:w-12 h-0.5 bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
             {/* Right Committees */}
             <div className="flex flex-col">
-              <OrgBox titleKey="auditReview" t={t} locale={locale} variant="committee" />
+              <OrgBox
+                titleKey="auditReview"
+                t={t}
+                locale={locale}
+                variant="committee"
+              />
               <div className="w-0.5 h-3 bg-gray-300 dark:bg-gray-600 mx-auto" />
-              <OrgBox titleKey="nominationRemuneration" t={t} locale={locale} variant="committee" />
+              <OrgBox
+                titleKey="nominationRemuneration"
+                t={t}
+                locale={locale}
+                variant="committee"
+              />
             </div>
           </div>
 
           <Connector type="vertical" />
 
           {/* Level 3: Executive Management */}
-          <OrgBox titleKey="executiveManagement" t={t} locale={locale} variant="secondary" />
+          <OrgBox
+            titleKey="executiveManagement"
+            t={t}
+            locale={locale}
+            variant="secondary"
+          />
           <Connector type="vertical" />
 
           {/* Level 4: Two Main Branches with T-connector */}
           <div className="relative">
             {/* Horizontal line spanning between the two branches */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-gray-300 dark:bg-gray-600" style={{ width: 'calc(50% + 8rem)' }} />
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-gray-300 dark:bg-gray-600"
+              style={{ width: "calc(50% + 8rem)" }}
+            />
 
             {/* Branches container */}
             <div className="flex justify-center gap-16 xl:gap-24 pt-0">
@@ -248,35 +322,68 @@ export default function OrganizationChart() {
         <div className="hidden md:flex lg:hidden flex-col items-center overflow-x-auto pb-4">
           <div className="flex flex-col items-center min-w-[750px] px-8">
             {/* Level 1: General Assembly */}
-            <OrgBox titleKey="generalAssembly" t={t} locale={locale} variant="primary" />
+            <OrgBox
+              titleKey="generalAssembly"
+              t={t}
+              locale={locale}
+              variant="primary"
+            />
             <Connector type="vertical" />
 
             {/* Level 2: Board with Committees Row */}
             <div className="flex items-center gap-0">
               {/* Left Committee */}
-              <OrgBox titleKey="governanceRisk" t={t} locale={locale} variant="committee" />
+              <OrgBox
+                titleKey="governanceRisk"
+                t={t}
+                locale={locale}
+                variant="committee"
+              />
               {/* Line */}
               <div className="w-6 h-0.5 bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
               {/* Board */}
-              <OrgBox titleKey="boardOfDirectors" t={t} locale={locale} variant="primary" />
+              <OrgBox
+                titleKey="boardOfDirectors"
+                t={t}
+                locale={locale}
+                variant="primary"
+              />
               {/* Line */}
               <div className="w-6 h-0.5 bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
               {/* Right Committees */}
               <div className="flex flex-col">
-                <OrgBox titleKey="auditReview" t={t} locale={locale} variant="committee" />
+                <OrgBox
+                  titleKey="auditReview"
+                  t={t}
+                  locale={locale}
+                  variant="committee"
+                />
                 <div className="w-0.5 h-2 bg-gray-300 dark:bg-gray-600 mx-auto" />
-                <OrgBox titleKey="nominationRemuneration" t={t} locale={locale} variant="committee" />
+                <OrgBox
+                  titleKey="nominationRemuneration"
+                  t={t}
+                  locale={locale}
+                  variant="committee"
+                />
               </div>
             </div>
 
             <Connector type="vertical" />
-            <OrgBox titleKey="executiveManagement" t={t} locale={locale} variant="secondary" />
+            <OrgBox
+              titleKey="executiveManagement"
+              t={t}
+              locale={locale}
+              variant="secondary"
+            />
             <Connector type="vertical" />
 
             {/* Level 4: Two Main Branches with T-connector */}
             <div className="relative">
               {/* Horizontal line spanning between the two branches */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-gray-300 dark:bg-gray-600" style={{ width: 'calc(50% + 6rem)' }} />
+              <div
+                className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 bg-gray-300 dark:bg-gray-600"
+                style={{ width: "calc(50% + 6rem)" }}
+              />
 
               {/* Branches container */}
               <div className="flex justify-center gap-12">
@@ -309,39 +416,99 @@ export default function OrganizationChart() {
         {/* Mobile Layout - Vertical Stack */}
         <div className="flex md:hidden flex-col items-center gap-3">
           {/* Top Level */}
-          <OrgBox titleKey="generalAssembly" t={t} locale={locale} variant="primary" />
+          <OrgBox
+            titleKey="generalAssembly"
+            t={t}
+            locale={locale}
+            variant="primary"
+          />
           <Connector type="vertical" className="h-4" />
 
           {/* Board Level */}
-          <OrgBox titleKey="boardOfDirectors" t={t} locale={locale} variant="primary" />
+          <OrgBox
+            titleKey="boardOfDirectors"
+            t={t}
+            locale={locale}
+            variant="primary"
+          />
 
           {/* Committees */}
           <div className="flex flex-wrap justify-center gap-2 my-2">
-            <OrgBox titleKey="governanceRisk" t={t} locale={locale} variant="committee" />
-            <OrgBox titleKey="auditReview" t={t} locale={locale} variant="committee" />
-            <OrgBox titleKey="nominationRemuneration" t={t} locale={locale} variant="committee" />
+            <OrgBox
+              titleKey="governanceRisk"
+              t={t}
+              locale={locale}
+              variant="committee"
+            />
+            <OrgBox
+              titleKey="auditReview"
+              t={t}
+              locale={locale}
+              variant="committee"
+            />
+            <OrgBox
+              titleKey="nominationRemuneration"
+              t={t}
+              locale={locale}
+              variant="committee"
+            />
           </div>
 
           <Connector type="vertical" className="h-4" />
 
           {/* Executive Management */}
-          <OrgBox titleKey="executiveManagement" t={t} locale={locale} variant="secondary" />
+          <OrgBox
+            titleKey="executiveManagement"
+            t={t}
+            locale={locale}
+            variant="secondary"
+          />
           <Connector type="vertical" className="h-4" />
 
           {/* Resources & Operations Side by Side */}
           <div className="flex flex-wrap justify-center gap-3">
-            <OrgBox titleKey="resourcesManagement" t={t} locale={locale} variant="tertiary" />
-            <OrgBox titleKey="operationsManagement" t={t} locale={locale} variant="tertiary" />
+            <OrgBox
+              titleKey="resourcesManagement"
+              t={t}
+              locale={locale}
+              variant="tertiary"
+            />
+            <OrgBox
+              titleKey="operationsManagement"
+              t={t}
+              locale={locale}
+              variant="tertiary"
+            />
           </div>
 
           <Connector type="vertical" className="h-4" />
 
           {/* All Departments */}
           <div className="grid grid-cols-2 gap-2 w-full max-w-sm">
-            <OrgBox titleKey="hrAdmin" t={t} locale={locale} variant="default" />
-            <OrgBox titleKey="finance" t={t} locale={locale} variant="default" />
-            <OrgBox titleKey="supplyChain" t={t} locale={locale} variant="default" />
-            <OrgBox titleKey="salesBusiness" t={t} locale={locale} variant="default" />
+            <OrgBox
+              titleKey="hrAdmin"
+              t={t}
+              locale={locale}
+              variant="default"
+            />
+            <OrgBox
+              titleKey="finance"
+              t={t}
+              locale={locale}
+              variant="default"
+            />
+            <OrgBox
+              titleKey="supplyChain"
+              t={t}
+              locale={locale}
+              variant="default"
+            />
+            <OrgBox
+              titleKey="salesBusiness"
+              t={t}
+              locale={locale}
+              variant="default"
+            />
           </div>
 
           <Connector type="vertical" className="h-4" />
@@ -349,17 +516,47 @@ export default function OrganizationChart() {
           {/* Sub-departments */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 w-full max-w-md">
             <OrgBox titleKey="hr" t={t} locale={locale} variant="leaf" />
-            <OrgBox titleKey="administration" t={t} locale={locale} variant="leaf" />
-            <OrgBox titleKey="governmentRelations" t={t} locale={locale} variant="leaf" />
-            <OrgBox titleKey="accountingCompliance" t={t} locale={locale} variant="leaf" />
-            <OrgBox titleKey="financeFPA" t={t} locale={locale} variant="leaf" />
+            <OrgBox
+              titleKey="administration"
+              t={t}
+              locale={locale}
+              variant="leaf"
+            />
+            <OrgBox
+              titleKey="governmentRelations"
+              t={t}
+              locale={locale}
+              variant="leaf"
+            />
+            <OrgBox
+              titleKey="accountingCompliance"
+              t={t}
+              locale={locale}
+              variant="leaf"
+            />
+            <OrgBox
+              titleKey="financeFPA"
+              t={t}
+              locale={locale}
+              variant="leaf"
+            />
             <OrgBox titleKey="treasury" t={t} locale={locale} variant="leaf" />
-            <OrgBox titleKey="procurement" t={t} locale={locale} variant="leaf" />
+            <OrgBox
+              titleKey="procurement"
+              t={t}
+              locale={locale}
+              variant="leaf"
+            />
             <OrgBox titleKey="warehouse" t={t} locale={locale} variant="leaf" />
             <OrgBox titleKey="logistics" t={t} locale={locale} variant="leaf" />
             <OrgBox titleKey="sales" t={t} locale={locale} variant="leaf" />
             <OrgBox titleKey="marketing" t={t} locale={locale} variant="leaf" />
-            <OrgBox titleKey="businessDev" t={t} locale={locale} variant="leaf" />
+            <OrgBox
+              titleKey="businessDev"
+              t={t}
+              locale={locale}
+              variant="leaf"
+            />
           </div>
         </div>
       </div>
