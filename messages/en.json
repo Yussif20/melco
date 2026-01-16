@@ -517,6 +517,105 @@
     "team": {
       "title": "Meet Our Team",
       "description": "Our team of certified safety professionals, engineers, and product experts is our greatest asset. With decades of collective experience, we are dedicated to providing our clients with unparalleled service and support."
+    },
+    "orgChart": {
+      "title": "Organization Structure",
+      "generalAssembly": {
+        "en": "General Assembly of Shareholders",
+        "ar": "الجمعية العامة للشركاء"
+      },
+      "boardOfDirectors": {
+        "en": "Board of Directors",
+        "ar": "مجلس الإدارة"
+      },
+      "governanceRisk": {
+        "en": "Governance & Risk Committee",
+        "ar": "لجنة الحوكمة وإدارة المخاطر"
+      },
+      "auditReview": {
+        "en": "Audit and Review Committee",
+        "ar": "لجنة المراجعة والتدقيق"
+      },
+      "nominationRemuneration": {
+        "en": "Nomination & Remuneration Committee",
+        "ar": "لجنة الترشيحات والمكافآت"
+      },
+      "executiveManagement": {
+        "en": "Executive Management",
+        "ar": "الإدارة التنفيذية"
+      },
+      "resourcesManagement": {
+        "en": "Resources Management",
+        "ar": "إدارة الموارد"
+      },
+      "operationsManagement": {
+        "en": "Operations Management",
+        "ar": "إدارة العمليات"
+      },
+      "hrAdmin": {
+        "en": "Human Resources & Administration Department",
+        "ar": "إدارة الموارد البشرية والشؤون الإدارية"
+      },
+      "hr": {
+        "en": "HR",
+        "ar": "الموارد بشرية"
+      },
+      "administration": {
+        "en": "Administration",
+        "ar": "الشؤون الإدارية"
+      },
+      "governmentRelations": {
+        "en": "Government Relations",
+        "ar": "العلاقات الحكومية"
+      },
+      "finance": {
+        "en": "Finance Department",
+        "ar": "الإدارة المالية"
+      },
+      "accountingCompliance": {
+        "en": "Accounting & Compliance",
+        "ar": "المحاسبة والامتثال"
+      },
+      "financeFPA": {
+        "en": "Finance, FP&A & Funding",
+        "ar": "المالية والتخطيط والتمويل"
+      },
+      "treasury": {
+        "en": "Treasury & Financial Control",
+        "ar": "الخزينة والرقابة المالية"
+      },
+      "supplyChain": {
+        "en": "Supply Chain Department",
+        "ar": "إدارة سلاسل الإمداد"
+      },
+      "procurement": {
+        "en": "Procurement & Supplier",
+        "ar": "المشتريات والموردين"
+      },
+      "warehouse": {
+        "en": "Warehouse & Inventory",
+        "ar": "المستودعات والمخزون"
+      },
+      "logistics": {
+        "en": "Logistics & Delivery",
+        "ar": "اللوجستيات والتسليم"
+      },
+      "salesBusiness": {
+        "en": "Sales & Business Development Department",
+        "ar": "إدارة المبيعات وتطوير الأعمال"
+      },
+      "sales": {
+        "en": "Sales",
+        "ar": "المبيعات"
+      },
+      "marketing": {
+        "en": "Marketing",
+        "ar": "التسويق"
+      },
+      "businessDev": {
+        "en": "Business Development",
+        "ar": "تطوير الأعمال"
+      }
     }
   },
   "Cart": {

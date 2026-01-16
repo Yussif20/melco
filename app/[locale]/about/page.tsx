@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import OrganizationChart from "@/components/OrganizationChart";
 
 export default function AboutPage() {
   const t = useTranslations("About");
@@ -111,6 +112,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Organization Chart Section */}
+      <OrganizationChart />
 
       {/* Core Values Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
