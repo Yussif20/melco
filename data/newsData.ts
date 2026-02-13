@@ -86,6 +86,49 @@ export const newsArticles: NewsArticle[] = [
     featured: true,
     slug: "strategic-partnership-safety-jogger-works",
   },
+  {
+    id: 2,
+    translations: {
+      en: {
+        title: "Strategic Partnership with Arco: Experts In Safety",
+        description:
+          "130 years of safety excellence… now aligned with our ambition.",
+        category: "Partnership",
+        content: {
+          intro:
+            "We are pleased to announce that MELCO | ميلكو has signed a strategic supply partnership with Arco: Experts In Safety, the UK's leading safety company, protecting industries for over a century.",
+          details: [
+            "This is not just a supply agreement, but a concrete step toward elevating safety standards, strengthening compliance culture, and delivering globally certified PPE solutions.",
+            "At MELCO | ميلكو, we believe safety is not a product, it is a responsibility.",
+            "A partnership that combines distinguished British heritage with forward-driven ambition.",
+          ],
+        },
+      },
+      ar: {
+        title: "شراكة استراتيجية مع Arco: Experts In Safety",
+        description: "130 عامًا من التميز في السلامة… واليوم تتكامل مع طموحنا.",
+        category: "شراكات",
+        content: {
+          intro:
+            "يسرّنا الإعلان عن توقيع MELCO | ميلكو اتفاقية شراكة توريد استراتيجية مع Arco: Experts In Safety، الشركة البريطانية الرائدة في مجال السلامة، التي تحمي القطاعات الصناعية منذ أكثر من قرن.",
+          details: [
+            "هذه ليست مجرد اتفاقية توريد، بل خطوة عملية لرفع معايير السلامة، وتعزيز ثقافة الامتثال، وتقديم حلول معدات وقاية شخصية بمعايير عالمية.",
+            "في MELCO | ميلكو نؤمن أن السلامة ليست منتجًا بل مسؤولية.",
+            "شراكة تجمع بين خبرة بريطانية عريقة وطموح يتطلع إلى صناعة فرق حقيقي في بيئات العمل.",
+          ],
+        },
+      },
+    },
+    date: "2026-02-13",
+    image: "/news/arco-partnership/arco-partnership-1.jpg",
+    images: [
+      "/news/arco-partnership/arco-partnership-2.jpg",
+      "/news/arco-partnership/arco-partnership-3.jpg",
+      "/news/arco-partnership/arco-partnership-4.jpg",
+    ],
+    featured: true,
+    slug: "strategic-partnership-arco-experts-in-safety",
+  },
 ];
 
 export function getNewsArticle(id: number): NewsArticle | undefined {

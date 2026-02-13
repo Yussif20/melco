@@ -1,21 +1,18 @@
+"use client";
+
 import { useTranslations, useLocale } from "next-intl";
+import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getNewsArticle, formatArticleDate } from "@/data/newsData";
 
-interface NewsDetailPageProps {
-  params: {
-    locale: string;
-    id: string;
-  };
-}
-
-export default function NewsDetailPage({ params }: NewsDetailPageProps) {
+export default function NewsDetailPage() {
+  const params = useParams();
   const t = useTranslations("Common");
   const locale = useLocale() as "en" | "ar";
 
-  const newsId = parseInt(params.id);
+  const newsId = parseInt(params.id as string);
   if (isNaN(newsId)) {
     notFound();
   }
