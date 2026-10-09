@@ -7,6 +7,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { getNewsArticle, formatArticleDate } from "@/data/newsData";
 
+// Renders inline [label](url) markup in article text as external links
+function renderWithLinks(text: string) {
+  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, index) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!match) return part;
+    return (
+      <a
+        key={index}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline transition duration-200"
+      >
+        {match[1]}
+      </a>
+    );
+  });
+}
+
 export default function NewsDetailPage() {
   const params = useParams();
   const t = useTranslations("Common");
@@ -101,7 +120,7 @@ export default function NewsDetailPage() {
               </p>
 
               <p className="mb-6 leading-relaxed text-gray-700 dark:text-gray-300">
-                {content.content.intro}
+                {renderWithLinks(content.content.intro)}
               </p>
 
               {content.content.details.map((detail, index) => (
@@ -109,7 +128,7 @@ export default function NewsDetailPage() {
                   key={index}
                   className="mb-4 text-gray-700 dark:text-gray-300"
                 >
-                  {detail}
+                  {renderWithLinks(detail)}
                 </p>
               ))}
 
@@ -130,29 +149,6 @@ export default function NewsDetailPage() {
                 </blockquote>
               )}
             </div>
-
-            {/* Related Links */}
-            {article.links && article.links.length > 0 && (
-              <div className="mt-8 border-t pt-8 border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                  {locale === "ar" ? "روابط ذات صلة" : "Related Links"}
-                </h2>
-                <ul className="space-y-2">
-                  {article.links.map((link) => (
-                    <li key={link.url}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline transition duration-200"
-                      >
-                        {link.label[locale]}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
 
             {/* Image Gallery */}
             {article.images && article.images.length > 0 && (

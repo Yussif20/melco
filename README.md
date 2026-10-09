@@ -1,5 +1,7 @@
 # MELCO Safety Equipment Website
 
+🌐 **Live site:** [https://www.masterequiment.com/ar](https://www.masterequiment.com/ar)
+
 A modern, bilingual e-commerce website for MELCO, a leading provider of workplace safety equipment in Saudi Arabia. Built with Next.js 15, featuring a comprehensive product catalog, shopping cart functionality, internationalization, and professional business pages.
 
 ## 🌟 Key Features
