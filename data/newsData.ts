@@ -38,6 +38,7 @@ export interface NewsArticle {
   images?: string[]; // Additional gallery images (optional)
   featured?: boolean; // Featured news (optional)
   slug?: string; // URL-friendly slug (optional)
+  links?: { url: string; label: { en: string; ar: string } }[]; // Related external links (optional)
 }
 
 export const newsArticles: NewsArticle[] = [
@@ -128,6 +129,61 @@ export const newsArticles: NewsArticle[] = [
     ],
     featured: true,
     slug: "strategic-partnership-arco-experts-in-safety",
+  },
+  {
+    id: 3,
+    translations: {
+      en: {
+        title: "Congratulations to Dr. Abdulaziz bin Saad Al-Qahtani",
+        description:
+          "Our co-founder and board member has been elected to the Board of Directors of the Saudi Management Association (SMA) and appointed as Treasurer.",
+        category: "Congratulations",
+        content: {
+          intro:
+            "We extend our sincere congratulations to Dr. Abdulaziz bin Saad Al-Qahtani, Co-Founder and Board Member of MELCO | ميلكو, on his election to the Board of Directors of the Saudi Management Association (SMA) and his appointment as Treasurer.",
+          details: [
+            "We wish him every success in this responsibility, and that his contribution will be an extension of a professional career rich in giving, supporting the development of management practices and strengthening the Association's role in serving professionals and those interested in the field of management.",
+            "At MELCO | ميلكو, we take pride in our people and believe that active participation in professional organizations is both a responsibility and an opportunity to create impact that extends beyond the boundaries of the organization.",
+            "With our sincere wishes to him and his fellow board members for success in this new chapter.",
+            "MELCO – Driven by Quality, Defined by Trust",
+          ],
+        },
+      },
+      ar: {
+        title: "تهنئة للدكتور عبدالعزيز بن سعد القحطاني",
+        description:
+          "انتخاب الشريك المؤسس في ميلكو وعضو مجلس إدارتها عضوًا في مجلس إدارة الجمعية السعودية للإدارة وأمينًا للمال.",
+        category: "تهاني",
+        content: {
+          intro:
+            "نتقدم بخالص التهنئة والتبريكات للدكتور عبدالعزيز بن سعد القحطاني الشريك المؤسس في MELCO | ميلكو وعضو مجلس إدارتها، بمناسبة فوزه وانتخابه عضوًا في مجلس إدارة الجمعية السعودية للإدارة | Saudi Management Association SMA وأمينًا للمال.",
+          details: [
+            "نسأل الله له التوفيق والسداد في هذه المسؤولية، وأن يكون إسهامه امتدادًا لمسيرة مهنية حافلة بالعطاء، وداعمًا لتطوير الممارسات الإدارية وتعزيز دور الجمعية في خدمة المختصين والمهتمين بمجال الإدارة.",
+            "في MELCO | ميلكو، نفخر بكفاءاتنا ونؤمن بأن المشاركة الفاعلة في المنظمات المهنية مسؤولية وفرصة لصناعة أثر يتجاوز حدود المنشأة.",
+            "مع خالص تمنياتنا له ولزملائه في المجلس بالتوفيق والنجاح في هذه المرحلة الجديدة.",
+            "MELCO – Driven by Quality, Defined by Trust",
+          ],
+        },
+      },
+    },
+    date: "2026-10-09",
+    image: "/news/sma-board-election/sma-board-election-1.jpg",
+    images: ["/news/sma-board-election/sma-board-election-2.jpg"],
+    featured: true,
+    slug: "congratulations-dr-abdulaziz-alqahtani-sma-board",
+    links: [
+      {
+        url: "https://www.linkedin.com/company/smaorgsa/home/",
+        label: {
+          en: "Saudi Management Association (SMA)",
+          ar: "الجمعية السعودية للإدارة",
+        },
+      },
+      {
+        url: "https://www.linkedin.com/company/melcosa/posts/",
+        label: { en: "MELCO on LinkedIn", ar: "ميلكو على LinkedIn" },
+      },
+    ],
   },
 ];
 

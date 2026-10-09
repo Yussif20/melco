@@ -131,6 +131,29 @@ export default function NewsDetailPage() {
               )}
             </div>
 
+            {/* Related Links */}
+            {article.links && article.links.length > 0 && (
+              <div className="mt-8 border-t pt-8 border-gray-200 dark:border-gray-700">
+                <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                  {locale === "ar" ? "روابط ذات صلة" : "Related Links"}
+                </h2>
+                <ul className="space-y-2">
+                  {article.links.map((link) => (
+                    <li key={link.url}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline transition duration-200"
+                      >
+                        {link.label[locale]}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Image Gallery */}
             {article.images && article.images.length > 0 && (
               <div className="mt-8 border-t pt-8 border-gray-200 dark:border-gray-700">
